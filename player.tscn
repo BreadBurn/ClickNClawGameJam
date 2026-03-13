@@ -17,6 +17,8 @@ albedo_color = Color(0.99607843, 0.20392157, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_onrkg"]
+
 [node name="Player" type="CharacterBody3D" unique_id=1604628969]
 script = ExtResource("1_onrkg")
 
@@ -38,8 +40,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0436493, 0)
 shape = SubResource("CapsuleShape3D_onrkg")
 
 [node name="InteractArea" type="Area3D" parent="." unique_id=1409483655]
-transform = Transform3D(1.88, 0, 0, 0, 1.88, 0, 0, 0, 1.88, 0.5664896, 1.0152179, 0)
+transform = Transform3D(1.88, 0, 0, 0, 1.88, 0, 0, 0, 1.88, -0.12551123, 1.0152179, 0)
 
 [node name="InteractCollision" type="CollisionShape3D" parent="InteractArea" unique_id=1504161695]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5671886, 0, 0)
 shape = SubResource("BoxShape3D_onrkg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractArea/InteractCollision" unique_id=2147284888]
+transform = Transform3D(0.5319149, 0, 0, 0, 0.5319149, 0, 0, 0, 0.5319149, -0.0094899535, -0.07877278, 0)
+mesh = SubResource("BoxMesh_onrkg")

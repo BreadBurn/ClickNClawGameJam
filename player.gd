@@ -86,6 +86,7 @@ func _should_start_interact(grounded: bool) -> bool:
 func _start_interact() -> void:
 	state = State.INTERACT
 	interact_timer = interact_duration
+	_try_interact()
 
 func _apply_horizontal(direction: Vector3, delta: float) -> void:
 	match state:
@@ -115,7 +116,7 @@ func _set_facing_if_needed(direction: Vector3) -> void:
 	if state != State.PERFORMING_ACTION and direction != Vector3.ZERO:
 		_update_facing(direction)
 
-func _update_state(direction: Vector3) -> void:
+func _update_state(_direction: Vector3) -> void:
 	if state == State.PERFORMING_ACTION or state == State.INTERACT:
 		return
 
@@ -156,3 +157,14 @@ func perform_action() -> void:
 	if state != State.PERFORMING_ACTION and is_on_floor():
 		state = State.PERFORMING_ACTION
 		action_timer = 0.5
+
+
+func _try_interact() -> void:
+	var areas: Array = interact_area.get_overlapping_areas()
+	for i in areas.size():
+		var area: Area3D = areas[i] as Area3D
+		if area == null:
+			continue
+		var parent: Node = area.get_parent() as Node
+		if parent != null and parent.has_method("on_interact"):
+			parent.on_interact(self)

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dm7p1goaoimx7"]
+
+[ext_resource type="Script" uid="uid://dkd752cvo32e2" path="res://interactable.gd" id="1_5k4wx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_52i5l"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5k4wx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0b81o"]
+
+[node name="Interactable" type="StaticBody3D" unique_id=934362047]
+transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 0, 0, 0)
+script = ExtResource("1_5k4wx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=155537528]
+shape = SubResource("SphereShape3D_52i5l")
+debug_color = Color(0.43479052, 0.55900115, 0.60732657, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1211153479]
+mesh = SubResource("SphereMesh_5k4wx")
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=1643232293]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=162553571]
+shape = SubResource("SphereShape3D_0b81o")

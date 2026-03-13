@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cii23b3yvwyys" path="res://player.tscn" id="1_r2uep"]
 [ext_resource type="Script" uid="uid://igd46ey8i10w" path="res://camera_3d.gd" id="1_tjf8n"]
 [ext_resource type="PackedScene" uid="uid://dof3ogmfxuoh7" path="res://pause_menu.tscn" id="3_3ticj"]
+[ext_resource type="PackedScene" uid="uid://dm7p1goaoimx7" path="res://interactable.tscn" id="4_lbacn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r2uep"]
 
@@ -17,6 +18,9 @@ vertex_color_is_srgb = true
 albedo_color = Color(0.28627452, 0.3882353, 0.20784314, 1)
 
 [node name="GameMain" type="Node3D" unique_id=1510548574]
+
+[node name="Interractable" parent="." unique_id=934362047 instance=ExtResource("4_lbacn")]
+transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 3.0066657, 1.1289734, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=830392251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49486923, -1.5258789e-05)
