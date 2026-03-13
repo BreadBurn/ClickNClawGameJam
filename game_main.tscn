@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://6ok5o003mpkg"]
+
+[ext_resource type="PackedScene" uid="uid://cii23b3yvwyys" path="res://player.tscn" id="1_r2uep"]
+[ext_resource type="Script" uid="uid://igd46ey8i10w" path="res://camera_3d.gd" id="1_tjf8n"]
+[ext_resource type="PackedScene" uid="uid://dof3ogmfxuoh7" path="res://pause_menu.tscn" id="3_3ticj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r2uep"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tjf8n"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yn5om"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2uep"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.28627452, 0.3882353, 0.20784314, 1)
+
+[node name="GameMain" type="Node3D" unique_id=1510548574]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=830392251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49486923, -1.5258789e-05)
+physics_material_override = SubResource("PhysicsMaterial_r2uep")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=365331548]
+shape = SubResource("BoxShape3D_tjf8n")
+
+[node name="Ground" type="MeshInstance3D" parent="StaticBody3D" unique_id=1221414686]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_yn5om")
+surface_material_override/0 = SubResource("StandardMaterial3D_r2uep")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=916559983 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.5428813, 0.8398094, 0, -0.8398094, 0.5428813, 0, 6.645053, 5.108061)
+doppler_tracking = 2
+current = true
+script = ExtResource("1_tjf8n")
+target = NodePath("../Player2")
+
+[node name="Player2" parent="." unique_id=339794334 instance=ExtResource("1_r2uep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.047020614, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=162162419]
+transform = Transform3D(1, 0, 0, 0, -0.44396278, 0.89604527, 0, -0.89604527, -0.44396278, 0, 9.480016, -4.994448)
+
+[node name="PauseMenu" parent="." unique_id=2083233339 instance=ExtResource("3_3ticj")]
