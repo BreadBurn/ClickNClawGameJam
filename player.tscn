@@ -1,28 +1,45 @@
 [gd_scene format=3 uid="uid://cii23b3yvwyys"]
 
 [ext_resource type="Script" uid="uid://cr27lq83tyfws" path="res://user_control.gd" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://dmqvhwbybn08q" path="res://Player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://dmqvhwbybn08q" path="res://player.gd" id="1_onrkg"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_onrkg"]
+top_radius = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_color = Color(0.99607843, 0.20392157, 0, 1)
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1604628969]
 script = ExtResource("1_onrkg")
 
+[node name="DEBUGNODEdirectionView" type="MeshInstance3D" parent="." unique_id=1157545569]
+transform = Transform3D(-2.1855694e-10, 0.5, 0, -0.005, -2.1855694e-08, 0, 0, 0, 0.5, 0, 2.5, 0)
+mesh = SubResource("CylinderMesh_onrkg")
+surface_material_override/0 = SubResource("StandardMaterial3D_4flbx")
+
 [node name="UserControl" type="Node" parent="." unique_id=642189157]
 script = ExtResource("1_4flbx")
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=615091070]
+[node name="PlaceholderViewMesh" type="MeshInstance3D" parent="." unique_id=615091070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0453546, -7.6293945e-06)
 mesh = SubResource("CapsuleMesh_sh265")
 surface_material_override/0 = SubResource("StandardMaterial3D_4flbx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=133487781]
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=133487781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0436493, 0)
 shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=1409483655]
+transform = Transform3D(1.88, 0, 0, 0, 1.88, 0, 0, 0, 1.88, 0.5664896, 1.0152179, 0)
+
+[node name="InteractCollision" type="CollisionShape3D" parent="InteractArea" unique_id=1504161695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5671886, 0, 0)
+shape = SubResource("BoxShape3D_onrkg")
