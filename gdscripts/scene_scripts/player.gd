@@ -12,7 +12,7 @@ var facing: Facing = Facing.DOWN
 @export var jump_velocity := 4.5
 @export var floor_snap_len := 0.3
 
-@export var interact_duration := 0.35
+@export var interact_duration := 0.00
 @export var interact_requires_ground := true
 
 var gravity_y := ProjectSettings.get_setting("physics/3d/default_gravity") as float
@@ -41,13 +41,7 @@ func _physics_process(delta: float) -> void:
 	if _should_start_interact(grounded):
 		_start_interact()
 		_set_facing_if_needed(direction)
-		velocity.x = move_toward(velocity.x, 0.0, decel * delta)
-		velocity.z = move_toward(velocity.z, 0.0, decel * delta)
-		if not grounded:
-			velocity.y -= gravity_y * delta
-		move_and_slide()
-		_update_state(direction)
-		return
+
 
 	var should_jump := grounded and input.consume_jump()
 	if should_jump and state != State.PERFORMING_ACTION and state != State.INTERACT:
@@ -89,28 +83,35 @@ func _start_interact() -> void:
 	_try_interact()
 
 func _apply_horizontal(direction: Vector3, delta: float) -> void:
-	match state:
-		State.PERFORMING_ACTION, State.INTERACT:
-			velocity.x = move_toward(velocity.x, 0.0, decel * delta)
-			velocity.z = move_toward(velocity.z, 0.0, decel * delta)
-			if state == State.PERFORMING_ACTION:
-				action_timer -= delta
-				if action_timer <= 0.0:
-					state = State.IDLE
-			elif state == State.INTERACT:
-				interact_timer -= delta
-				if interact_timer <= 0.0:
-					state = State.IDLE
+	if state == State.PERFORMING_ACTION or state == State.INTERACT:
+		# Decelerate while interacting
+		velocity.x = move_toward(velocity.x, 0.0, decel * delta)
+		velocity.z = move_toward(velocity.z, 0.0, decel * delta)
+		
+		if state == State.PERFORMING_ACTION:
+			action_timer -= delta
+			if action_timer <= 0.0:
+				state = State.IDLE
+		elif state == State.INTERACT:
+			interact_timer -= delta
+			if interact_timer <= 0.0:
+				state = State.IDLE
+		
+		# If we are STILL locked in an action, exit here.
+		# If the timer just finished and we are IDLE, fall through to movement!
+		if state != State.IDLE:
 			return
-		_:
-			var target_vx := direction.x * speed
-			var target_vz := direction.z * speed
-			if direction != Vector3.ZERO:
-				velocity.x = move_toward(velocity.x, target_vx, accel * delta)
-				velocity.z = move_toward(velocity.z, target_vz, accel * delta)
-			else:
-				velocity.x = move_toward(velocity.x, 0.0, decel * delta)
-				velocity.z = move_toward(velocity.z, 0.0, decel * delta)
+
+	# Normal movement logic (runs if IDLE, MOVE, JUMP, FALL)
+	var target_vx := direction.x * speed
+	var target_vz := direction.z * speed
+	
+	if direction != Vector3.ZERO:
+		velocity.x = move_toward(velocity.x, target_vx, accel * delta)
+		velocity.z = move_toward(velocity.z, target_vz, accel * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0.0, decel * delta)
+		velocity.z = move_toward(velocity.z, 0.0, decel * delta)
 
 func _set_facing_if_needed(direction: Vector3) -> void:
 	if state != State.PERFORMING_ACTION and direction != Vector3.ZERO:

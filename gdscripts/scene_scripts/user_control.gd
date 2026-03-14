@@ -3,7 +3,7 @@ class_name InputComponent
 
 @export var jump_buffer_time := 0.12
 @export var interact_buffer_time := 0.20    # how long we remember an interact press
-@export var interact_cooldown := 1.0        # seconds between interactions (anti-spam)
+@export var interact_cooldown := 0.1        # seconds between interactions (anti-spam)
 
 var input_vec := Vector2.ZERO
 var _jump_buffer := 0.0
