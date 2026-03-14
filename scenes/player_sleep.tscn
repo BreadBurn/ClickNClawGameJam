@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dnwbtjsmreoue"]
 
 [ext_resource type="PackedScene" uid="uid://dm7p1goaoimx7" path="res://scenes/interactable.tscn" id="1_i105w"]
-[ext_resource type="Script" uid="uid://d2e754d4jaslp" path="res://gdscripts/scene_scripts/player_house.gd" id="1_j6pox"]
+[ext_resource type="Script" uid="uid://d2e754d4jaslp" path="res://gdscripts/scene_scripts/player_sleep.gd" id="1_j6pox"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i105w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j6pox"]
 
-[node name="PlayerHouse" type="Node3D" unique_id=1172711439]
+[node name="PlayerSleep" type="Node3D" unique_id=1172711439]
 script = ExtResource("1_j6pox")
 
 [node name="Interactable" parent="." unique_id=934362047 instance=ExtResource("1_i105w")]

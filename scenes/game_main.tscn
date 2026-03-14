@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://igd46ey8i10w" path="res://gdscripts/scene_scripts/camera_3d.gd" id="2_3qnxt"]
 [ext_resource type="PackedScene" uid="uid://cii23b3yvwyys" path="res://scenes/player.tscn" id="3_4qd86"]
-[ext_resource type="PackedScene" uid="uid://dnwbtjsmreoue" path="res://scenes/player_house.tscn" id="4_57ec7"]
+[ext_resource type="PackedScene" uid="uid://dnwbtjsmreoue" path="res://scenes/player_sleep.tscn" id="4_57ec7"]
 [ext_resource type="PackedScene" uid="uid://dof3ogmfxuoh7" path="res://scenes/pause_menu.tscn" id="4_cbeu7"]
 [ext_resource type="PackedScene" uid="uid://cqfwd3oawqdme" path="res://scenes/base_flora.tscn" id="5_3qnxt"]
+[ext_resource type="PackedScene" uid="uid://dly7hhg7b6tf0" path="res://scenes/enter_house.tscn" id="6_4qd86"]
+[ext_resource type="PackedScene" uid="uid://bx7l02ipro8bt" path="res://scenes/exit_house.tscn" id="7_cbeu7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r2uep"]
 
@@ -51,5 +53,21 @@ transform = Transform3D(1, 0, 0, 0, -0.44396278, 0.89604527, 0, -0.89604527, -0.
 [node name="PlayerHouse" parent="." unique_id=1172711439 instance=ExtResource("4_57ec7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9402182, 0.005130768, -2.6092248)
 
-[node name="BaseFlora" parent="." unique_id=930418277 instance=ExtResource("5_3qnxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8620412, 0.09274495, 0.9062598)
+[node name="FloraContainer" type="Node3D" parent="." unique_id=176586767]
+
+[node name="BaseFlora3" parent="FloraContainer" unique_id=930418277 instance=ExtResource("5_3qnxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1539185, 0, 1.9197931)
+type2_summon_threshold = 3
+
+[node name="BaseFlora2" parent="FloraContainer" unique_id=1354161361 instance=ExtResource("5_3qnxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5430317, 0, 2.1124861)
+
+[node name="BaseFlora" parent="FloraContainer" unique_id=56923005 instance=ExtResource("5_3qnxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41734886, 0, 0.8723366)
+current_type = 1
+
+[node name="EnterHouse" parent="." unique_id=606512115 instance=ExtResource("6_4qd86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9375322, 0.6472087, -3.6714969)
+
+[node name="ExitHouse" parent="." unique_id=887263288 instance=ExtResource("7_cbeu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2968359, 0.34067345, -4.0545006)

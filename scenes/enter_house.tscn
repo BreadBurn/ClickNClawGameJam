@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dly7hhg7b6tf0"]
+
+[ext_resource type="Script" uid="uid://dfagr57k7wfj5" path="res://gdscripts/scene_scripts/enter_house.gd" id="1_1yosx"]
+[ext_resource type="PackedScene" uid="uid://dm7p1goaoimx7" path="res://scenes/interactable.tscn" id="1_mam22"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mam22"]
+albedo_color = Color(0.44142103, 0.82436913, 1.1551381e-06, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1yosx"]
+
+[node name="EnterHouse" type="Node3D" unique_id=606512115]
+script = ExtResource("1_1yosx")
+
+[node name="Interactable" parent="." unique_id=934362047 instance=ExtResource("1_mam22")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1086960428]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=130126311]
+material_override = SubResource("StandardMaterial3D_mam22")
+mesh = SubResource("BoxMesh_1yosx")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
