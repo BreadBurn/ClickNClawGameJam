@@ -160,11 +160,22 @@ func perform_action() -> void:
 
 
 func _try_interact() -> void:
-	var areas: Array = interact_area.get_overlapping_areas()
-	for i in areas.size():
-		var area: Area3D = areas[i] as Area3D
-		if area == null:
-			continue
-		var parent: Node = area.get_parent() as Node
+	var areas: Array[Area3D] = interact_area.get_overlapping_areas()
+	if areas.is_empty():
+		return
+		
+	var closest_parent: Node = null
+	var closest_distance := INF
+	
+	for area in areas:
+		var parent: Node = area.get_parent()
 		if parent != null and parent.has_method("on_interact"):
-			parent.on_interact(self)
+			# Calculate distance from the player to the interactable area
+			var distance := global_position.distance_squared_to(area.global_position)
+			
+			if distance < closest_distance:
+				closest_distance = distance
+				closest_parent = parent
+
+	if closest_parent != null:
+		closest_parent.on_interact(self)

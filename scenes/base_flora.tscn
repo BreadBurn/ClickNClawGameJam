@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cqfwd3oawqdme"]
+
+[ext_resource type="Script" uid="uid://bvn1lc30c2eot" path="res://gdscripts/scene_scripts/base_flora.gd" id="1_6co6x"]
+[ext_resource type="PackedScene" uid="uid://dm7p1goaoimx7" path="res://scenes/interactable.tscn" id="2_tslgx"]
+
+[node name="BaseFlora" type="Node3D" unique_id=930418277]
+script = ExtResource("1_6co6x")
+
+[node name="Interactable" parent="." unique_id=934362047 instance=ExtResource("2_tslgx")]
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cii23b3yvwyys"]
 
-[ext_resource type="Script" uid="uid://cr27lq83tyfws" path="res://user_control.gd" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://dmqvhwbybn08q" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://cr27lq83tyfws" path="res://gdscripts/scene_scripts/user_control.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dmqvhwbybn08q" path="res://gdscripts/scene_scripts/player.gd" id="1_onrkg"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_onrkg"]
 top_radius = 0.0
@@ -18,6 +18,10 @@ albedo_color = Color(0.99607843, 0.20392157, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_onrkg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.2784314)
 
 [node name="Player" type="CharacterBody3D" unique_id=1604628969]
 script = ExtResource("1_onrkg")
@@ -47,5 +51,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5671886, 0, 0)
 shape = SubResource("BoxShape3D_onrkg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InteractArea/InteractCollision" unique_id=2147284888]
-transform = Transform3D(0.5319149, 0, 0, 0, 0.5319149, 0, 0, 0, 0.5319149, -0.0094899535, -0.07877278, 0)
+transform = Transform3D(1.007, 0, 0, 0, 1.007, 0, 0, 0, 1.007, -0.0094896555, 0.010142624, 0)
 mesh = SubResource("BoxMesh_onrkg")
+surface_material_override/0 = SubResource("StandardMaterial3D_onrkg")

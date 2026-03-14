@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dm7p1goaoimx7"]
+
+[ext_resource type="Script" uid="uid://dkd752cvo32e2" path="res://gdscripts/scene_scripts/interactable.gd" id="1_5k4wx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_56v82"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh154"]
+transparency = 1
+albedo_color = Color(1, 0.10980392, 1, 0.2627451)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ij5l6"]
+
+[node name="Interactable" type="StaticBody3D" unique_id=934362047]
+transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 0, 0, 0)
+script = ExtResource("1_5k4wx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1211153479]
+mesh = SubResource("BoxMesh_56v82")
+surface_material_override/0 = SubResource("StandardMaterial3D_wh154")
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=1643232293]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=162553571]
+shape = SubResource("BoxShape3D_ij5l6")
