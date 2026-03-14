@@ -33,7 +33,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	jumped_this_frame = false
-
+	
 	var raw_dir := Vector3(input.input_vec.x, 0, input.input_vec.y)
 	var direction := raw_dir.normalized() if raw_dir.length() > 0.001 else Vector3.ZERO
 	var grounded := is_on_floor()
