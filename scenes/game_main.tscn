@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://6ok5o003mpkg"]
 
+[ext_resource type="PackedScene" uid="uid://k0olv4vextkv" path="res://scenes/dialogue.tscn" id="1_mn252"]
 [ext_resource type="Script" uid="uid://igd46ey8i10w" path="res://gdscripts/scene_scripts/camera_3d.gd" id="2_3qnxt"]
 [ext_resource type="PackedScene" uid="uid://cii23b3yvwyys" path="res://scenes/player.tscn" id="3_4qd86"]
 [ext_resource type="PackedScene" uid="uid://dnwbtjsmreoue" path="res://scenes/player_sleep.tscn" id="4_57ec7"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cqfwd3oawqdme" path="res://scenes/base_flora.tscn" id="5_3qnxt"]
 [ext_resource type="PackedScene" uid="uid://dly7hhg7b6tf0" path="res://scenes/enter_house.tscn" id="6_4qd86"]
 [ext_resource type="PackedScene" uid="uid://bx7l02ipro8bt" path="res://scenes/exit_house.tscn" id="7_cbeu7"]
+[ext_resource type="PackedScene" uid="uid://di7rixm3ybd6u" path="res://scenes/npc.tscn" id="8_cxf66"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r2uep"]
 
@@ -22,15 +24,26 @@ albedo_color = Color(0.28627452, 0.3882353, 0.20784314, 1)
 
 [node name="GameMain" type="Node3D" unique_id=1510548574]
 
+[node name="Dialogue" parent="." unique_id=1050487385 instance=ExtResource("1_mn252")]
+
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=830392251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49486923, -1.5258789e-05)
 physics_material_override = SubResource("PhysicsMaterial_r2uep")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1007289969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.569225, 0)
+shape = SubResource("BoxShape3D_tjf8n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=365331548]
 shape = SubResource("BoxShape3D_tjf8n")
 
 [node name="Ground" type="MeshInstance3D" parent="StaticBody3D" unique_id=1221414686]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_yn5om")
+surface_material_override/0 = SubResource("StandardMaterial3D_r2uep")
+
+[node name="Ground2" type="MeshInstance3D" parent="StaticBody3D" unique_id=1752166405]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -10.575672, 0)
 mesh = SubResource("BoxMesh_yn5om")
 surface_material_override/0 = SubResource("StandardMaterial3D_r2uep")
 
@@ -50,7 +63,7 @@ transform = Transform3D(1, 0, 0, 0, -0.44396278, 0.89604527, 0, -0.89604527, -0.
 
 [node name="PauseMenu" parent="." unique_id=2083233339 instance=ExtResource("4_cbeu7")]
 
-[node name="PlayerHouse" parent="." unique_id=1172711439 instance=ExtResource("4_57ec7")]
+[node name="PlayerSleep" parent="." unique_id=1172711439 instance=ExtResource("4_57ec7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9402182, 0.005130768, -2.6092248)
 
 [node name="FloraContainer" type="Node3D" parent="." unique_id=176586767]
@@ -66,8 +79,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5430317, 0, 2.1124861)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41734886, 0, 0.8723366)
 current_type = 1
 
-[node name="EnterHouse" parent="." unique_id=606512115 instance=ExtResource("6_4qd86")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9375322, 0.6472087, -3.6714969)
+[node name="EnterHouse" parent="." unique_id=606512115 node_paths=PackedStringArray("interior_spawn") instance=ExtResource("6_4qd86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9375322, 0.57423115, -3.6714969)
+interior_spawn = NodePath("../ExitHouse")
 
-[node name="ExitHouse" parent="." unique_id=887263288 instance=ExtResource("7_cbeu7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2968359, 0.34067345, -4.0545006)
+[node name="ExitHouse" parent="." unique_id=887263288 node_paths=PackedStringArray("exterior_spawn") instance=ExtResource("7_cbeu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2968359, -9.705484, -4.0545006)
+exterior_spawn = NodePath("../EnterHouse")
+
+[node name="Npc" parent="." unique_id=1463559982 instance=ExtResource("8_cxf66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3407863, 0.005130291, -3.4123616)

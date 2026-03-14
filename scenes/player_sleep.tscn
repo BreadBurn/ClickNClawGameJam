@@ -3,21 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://dm7p1goaoimx7" path="res://scenes/interactable.tscn" id="1_i105w"]
 [ext_resource type="Script" uid="uid://d2e754d4jaslp" path="res://gdscripts/scene_scripts/player_sleep.gd" id="1_j6pox"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i105w"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_j6pox"]
 
 [node name="PlayerSleep" type="Node3D" unique_id=1172711439]
 script = ExtResource("1_j6pox")
 
 [node name="Interactable" parent="." unique_id=934362047 instance=ExtResource("1_i105w")]
-transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 0.98745966, 0.6202619, -0.0022056103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=271749517]
-transform = Transform3D(1.99, 0, 0, 0, 1.99, 0, 0, 0, 1.99, 0, 1.0014229, -0.002)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=617985366]
-shape = SubResource("BoxShape3D_i105w")
+transform = Transform3D(0.805, 0, 0, 0, 0.805, 0, 0, 0, 0.805, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=691050528]
 mesh = SubResource("BoxMesh_j6pox")

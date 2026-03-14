@@ -20,5 +20,3 @@ transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1651898223]
 transform = Transform3D(3.0769231, 0, 0, 0, 3.0769231, 0, 0, 0, 3.0769231, 0, 0, 0)
 mesh = SubResource("BoxMesh_yre4b")
-
-[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://di7rixm3ybd6u"]
+
+[ext_resource type="Script" uid="uid://cn0g7ccqbhe4c" path="res://gdscripts/scene_scripts/npc.gd" id="1_abqhh"]
+[ext_resource type="PackedScene" uid="uid://dm7p1goaoimx7" path="res://scenes/interactable.tscn" id="1_nh2m4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_abqhh"]
+
+[node name="Npc" type="Node3D" unique_id=1463559982]
+script = ExtResource("1_abqhh")
+
+[node name="Interactable" parent="." unique_id=934362047 instance=ExtResource("1_nh2m4")]
+transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 0, 0.84692454, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=156651223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0014229, -0.002)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1613965162]
+mesh = SubResource("CapsuleMesh_abqhh")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
