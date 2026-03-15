@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://di7rixm3ybd6u" path="res://scenes/npc.tscn" id="8_cxf66"]
 [ext_resource type="PackedScene" uid="uid://dgduvt71d4hxf" path="res://scenes/ShopOverlay.tscn" id="12_5pnww"]
 [ext_resource type="PackedScene" uid="uid://dpyrdmc1nthfp" path="res://scenes/open_shop.tscn" id="12_jm48l"]
+[ext_resource type="PackedScene" uid="uid://tvqkki4xwkin" path="res://scenes/scene_transition.tscn" id="14_qmyl5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r2uep"]
 
@@ -28,6 +29,8 @@ albedo_color = Color(0.28627452, 0.3882353, 0.20784314, 1)
 
 [node name="GameMain" type="Node3D" unique_id=1510548574]
 script = ExtResource("1_lla21")
+
+[node name="SceneTransition" parent="." unique_id=1010982004 instance=ExtResource("14_qmyl5")]
 
 [node name="UIOverlay" parent="." unique_id=1500083861 instance=ExtResource("2_0dt25")]
 

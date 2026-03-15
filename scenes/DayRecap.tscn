@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://vdcywcc304ai"]
+
+[ext_resource type="Script" uid="uid://vilunoo3q1ok" path="res://scenes/day_recap.gd" id="1_3y7n3"]
+
+[node name="DayRecap" type="CanvasLayer" unique_id=1488982761]
+script = ExtResource("1_3y7n3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1822407770]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=691640376]
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.045
+anchor_right = 0.97
+anchor_bottom = 0.96
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1883113649]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=916055911]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1663106341]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 55
+text = "DAY X -> X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBarT1" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1685799793]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="T1CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT1" unique_id=438019161]
+unique_name_in_owner = true
+layout_mode = 0
+scale = Vector2(0.9846947, 1.0049475)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "Type 1 Plant Coverage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBarT2" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1515841569]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="T2CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT2" unique_id=1613073078]
+unique_name_in_owner = true
+layout_mode = 0
+scale = Vector2(0.9846947, 1.0049475)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "Type 2 Plant Coverage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBarT3" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=363135008]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="T3CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT3" unique_id=1572042847]
+unique_name_in_owner = true
+layout_mode = 0
+scale = Vector2(1.0035204, 1)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "Type 3 Plant Coverage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBarT4" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=12642500]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="T4CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT4" unique_id=1678891301]
+unique_name_in_owner = true
+layout_mode = 0
+scale = Vector2(1.0035204, 1)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "Type 4 Plant Coverage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoldEarned" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1093279172]
+layout_mode = 2
+text = "+$XX"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer" unique_id=815770822]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer2" unique_id=483542079]
+layout_mode = 2
+text = "Continue [RMS]"
+horizontal_alignment = 1

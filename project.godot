@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*uid://ci68q6ibkvdhl"
+SceneTransition="*uid://tvqkki4xwkin"
+DayRecap="*uid://vdcywcc304ai"
 
 [input]
 

@@ -14,7 +14,10 @@ func _ready() -> void:
 
 func _on_interactable_interacted() -> void:
 	print("exited house")
-
+	
+	SceneTransition.transition_in()
+	await SceneTransition.transition_in_finished
+	
 	if not GameState.has_player():
 		push_warning("No player registered in GameState")
 		return
@@ -28,3 +31,6 @@ func _on_interactable_interacted() -> void:
 	# Optional: force facing after teleport
 	if GameState.player is Player:
 		(GameState.player as Player).set_facing(Player.Facing.DOWN)
+		
+	await get_tree().create_timer(0.25).timeout
+	SceneTransition.transition_out()
