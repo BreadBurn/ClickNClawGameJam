@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://q6qdtn58ljlj"]
+
+[ext_resource type="Texture2D" uid="uid://bi64qidsvhs6l" path="res://world_sprites/bigstairs.png" id="1_dgl6h"]
+
+[resource]
+albedo_texture = ExtResource("1_dgl6h")
+uv1_scale = Vector3(1, 2, 0.5)
+uv1_triplanar = true
