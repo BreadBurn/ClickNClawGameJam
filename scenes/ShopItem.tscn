@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://pbcs1lqn5u6v"]
+
+[ext_resource type="Script" uid="uid://qhiayc1e14mp" path="res://gdscripts/scene_scripts/shop_item.gd" id="1_fxw1a"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fxw1a"]
+
+[node name="ShopItem" type="VBoxContainer" unique_id=425179875]
+anchors_preset = -1
+anchor_right = 0.095
+anchor_bottom = 0.267
+scale = Vector2(0.9985272, 1)
+script = ExtResource("1_fxw1a")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1721595244]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_fxw1a")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=684423933]
+layout_mode = 2
+text = "Item Name"
+
+[node name="Button" type="Button" parent="." unique_id=1610611843]
+layout_mode = 2
+text = "BUY"

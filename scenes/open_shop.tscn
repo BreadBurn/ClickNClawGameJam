@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dpyrdmc1nthfp"]
+
+[ext_resource type="Script" uid="uid://bfimbf3fhv4g8" path="res://gdscripts/scene_scripts/open_shop.gd" id="1_7koua"]
+[ext_resource type="PackedScene" uid="uid://dm7p1goaoimx7" path="res://scenes/interactable.tscn" id="1_82acu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7koua"]
+albedo_color = Color(0.44142103, 0.82436913, 1.1551381e-06, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_82acu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysxyo"]
+albedo_color = Color(1, 0.58431375, 0.654902, 1)
+
+[node name="OpenShop" type="Node3D" unique_id=1626837591]
+script = ExtResource("1_7koua")
+
+[node name="Interactable" parent="." unique_id=934362047 instance=ExtResource("1_82acu")]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=550106697]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1493184614]
+material_override = SubResource("StandardMaterial3D_7koua")
+mesh = SubResource("CapsuleMesh_82acu")
+surface_material_override/0 = SubResource("StandardMaterial3D_ysxyo")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

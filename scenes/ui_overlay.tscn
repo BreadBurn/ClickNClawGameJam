@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://iogr6857y3ck"]
 
-[ext_resource type="Script" uid="uid://rrcgm56dfber" path="res://scenes/ui_overlay.gd" id="1_5mppo"]
+[ext_resource type="Script" uid="uid://rrcgm56dfber" path="res://gdscripts/scene_scripts/ui_overlay.gd" id="1_5mppo"]
 
 [node name="UIOverlay" type="CanvasLayer" unique_id=1500083861]
 script = ExtResource("1_5mppo")
@@ -49,6 +49,7 @@ layout_mode = 2
 text = "$0"
 
 [node name="StreakLabel" type="Label" parent="Control/TopMidMargin/VBoxContainer" unique_id=793312117]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Eco Streak: 0"
 

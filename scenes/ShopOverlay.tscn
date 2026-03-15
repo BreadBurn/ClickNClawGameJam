@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dgduvt71d4hxf"]
+
+[ext_resource type="Script" uid="uid://c0tqceimefq0p" path="res://scenes/shop_overlay.gd" id="1_fyyb4"]
+[ext_resource type="PackedScene" uid="uid://pbcs1lqn5u6v" path="res://scenes/ShopItem.tscn" id="1_p3tmv"]
+
+[node name="ShopOverlay" type="CanvasLayer" unique_id=2044294706]
+script = ExtResource("1_fyyb4")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1646135667]
+anchors_preset = -1
+anchor_left = 0.253
+anchor_top = 0.08
+anchor_right = 0.735
+anchor_bottom = 0.775
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.0006473, 1)
+color = Color(0.0627451, 0.0627451, 0.0627451, 0.83137256)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1549312586]
+anchors_preset = -1
+anchor_left = 0.264
+anchor_top = 0.108
+anchor_right = 0.72
+anchor_bottom = 0.743
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.9991551, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=551325505]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=301210844]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1536160580]
+layout_mode = 2
+theme_override_constants/separation = 361
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1144092747]
+layout_mode = 2
+text = "HOUSE UPGRADES"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1069874002]
+layout_mode = 2
+text = "[close]"
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2147262908]
+layout_mode = 2
+theme_override_constants/h_separation = 9
+theme_override_constants/v_separation = 84
+columns = 6
+
+[node name="ShopItem" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=425179875 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem2" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=37238594 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem3" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=81255525 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem4" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=2019396229 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem5" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=985093769 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem6" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=875870968 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem7" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1328274622 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem8" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1383843081 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem9" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=134898477 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem10" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1273215340 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem11" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1994640205 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[node name="ShopItem12" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1033159746 instance=ExtResource("1_p3tmv")]
+layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

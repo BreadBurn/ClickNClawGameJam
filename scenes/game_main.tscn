@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://6ok5o003mpkg"]
 
-[ext_resource type="Script" uid="uid://d3f4yiqjw45f4" path="res://scenes/game_main.gd" id="1_lla21"]
+[ext_resource type="Script" uid="uid://d3f4yiqjw45f4" path="res://gdscripts/game_main.gd" id="1_lla21"]
 [ext_resource type="PackedScene" uid="uid://k0olv4vextkv" path="res://scenes/dialogue.tscn" id="1_mn252"]
 [ext_resource type="PackedScene" uid="uid://iogr6857y3ck" path="res://scenes/ui_overlay.tscn" id="2_0dt25"]
 [ext_resource type="Script" uid="uid://igd46ey8i10w" path="res://gdscripts/scene_scripts/camera_3d.gd" id="2_3qnxt"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dly7hhg7b6tf0" path="res://scenes/enter_house.tscn" id="6_4qd86"]
 [ext_resource type="PackedScene" uid="uid://bx7l02ipro8bt" path="res://scenes/exit_house.tscn" id="7_cbeu7"]
 [ext_resource type="PackedScene" uid="uid://di7rixm3ybd6u" path="res://scenes/npc.tscn" id="8_cxf66"]
+[ext_resource type="PackedScene" uid="uid://dgduvt71d4hxf" path="res://scenes/ShopOverlay.tscn" id="12_5pnww"]
+[ext_resource type="PackedScene" uid="uid://dpyrdmc1nthfp" path="res://scenes/open_shop.tscn" id="12_jm48l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r2uep"]
 
@@ -98,3 +100,9 @@ exterior_spawn = NodePath("../EnterHouse")
 
 [node name="Npc" parent="." unique_id=1463559982 instance=ExtResource("8_cxf66")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3407863, 0.005130291, -3.4123616)
+
+[node name="OpenShop" parent="." unique_id=1626837591 node_paths=PackedStringArray("shop_ui") instance=ExtResource("12_jm48l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.266983, 0, 0)
+shop_ui = NodePath("../ShopOverlay")
+
+[node name="ShopOverlay" parent="." unique_id=2044294706 instance=ExtResource("12_5pnww")]

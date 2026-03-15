@@ -35,7 +35,7 @@ func _on_coins_changed(new_amount: int) -> void:
 func _on_inventory_changed() -> void:
 	if inventory_label:
 		# Formats the string to show all 4 plant types cleanly
-		inventory_label.text = "P1: %d | P2: %d | P3: %d | P4: %d" % [
+		inventory_label.text = "[Key 1] %d | [Key 2] %d | [Key 3] %d | [Key 4] %d" % [
 			GameState.type_1_count,
 			GameState.type_2_count,
 			GameState.type_3_count,
