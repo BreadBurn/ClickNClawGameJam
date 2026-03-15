@@ -11,12 +11,17 @@ var _jump_buffer := 0.0
 var _interact_buffer := 0.0
 var _interact_cooldown_timer := 0.0
 
+var _interact_alt_buffer := 0.0
+var _interact_alt_cooldown_timer := 0.0
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("IN_JUMP"):
 		_jump_buffer = jump_buffer_time
 	if event.is_action_pressed("IN_INTERACT"):
 		# Buffer the interact press. Cooldown is checked when consuming.
 		_interact_buffer = interact_buffer_time
+	if event.is_action_pressed("IN_INTERACT_ALT"):
+		_interact_alt_buffer = interact_buffer_time
 
 func _physics_process(delta: float) -> void:
 	# Movement vector sampled in physics step
@@ -32,6 +37,12 @@ func _physics_process(delta: float) -> void:
 	if _interact_cooldown_timer > 0.0:
 		_interact_cooldown_timer -= delta
 
+	if _interact_alt_buffer > 0.0:
+		_interact_alt_buffer -= delta
+
+	if _interact_alt_cooldown_timer > 0.0:
+		_interact_alt_cooldown_timer -= delta
+
 func consume_jump() -> bool:
 	# One-shot read by the player in _physics_process
 	if _jump_buffer > 0.0:
@@ -46,5 +57,12 @@ func consume_interact() -> bool:
 	if _interact_buffer > 0.0 and _interact_cooldown_timer <= 0.0:
 		_interact_buffer = 0.0
 		_interact_cooldown_timer = interact_cooldown  # start 1s cooldown
+		return true
+	return false
+
+func consume_interact_alt() -> bool:
+	if _interact_alt_buffer > 0.0 and _interact_alt_cooldown_timer <= 0.0:
+		_interact_alt_buffer = 0.0
+		_interact_alt_cooldown_timer = interact_cooldown
 		return true
 	return false

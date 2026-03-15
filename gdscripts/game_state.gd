@@ -6,13 +6,35 @@ signal player_slept(new_day: int)
 signal player_mode_changed(new_mode: PlayerMode)
 signal daily_evaluated(coins_earned: int, types_in_bounds: int, current_streak: int)
 signal game_won()
+signal held_plant_changed(new_held_plant: int)
+signal stamina_changed(new_stamina: int)
 
 enum PlayerMode {
 	PLAYER_ACTIVE,
 	PLAYER_INACTIVE
 }
 
+enum HeldPlant {
+	NONE,
+	IN_PLANT1,
+	IN_PLANT2,
+	IN_PLANT3,
+	IN_PLANT4
+}
+
 var player_mode: PlayerMode = PlayerMode.PLAYER_ACTIVE
+
+var held_plant: HeldPlant = HeldPlant.NONE
+
+# Stamina
+const MAX_STAMINA: int = 10
+var stamina: int = MAX_STAMINA
+
+# Planting zone boundaries
+var planting_x_start: float = -20.0
+var planting_x_end: float = 20.0
+var planting_z_start: float = -20.0
+var planting_z_end: float = 20.0
 
 var total_coins: int = 0
 var cur_day: int = 0
@@ -174,6 +196,55 @@ func add_to_inventory(type: int, amount: int = 1) -> void:
 	inventory_changed.emit()
 
 
+func reset_inventory() -> void:
+	type_1_count = 0
+	type_2_count = 0
+	type_3_count = 0
+	type_4_count = 0
+	inventory_changed.emit()
+
+
+# ------------------------------------------------------------
+# HELD PLANT
+# ------------------------------------------------------------
+
+func set_held_plant(new_held: int) -> void:
+	held_plant = new_held as HeldPlant
+	held_plant_changed.emit(int(held_plant))
+
+
+func clear_held_plant() -> void:
+	set_held_plant(HeldPlant.NONE)
+
+
+# ------------------------------------------------------------
+# STAMINA
+# ------------------------------------------------------------
+
+func has_stamina() -> bool:
+	return stamina > 0
+
+
+func consume_stamina() -> void:
+	if stamina > 0:
+		stamina -= 1
+		stamina_changed.emit(stamina)
+
+
+func reset_stamina() -> void:
+	stamina = MAX_STAMINA
+	stamina_changed.emit(stamina)
+
+
+# ------------------------------------------------------------
+# PLANTING ZONE
+# ------------------------------------------------------------
+
+func is_in_planting_zone(world_pos: Vector3) -> bool:
+	return (world_pos.x >= planting_x_start and world_pos.x <= planting_x_end
+		and world_pos.z >= planting_z_start and world_pos.z <= planting_z_end)
+
+
 # ------------------------------------------------------------
 # TIME AND EVALUATION
 # ------------------------------------------------------------
@@ -185,6 +256,11 @@ func go_to_sleep() -> void:
 	_daily_evaluation_pending = true
 	cur_day += 1
 	print("Day updated: ", cur_day)
+
+	# Reset daily player state
+	reset_stamina()
+	reset_inventory()
+	clear_held_plant()
 
 	# Let all flora react to the new day first
 	player_slept.emit(cur_day)

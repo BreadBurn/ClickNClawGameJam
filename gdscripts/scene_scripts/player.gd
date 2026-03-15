@@ -22,6 +22,8 @@ var action_timer := 0.0
 var jumped_this_frame := false
 var interact_timer := 0.0
 
+const FLORA_SCENE := preload("res://scenes/base_flora.tscn")
+
 @onready var input: InputComponent = $UserControl
 @onready var view_mesh: Node3D = $PlaceholderViewMesh
 @onready var interact_area: Area3D = $InteractArea
@@ -81,6 +83,10 @@ func _physics_process(delta: float) -> void:
 		_start_interact()
 		_set_facing_if_needed(direction)
 
+	if _should_start_plant_action(grounded):
+		_perform_plant_action()
+		_set_facing_if_needed(direction)
+
 	var should_jump := grounded and input.consume_jump()
 	if should_jump and state != State.PERFORMING_ACTION and state != State.INTERACT:
 		var prev_snap := floor_snap_length
@@ -118,6 +124,7 @@ func _flush_locked_inputs() -> void:
 	# Safe even if nothing is buffered.
 	input.consume_jump()
 	input.consume_interact()
+	input.consume_interact_alt()
 
 
 func _should_start_interact(grounded: bool) -> bool:
@@ -126,6 +133,51 @@ func _should_start_interact(grounded: bool) -> bool:
 	if interact_requires_ground and not grounded:
 		return false
 	return input.consume_interact()
+
+
+func _should_start_plant_action(grounded: bool) -> bool:
+	if state == State.PERFORMING_ACTION or state == State.INTERACT:
+		return false
+	if interact_requires_ground and not grounded:
+		return false
+	return input.consume_interact_alt()
+
+
+func _perform_plant_action() -> void:
+	if GameState.held_plant == GameState.HeldPlant.NONE:
+		return
+	if not GameState.is_in_planting_zone(global_position):
+		return
+	if not GameState.has_stamina():
+		return
+
+	var flora_type_index := int(GameState.held_plant) - 1
+	assert(flora_type_index >= 0, "flora_type_index must be non-negative when held_plant is not NONE")
+
+	if not GameState.has_flora_container():
+		return
+
+	var new_flora := FLORA_SCENE.instantiate() as Node3D
+	if new_flora == null:
+		return
+
+	if "current_type" in new_flora:
+		new_flora.current_type = flora_type_index
+
+	GameState.consume_stamina()
+	GameState.clear_held_plant()
+
+	var container := GameState.flora_container
+	container.add_child(new_flora)
+	new_flora.global_position = global_position
+
+	if new_flora.has_method("_update_meshes"):
+		new_flora.call("_update_meshes")
+	if new_flora.has_method("_refresh_nearby_type2_visuals"):
+		new_flora.call("_refresh_nearby_type2_visuals")
+
+	state = State.INTERACT
+	interact_timer = interact_duration
 
 
 func _start_interact() -> void:

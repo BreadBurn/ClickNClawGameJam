@@ -13,13 +13,6 @@ enum FloraType { TYPE_1, TYPE_2, TYPE_3, TYPE_4 }
 @export var spawn_clearance_radius: float = 1.25
 @export var spawn_attempts: int = 6
 
-# --- Playable Area Boundaries ---
-@export var x_start: float = -20.0
-@export var x_end: float = 20.0
-@export var z_start: float = -20.0
-@export var z_end: float = 20.0
-# -------------------------------
-
 # Growth limiting for TYPE_1 (Pioneer)
 @export var density_check_radius: float = 6.0
 @export var max_local_density: int = 5
@@ -65,6 +58,14 @@ func _ready() -> void:
 
 
 func _on_interacted() -> void:
+	if not GameState.has_stamina():
+		return
+
+	if GameState.held_plant != GameState.HeldPlant.NONE:
+		return
+
+	GameState.consume_stamina()
+
 	var amount := 1
 
 	# Fused Bastions are more rewarding to harvest
@@ -72,6 +73,7 @@ func _on_interacted() -> void:
 		amount += fused_type2_bonus_harvest
 
 	GameState.add_to_inventory(int(current_type), amount)
+	GameState.set_held_plant(int(current_type) + 1)
 
 	# Removing this node may change nearby TYPE_2 fusion states
 	_refresh_nearby_type2_visuals()
@@ -212,8 +214,8 @@ func _spawn_flora_in_empty_space(type: FloraType) -> void:
 		var candidate := global_position + Vector3(random_x, 0.0, random_z)
 
 		# Enforce map boundaries
-		candidate.x = clamp(candidate.x, x_start, x_end)
-		candidate.z = clamp(candidate.z, z_start, z_end)
+		candidate.x = clamp(candidate.x, GameState.planting_x_start, GameState.planting_x_end)
+		candidate.z = clamp(candidate.z, GameState.planting_z_start, GameState.planting_z_end)
 
 		if _is_spawn_position_clear(candidate):
 			spawn_pos = candidate
