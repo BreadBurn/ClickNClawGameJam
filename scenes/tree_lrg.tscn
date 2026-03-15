@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cakqhwtj6buax"]
+
+[ext_resource type="Texture2D" uid="uid://crj0mi1baufbd" path="res://world_sprites/tree1.png" id="1_of5a5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e24uw"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_of5a5")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vtgub"]
+material = SubResource("StandardMaterial3D_e24uw")
+size = Vector2(3.313, 5.813)
+orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_of5a5"]
+size = Vector3(3.313, 4.973633, 0.045654297)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e24uw"]
+size = Vector3(0.89752483, 0.9345703, 0.045654297)
+
+[node name="tree_lrg" type="StaticBody3D" unique_id=1318229066]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1799024330]
+mesh = SubResource("PlaneMesh_vtgub")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=220997491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4260196, -0.032104492)
+shape = SubResource("BoxShape3D_of5a5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=670104348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05142367, -2.4622684, -0.032104492)
+shape = SubResource("BoxShape3D_e24uw")
