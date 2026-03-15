@@ -14,10 +14,7 @@ enum FloraType { TYPE_1, TYPE_2, TYPE_3, TYPE_4 }
 @export var spawn_attempts: int = 6
 
 # --- Playable Area Boundaries ---
-@export var x_start: float = -20.0
-@export var x_end: float = 20.0
-@export var z_start: float = -20.0
-@export var z_end: float = 20.0
+# moved to GameState (planting zone authority)
 # -------------------------------
 
 # Growth limiting for TYPE_1 (Pioneer)
@@ -71,7 +68,12 @@ func _on_interacted() -> void:
 	if _is_fused_type2():
 		amount += fused_type2_bonus_harvest
 
-	GameState.add_to_inventory(int(current_type), amount)
+	# Pickup now spends stamina via GameState; fail means no harvest
+	if GameState != null and GameState.has_method("try_pickup_plant"):
+		if not GameState.try_pickup_plant(int(current_type), amount):
+			return
+	else:
+		GameState.add_to_inventory(int(current_type), amount)
 
 	# Removing this node may change nearby TYPE_2 fusion states
 	_refresh_nearby_type2_visuals()
@@ -211,9 +213,8 @@ func _spawn_flora_in_empty_space(type: FloraType) -> void:
 
 		var candidate := global_position + Vector3(random_x, 0.0, random_z)
 
-		# Enforce map boundaries
-		candidate.x = clamp(candidate.x, x_start, x_end)
-		candidate.z = clamp(candidate.z, z_start, z_end)
+		if GameState != null and GameState.has_method("clamp_to_planting_zone"):
+			candidate = GameState.clamp_to_planting_zone(candidate)
 
 		if _is_spawn_position_clear(candidate):
 			spawn_pos = candidate

@@ -109,7 +109,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9402182, 0.005130768, -2.6
 
 [node name="BaseFlora3" parent="FloraContainer" unique_id=930418277 instance=ExtResource("6_fpun6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1539185, 0, 1.9197931)
-type2_summon_threshold = 3
 
 [node name="BaseFlora2" parent="FloraContainer" unique_id=1838416354 instance=ExtResource("6_fpun6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5430317, 0, 2.1124861)

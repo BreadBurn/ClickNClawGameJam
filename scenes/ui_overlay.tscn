@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://iogr6857y3ck"]
+
+[ext_resource type="Script" uid="uid://rrcgm56dfber" path="res://scenes/ui_overlay.gd" id="1_5mppo"]
+
+[node name="UIOverlay" type="CanvasLayer" unique_id=1500083861]
+script = ExtResource("1_5mppo")
+
+[node name="Control" type="Control" parent="." unique_id=293597672]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.999178, 1)
+mouse_filter = 1
+
+[node name="TopMidMargin" type="MarginContainer" parent="Control" unique_id=2130941013]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.032
+anchor_right = 0.5
+anchor_bottom = 0.037
+offset_left = -541.0
+offset_right = -399.0
+offset_bottom = 108.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TopMidMargin" unique_id=992227215]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="Control/TopMidMargin/VBoxContainer" unique_id=1404686358]
+unique_name_in_owner = true
+layout_mode = 2
+text = "DAY: X"
+
+[node name="StaminaLabel" type="Label" parent="Control/TopMidMargin/VBoxContainer" unique_id=745881055]
+layout_mode = 2
+text = "STAMINA:"
+
+[node name="StaminaBar" type="ProgressBar" parent="Control/TopMidMargin/VBoxContainer" unique_id=386963580]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CoinsLabel" type="Label" parent="Control/TopMidMargin/VBoxContainer" unique_id=334892157]
+unique_name_in_owner = true
+layout_mode = 2
+text = "$0"
+
+[node name="StreakLabel" type="Label" parent="Control/TopMidMargin/VBoxContainer" unique_id=793312117]
+layout_mode = 2
+text = "Eco Streak: 0"
+
+[node name="BottomMidMargin" type="MarginContainer" parent="Control" unique_id=1811275401]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.937
+anchor_right = 0.5
+anchor_bottom = 0.967
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.0112069, 0.99808395)
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/BottomMidMargin" unique_id=910214140]
+layout_mode = 2
+
+[node name="InventoryLabel" type="Label" parent="Control/BottomMidMargin/HBoxContainer" unique_id=234564294]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1

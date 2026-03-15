@@ -6,13 +6,36 @@ signal player_slept(new_day: int)
 signal player_mode_changed(new_mode: PlayerMode)
 signal daily_evaluated(coins_earned: int, types_in_bounds: int, current_streak: int)
 signal game_won()
+signal stamina_changed(current_stamina: int, max_stamina: int)
+signal held_plant_changed(new_held_state: HeldPlantState)
 
 enum PlayerMode {
 	PLAYER_ACTIVE,
 	PLAYER_INACTIVE
 }
 
+enum HeldPlantState {
+	IN_NONE,
+	IN_PLANT1,
+	IN_PLANT2,
+	IN_PLANT3,
+	IN_PLANT4
+}
+
 var player_mode: PlayerMode = PlayerMode.PLAYER_ACTIVE
+var held_plant_state: HeldPlantState = HeldPlantState.IN_NONE
+
+@export var max_stamina: int = 6
+var current_stamina: int = 6
+
+# Planting zone moved here (shared authority for spawn + player planting)
+@export var planting_x_start: float = -20.0
+@export var planting_x_end: float = 20.0
+@export var planting_z_start: float = -20.0
+@export var planting_z_end: float = 20.0
+
+@export var planting_clearance_radius: float = 1.25
+@export var flora_scene: PackedScene
 
 var total_coins: int = 0
 var cur_day: int = 0
@@ -165,7 +188,6 @@ func add_coins(amount: int) -> void:
 
 
 func add_to_inventory(type: int, amount: int = 1) -> void:
-	print("added plant of type: ", type)
 	match type:
 		0: type_1_count += amount
 		1: type_2_count += amount
@@ -173,18 +195,160 @@ func add_to_inventory(type: int, amount: int = 1) -> void:
 		3: type_4_count += amount
 	inventory_changed.emit()
 
+func remove_from_inventory(type: int, amount: int = 1) -> bool:
+	if amount <= 0:
+		return true
+
+	var can_remove := false
+	match type:
+		0:
+			if type_1_count >= amount:
+				type_1_count -= amount
+				can_remove = true
+		1:
+			if type_2_count >= amount:
+				type_2_count -= amount
+				can_remove = true
+		2:
+			if type_3_count >= amount:
+				type_3_count -= amount
+				can_remove = true
+		3:
+			if type_4_count >= amount:
+				type_4_count -= amount
+				can_remove = true
+
+	if can_remove:
+		_sync_held_plant_after_inventory_change()
+		inventory_changed.emit()
+
+	return can_remove
+
+func reset_inventory() -> void:
+	type_1_count = 0
+	type_2_count = 0
+	type_3_count = 0
+	type_4_count = 0
+	held_plant_state = HeldPlantState.IN_NONE
+	inventory_changed.emit()
+	held_plant_changed.emit(held_plant_state)
+
+func set_held_plant_state(new_state: HeldPlantState) -> void:
+	if held_plant_state == new_state:
+		return
+	held_plant_state = new_state
+	held_plant_changed.emit(held_plant_state)
+
+func set_held_plant_from_type(type: int) -> void:
+	match type:
+		0: set_held_plant_state(HeldPlantState.IN_PLANT1)
+		1: set_held_plant_state(HeldPlantState.IN_PLANT2)
+		2: set_held_plant_state(HeldPlantState.IN_PLANT3)
+		3: set_held_plant_state(HeldPlantState.IN_PLANT4)
+
+func get_held_plant_type() -> int:
+	match held_plant_state:
+		HeldPlantState.IN_PLANT1: return 0
+		HeldPlantState.IN_PLANT2: return 1
+		HeldPlantState.IN_PLANT3: return 2
+		HeldPlantState.IN_PLANT4: return 3
+		_: return -1
+
+func spend_stamina(cost: int = 1) -> bool:
+	if cost <= 0:
+		return true
+	if current_stamina < cost:
+		return false
+	current_stamina -= cost
+	stamina_changed.emit(current_stamina, max_stamina)
+	return true
+
+func reset_stamina() -> void:
+	current_stamina = max_stamina
+	stamina_changed.emit(current_stamina, max_stamina)
+
+func try_pickup_plant(type: int, amount: int = 1) -> bool:
+	if not spend_stamina(1):
+		return false
+	add_to_inventory(type, amount)
+	set_held_plant_from_type(type)
+	return true
+
+func is_position_in_planting_zone(world_pos: Vector3) -> bool:
+	return (
+		world_pos.x >= planting_x_start and world_pos.x <= planting_x_end
+		and world_pos.z >= planting_z_start and world_pos.z <= planting_z_end
+	)
+
+func clamp_to_planting_zone(world_pos: Vector3) -> Vector3:
+	return Vector3(
+		clamp(world_pos.x, planting_x_start, planting_x_end),
+		world_pos.y,
+		clamp(world_pos.z, planting_z_start, planting_z_end)
+	)
+
+func try_place_held_plant(world_pos: Vector3) -> bool:
+	print("tried to plant")
+	var plant_type := get_held_plant_type()
+	if plant_type < 0:
+		return false
+	if not has_flora_container():
+		return false
+
+	# Strict zone check for player planting (no auto-clamp to edge).
+	if not is_position_in_planting_zone(world_pos):
+		return false
+
+	var target_pos := world_pos
+	if not _is_plant_position_clear(target_pos):
+		return false
+
+	var new_flora := _create_flora_instance_for_planting()
+	if new_flora == null:
+		return false
+
+	if not spend_stamina(1):
+		new_flora.queue_free()
+		return false
+	if not remove_from_inventory(plant_type, 1):
+		new_flora.queue_free()
+		current_stamina += 1
+		stamina_changed.emit(current_stamina, max_stamina)
+		return false
+
+	flora_container.add_child(new_flora)
+	new_flora.global_position = target_pos
+
+	if "current_type" in new_flora:
+		new_flora.current_type = plant_type
+	if "last_day_acted" in new_flora:
+		new_flora.last_day_acted = cur_day
+	if "current_lifespan" in new_flora and "type4_max_lifespan" in new_flora:
+		new_flora.current_lifespan = new_flora.type4_max_lifespan if plant_type == 3 else 0
+
+	if new_flora.has_method("_update_meshes"):
+		new_flora.call("_update_meshes")
+	if new_flora.has_method("_refresh_nearby_type2_visuals"):
+		new_flora.call("_refresh_nearby_type2_visuals")
+
+	return true
 
 # ------------------------------------------------------------
 # TIME AND EVALUATION
 # ------------------------------------------------------------
 
 func go_to_sleep() -> void:
+	print("HERE")
 	if _daily_evaluation_pending:
 		return
 
 	_daily_evaluation_pending = true
 	cur_day += 1
 	print("Day updated: ", cur_day)
+
+	# Daily reset on sleep
+	reset_stamina()
+	reset_inventory()
 
 	# Let all flora react to the new day first
 	player_slept.emit(cur_day)
@@ -375,3 +539,56 @@ func _ratios_are_consistent(current_ratios: Dictionary, previous_ratios: Diction
 			return false
 
 	return true
+
+func _sync_held_plant_after_inventory_change() -> void:
+	var held_type := get_held_plant_type()
+	if held_type == -1:
+		return
+
+	var held_count := 0
+	match held_type:
+		0: held_count = type_1_count
+		1: held_count = type_2_count
+		2: held_count = type_3_count
+		3: held_count = type_4_count
+
+	if held_count > 0:
+		return
+
+	if type_1_count > 0:
+		set_held_plant_state(HeldPlantState.IN_PLANT1)
+	elif type_2_count > 0:
+		set_held_plant_state(HeldPlantState.IN_PLANT2)
+	elif type_3_count > 0:
+		set_held_plant_state(HeldPlantState.IN_PLANT3)
+	elif type_4_count > 0:
+		set_held_plant_state(HeldPlantState.IN_PLANT4)
+	else:
+		set_held_plant_state(HeldPlantState.IN_NONE)
+
+func _is_plant_position_clear(world_pos: Vector3) -> bool:
+	if not has_flora_container():
+		return false
+
+	for child in flora_container.get_children():
+		if child == null or not is_instance_valid(child) or child.is_queued_for_deletion():
+			continue
+		if "current_type" in child:
+			if world_pos.distance_to(child.global_position) < planting_clearance_radius:
+				return false
+	return true
+
+func _create_flora_instance_for_planting() -> Node3D:
+	if flora_scene != null:
+		return flora_scene.instantiate() as Node3D
+
+	if has_flora_container():
+		for child in flora_container.get_children():
+			if child == null or not is_instance_valid(child) or child.is_queued_for_deletion():
+				continue
+			if "current_type" in child and "scene_file_path" in child and not child.scene_file_path.is_empty():
+				var packed := load(child.scene_file_path) as PackedScene
+				if packed != null:
+					return packed.instantiate() as Node3D
+
+	return null

@@ -77,7 +77,12 @@ func _physics_process(delta: float) -> void:
 	var direction := raw_dir.normalized() if raw_dir.length() > 0.001 else Vector3.ZERO
 	var grounded := is_on_floor()
 
-	if _should_start_interact(grounded):
+	if _should_start_plant_alt(grounded):
+		print("SHOULD START PLANT")
+		_start_plant_alt()
+		_set_facing_if_needed(direction)
+
+	if  _should_start_interact(grounded):
 		_start_interact()
 		_set_facing_if_needed(direction)
 
@@ -118,20 +123,27 @@ func _flush_locked_inputs() -> void:
 	# Safe even if nothing is buffered.
 	input.consume_jump()
 	input.consume_interact()
+	_consume_interact_alt()
 
-
-func _should_start_interact(grounded: bool) -> bool:
+func _should_start_plant_alt(grounded: bool) -> bool:
 	if state == State.PERFORMING_ACTION or state == State.INTERACT:
 		return false
 	if interact_requires_ground and not grounded:
 		return false
-	return input.consume_interact()
+	return _consume_interact_alt()
 
+func _consume_interact_alt() -> bool:
+	if input != null and input.has_method("consume_interact_alt"):
+		return input.consume_interact_alt()
+	return Input.is_action_just_pressed("IN_INTERACT_ALT")
 
-func _start_interact() -> void:
-	state = State.INTERACT
-	interact_timer = interact_duration
-	_try_interact()
+func _start_plant_alt() -> void:
+	if GameState == null or not GameState.has_method("try_place_held_plant"):
+		return
+
+	if GameState.try_place_held_plant(interact_area.global_position):
+		state = State.INTERACT
+		interact_timer = interact_duration
 
 
 func _apply_horizontal(direction: Vector3, delta: float) -> void:
@@ -256,3 +268,16 @@ func set_facing(new_facing: Facing) -> void:
 			_set_y_rotation(-90.0)
 		Facing.UP:
 			_set_y_rotation(90.0)
+
+
+func _should_start_interact(grounded: bool) -> bool:
+	if state == State.PERFORMING_ACTION or state == State.INTERACT:
+		return false
+	if interact_requires_ground and not grounded:
+		return false
+	return input.consume_interact()
+
+func _start_interact() -> void:
+	state = State.INTERACT
+	interact_timer = interact_duration
+	_try_interact()

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3f4yiqjw45f4" path="res://scenes/game_main.gd" id="1_lla21"]
 [ext_resource type="PackedScene" uid="uid://k0olv4vextkv" path="res://scenes/dialogue.tscn" id="1_mn252"]
+[ext_resource type="PackedScene" uid="uid://iogr6857y3ck" path="res://scenes/ui_overlay.tscn" id="2_0dt25"]
 [ext_resource type="Script" uid="uid://igd46ey8i10w" path="res://gdscripts/scene_scripts/camera_3d.gd" id="2_3qnxt"]
 [ext_resource type="PackedScene" uid="uid://cii23b3yvwyys" path="res://scenes/player.tscn" id="3_4qd86"]
 [ext_resource type="PackedScene" uid="uid://dnwbtjsmreoue" path="res://scenes/player_sleep.tscn" id="4_57ec7"]
@@ -25,6 +26,8 @@ albedo_color = Color(0.28627452, 0.3882353, 0.20784314, 1)
 
 [node name="GameMain" type="Node3D" unique_id=1510548574]
 script = ExtResource("1_lla21")
+
+[node name="UIOverlay" parent="." unique_id=1500083861 instance=ExtResource("2_0dt25")]
 
 [node name="Dialogue" parent="." unique_id=1050487385 instance=ExtResource("1_mn252")]
 
