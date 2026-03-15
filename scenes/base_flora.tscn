@@ -16,7 +16,17 @@ albedo_color = Color(0, 1, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_qjg8l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xu88v"]
-albedo_color = Color(1, 1, 0, 1)
+albedo_color = Color(0.40784314, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xu88v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nugu"]
+albedo_color = Color(1, 1, 0.23137255, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vf74k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0k0v"]
+albedo_color = Color(1, 0.4745098, 0.6039216, 1)
 
 [node name="BaseFlora" type="Node3D" unique_id=930418277]
 script = ExtResource("1_6co6x")
@@ -28,7 +38,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_26tk5")
 surface_material_override/0 = SubResource("StandardMaterial3D_rpmxt")
 
-[node name="Flora2Mesh" type="MeshInstance3D" parent="." unique_id=1368261070]
+[node name="Flora2SingleMesh" type="MeshInstance3D" parent="." unique_id=1368261070]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_rpmxt")
 surface_material_override/0 = SubResource("StandardMaterial3D_qjg8l")
@@ -37,5 +47,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qjg8l")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_qjg8l")
 surface_material_override/0 = SubResource("StandardMaterial3D_xu88v")
+
+[node name="Flora4Mesh" type="MeshInstance3D" parent="." unique_id=1237465532]
+transform = Transform3D(0.0625, 0, 0, 0, 0.0625, 0, 0, 0, 0.0625, 0, 0, 0)
+mesh = SubResource("BoxMesh_xu88v")
+surface_material_override/0 = SubResource("StandardMaterial3D_6nugu")
+
+[node name="Flora2FusedMesh" type="MeshInstance3D" parent="." unique_id=716665754]
+transform = Transform3D(0.0625, 0, 0, 0, 0.0625, 0, 0, 0, 0.0625, 0, 0, 0)
+mesh = SubResource("BoxMesh_vf74k")
+surface_material_override/0 = SubResource("StandardMaterial3D_o0k0v")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

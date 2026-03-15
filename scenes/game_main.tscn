@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://6ok5o003mpkg"]
 
+[ext_resource type="Script" uid="uid://d3f4yiqjw45f4" path="res://scenes/game_main.gd" id="1_lla21"]
 [ext_resource type="PackedScene" uid="uid://k0olv4vextkv" path="res://scenes/dialogue.tscn" id="1_mn252"]
 [ext_resource type="Script" uid="uid://igd46ey8i10w" path="res://gdscripts/scene_scripts/camera_3d.gd" id="2_3qnxt"]
 [ext_resource type="PackedScene" uid="uid://cii23b3yvwyys" path="res://scenes/player.tscn" id="3_4qd86"]
@@ -23,6 +24,7 @@ vertex_color_is_srgb = true
 albedo_color = Color(0.28627452, 0.3882353, 0.20784314, 1)
 
 [node name="GameMain" type="Node3D" unique_id=1510548574]
+script = ExtResource("1_lla21")
 
 [node name="Dialogue" parent="." unique_id=1050487385 instance=ExtResource("1_mn252")]
 
@@ -68,16 +70,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9402182, 0.005130768, -2.6
 
 [node name="FloraContainer" type="Node3D" parent="." unique_id=176586767]
 
-[node name="BaseFlora3" parent="FloraContainer" unique_id=930418277 instance=ExtResource("5_3qnxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1539185, 0, 1.9197931)
-type2_summon_threshold = 3
+[node name="BaseFlora4" parent="FloraContainer" unique_id=930418277 instance=ExtResource("5_3qnxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3103409, 0, 3.2901678)
+current_type = 3
+
+[node name="BaseFlora3" parent="FloraContainer" unique_id=891807418 instance=ExtResource("5_3qnxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.094881, 0, 1.9407449)
 
 [node name="BaseFlora2" parent="FloraContainer" unique_id=1354161361 instance=ExtResource("5_3qnxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5430317, 0, 2.1124861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7493309, 0, 2.1124861)
+current_type = 1
 
 [node name="BaseFlora" parent="FloraContainer" unique_id=56923005 instance=ExtResource("5_3qnxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41734886, 0, 0.8723366)
-current_type = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.079987, -0.057105064, 3.2329674)
+current_type = 2
 
 [node name="EnterHouse" parent="." unique_id=606512115 node_paths=PackedStringArray("interior_spawn") instance=ExtResource("6_4qd86")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9375322, 0.57423115, -3.6714969)
