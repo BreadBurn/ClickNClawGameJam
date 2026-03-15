@@ -59,7 +59,7 @@ func start_dialogue(npc_name: String, lines: PackedStringArray) -> void:
 	name_label.text = speaker_name
 	dialogue_label.clear()
 	dialogue_label.append_text(dialogue_lines[current_line_index])
-	continue_label.text = "Continue(RMS)"
+	continue_label.text = "Continue(LMS)"
 
 	panel.show()
 	show()

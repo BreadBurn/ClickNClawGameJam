@@ -1,18 +1,18 @@
 extends CanvasLayer
 
-# These signals let other scripts know when an animation finishes
 signal transition_in_finished
 signal transition_out_finished
 
 @export var transition_duration: float = 1.0
 
-# Grab the ColorRect child node when the scene loads
 @onready var color_rect: ColorRect = $ColorRect
 
-func _ready():
-	# Ensure the transition is hidden by default
+func _ready() -> void:
 	color_rect.material.set_shader_parameter("outer_radius", 0.0)
 	color_rect.material.set_shader_parameter("inner_radius", 0.0)
+
+	# Prevent this full-screen UI from blocking mouse clicks
+	color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 # 1. Closes the circle (covers the screen in black)
 func transition_in():

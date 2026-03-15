@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://pbcs1lqn5u6v" path="res://scenes/ShopItem.tscn" id="1_p3tmv"]
 
 [node name="ShopOverlay" type="CanvasLayer" unique_id=2044294706]
+layer = 101
 script = ExtResource("1_fyyb4")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1646135667]
