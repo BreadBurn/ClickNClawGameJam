@@ -16,6 +16,11 @@ var facing: Facing = Facing.DOWN
 @export var interact_duration := 0.00
 @export var interact_requires_ground := true
 
+# Add these near the top with your other variables
+var footstep_timer := 0.0
+@export var footstep_interval := 0.35
+var _previous_state: State = State.IDLE # Tracks the state from the previous frame
+
 var gravity_y := ProjectSettings.get_setting("physics/3d/default_gravity") as float
 
 var action_timer := 0.0
@@ -25,7 +30,6 @@ var interact_timer := 0.0
 @onready var input: InputComponent = $UserControl
 @onready var view_mesh: Node3D = $PlaceholderViewMesh
 @onready var interact_area: Area3D = $InteractArea
-@onready var debug_arrow: Node3D = $DEBUGNODEdirectionView
 
 @onready var female_player_anim: Node3D = %FemalePlayerAnim
 @onready var male_player_anim: Node3D = %MalePlayerAnim
@@ -48,6 +52,7 @@ func _exit_tree() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_previous_state = state
 	jumped_this_frame = false
 
 	# --------------------------------------------------
@@ -119,6 +124,21 @@ func _physics_process(delta: float) -> void:
 	_set_facing_if_needed(direction)
 	move_and_slide()
 	_update_state(direction)
+	
+# --- SOUND LOGIC ---
+	
+	# 1. JUMP CHECK: Use your existing boolean!
+	if jumped_this_frame:
+		SoundHandler.play_jump()
+		
+	# 2. FOOTSTEP CHECK: Play looping footsteps while in the MOVE state
+	if state == State.MOVE and is_on_floor():
+		footstep_timer -= delta
+		if footstep_timer <= 0.0:
+			SoundHandler.play_footstep()
+			footstep_timer = footstep_interval
+	else:
+		footstep_timer = 0.0 # Reset timer so the first step plays instantly next time
 
 
 func _controls_locked() -> bool:
@@ -225,7 +245,6 @@ func _update_facing(dir: Vector3) -> void:
 
 func _set_y_rotation(degrees: float) -> void:
 	interact_area.rotation_degrees.y = degrees
-	debug_arrow.rotation_degrees.y = degrees
 
 
 func perform_action() -> void:

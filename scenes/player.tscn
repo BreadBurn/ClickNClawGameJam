@@ -12,14 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://m4fc8t8imlxa" path="res://sounds/footstep_5.wav" id="7_3v2ag"]
 [ext_resource type="AudioStream" uid="uid://bhvsuywx70x3x" path="res://sounds/footstep_6.wav" id="8_jej6c"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_onrkg"]
-top_radius = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_color = Color(0.99607843, 0.20392157, 0, 1)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
@@ -52,11 +44,6 @@ transform = Transform3D(6.42, 0, 0, 0, 6.42, 0, 0, 0, 6.42, 0, 1, 0)
 unique_name_in_owner = true
 transform = Transform3D(6.42, 0, 0, 0, 6.42, 0, 0, 0, 6.42, 0, 1, 0)
 
-[node name="DEBUGNODEdirectionView" type="MeshInstance3D" parent="." unique_id=1157545569]
-transform = Transform3D(-2.1855694e-10, 0.5, 0, -0.005, -2.1855694e-08, 0, 0, 0, 0.5, 0, 2.5, 0)
-mesh = SubResource("CylinderMesh_onrkg")
-surface_material_override/0 = SubResource("StandardMaterial3D_4flbx")
-
 [node name="UserControl" type="Node" parent="." unique_id=642189157]
 script = ExtResource("1_4flbx")
 
@@ -65,14 +52,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0436493, 0)
 shape = SubResource("CapsuleShape3D_onrkg")
 
 [node name="InteractArea" type="Area3D" parent="." unique_id=1409483655]
-transform = Transform3D(1.88, 0, 0, 0, 1.88, 0, 0, 0, 1.88, -0.12551123, 1.0152179, 0)
+transform = Transform3D(1.88, 0, 0, 0, 1.88, 0, 0, 0, 1.88, -0.12551123, -0.70428854, 0)
 
 [node name="InteractCollision" type="CollisionShape3D" parent="InteractArea" unique_id=1504161695]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5671886, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5671886, 0.849987, 0)
 shape = SubResource("BoxShape3D_onrkg")
+debug_fill = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InteractArea/InteractCollision" unique_id=2147284888]
-transform = Transform3D(1.007, 0, 0, 0, 1.007, 0, 0, 0, 1.007, -0.0094896555, 0.010142624, 0)
+transform = Transform3D(1.007, 0, 0, 0, 0.202, 0, 0, 0, 1.007, -0.0094896555, -0.4232388, 0)
 mesh = SubResource("BoxMesh_onrkg")
 surface_material_override/0 = SubResource("StandardMaterial3D_onrkg")
 
