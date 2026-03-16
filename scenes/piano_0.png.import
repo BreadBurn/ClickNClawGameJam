@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b64fsg1yoeyd2"
-path.s3tc="res://.godot/imported/model_0.png-3dce83bfa6227075ab51c16002599e11.s3tc.ctex"
+uid="uid://di13eryg73wvn"
+path.s3tc="res://.godot/imported/piano_0.png-343679a9cdf8f5526b3f6285b9bb7aef.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "48913facc48dd58fbb0da789bf09a2a7"
+"md5": "3f082bd428f30a13503435aeac2ddfae"
 }
 
 [deps]
 
-source_file="res://scenes/model_0.png"
-dest_files=["res://.godot/imported/model_0.png-3dce83bfa6227075ab51c16002599e11.s3tc.ctex"]
+source_file="res://scenes/piano_0.png"
+dest_files=["res://.godot/imported/piano_0.png-343679a9cdf8f5526b3f6285b9bb7aef.s3tc.ctex"]
 
 [params]
 

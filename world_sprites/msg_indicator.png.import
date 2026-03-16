@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b64fsg1yoeyd2"
-path.s3tc="res://.godot/imported/model_0.png-3dce83bfa6227075ab51c16002599e11.s3tc.ctex"
+uid="uid://c3i00m76lyb0g"
+path.s3tc="res://.godot/imported/msg_indicator.png-58538f94c399707a6cdefe66d6f75612.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "48913facc48dd58fbb0da789bf09a2a7"
-}
 
 [deps]
 
-source_file="res://scenes/model_0.png"
-dest_files=["res://.godot/imported/model_0.png-3dce83bfa6227075ab51c16002599e11.s3tc.ctex"]
+source_file="res://world_sprites/msg_indicator.png"
+dest_files=["res://.godot/imported/msg_indicator.png-58538f94c399707a6cdefe66d6f75612.s3tc.ctex"]
 
 [params]
 
