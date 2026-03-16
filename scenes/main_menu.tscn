@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ctbk5ta0357fw"]
 
 [ext_resource type="Script" uid="uid://wr1wv83hmamv" path="res://gdscripts/scene_scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://bdlmkekn5115c" path="res://assets/floralflow.png" id="2_ekxnf"]
 
 [node name="MainMenu" type="Control" unique_id=1540388796]
 layout_mode = 3
@@ -11,13 +12,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=54232146]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1714764280]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3151352, 0.7197019, 0.6804794, 1)
 
-[node name="Button" type="Button" parent="CenterContainer" unique_id=1953411798]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=54232146]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -20.0
+offset_right = 53.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=456045416]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer" unique_id=810662455]
+layout_mode = 2
+texture = ExtResource("2_ekxnf")
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1953411798]
 layout_mode = 2
 text = "START GAME"
 
-[connection signal="pressed" from="CenterContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_start_pressed"]
