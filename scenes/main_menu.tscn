@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.0004926698
-color = Color(0.3151352, 0.7197019, 0.6804794, 1)
+color = Color(0.30960003, 0.63108003, 0.72, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=54232146]
 layout_mode = 1

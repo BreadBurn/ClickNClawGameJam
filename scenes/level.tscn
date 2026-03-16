@@ -39,7 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://domqhmud1ut4w" path="res://world_sprites/cliffside1.png" id="20_pqd0y"]
 [ext_resource type="Texture2D" uid="uid://0v6a56oml4le" path="res://world_sprites/cliffside2.png" id="21_5k0ak"]
 [ext_resource type="Texture2D" uid="uid://kctvac26pxps" path="res://world_sprites/housefloor.png" id="21_bhb1k"]
-[ext_resource type="Material" path="res://scenes/wallforhouse.tres" id="22_tcyu4"]
+[ext_resource type="Material" uid="uid://bfgph1oaf4q64" path="res://scenes/wallforhouse.tres" id="22_tcyu4"]
 [ext_resource type="Texture2D" uid="uid://c4spla7wq4thj" path="res://world_sprites/houseside2_window.png" id="23_vmndo"]
 [ext_resource type="Texture2D" uid="uid://dhvgxtyabhimf" path="res://world_sprites/rug.png" id="24_bo6tc"]
 [ext_resource type="Texture2D" uid="uid://bi64qidsvhs6l" path="res://world_sprites/bigstairs.png" id="24_xy2fk"]
@@ -49,7 +49,7 @@
 [ext_resource type="Script" uid="uid://ddl65744u3ia1" path="res://scenes/buyables.gd" id="25_msn66"]
 [ext_resource type="PackedScene" uid="uid://c8g1osdbbvkqx" path="res://scenes/drawer.gltf" id="26_v4d4p"]
 [ext_resource type="PackedScene" uid="uid://bwo0ws2jp7gy5" path="res://scenes/model.gltf" id="27_30hdq"]
-[ext_resource type="PackedScene" path="res://scenes/tree_sml.tscn" id="27_lqb7q"]
+[ext_resource type="PackedScene" uid="uid://dt2mewg27svhe" path="res://scenes/tree_sml.tscn" id="27_lqb7q"]
 [ext_resource type="PackedScene" uid="uid://bqdvdbce5vdlp" path="res://scenes/piano.gltf" id="27_sc620"]
 [ext_resource type="Texture2D" uid="uid://dq4ghsvv5vbjs" path="res://world_sprites/goddess_painting.png" id="28_3fqns"]
 [ext_resource type="Texture2D" uid="uid://b05rtfpd1wumd" path="res://world_sprites/postbox.png" id="28_ok3ci"]
@@ -893,7 +893,7 @@ exterior_spawn = NodePath("../EnterHouse")
 [node name="GoddessStatue" parent="Talkables" unique_id=1463559982 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.22714, 0.26149273, 32.47264)
 npc_name = "Goddes Statue"
-dialogue_text = "... It doesnt speak."
+dialogue_text = "A statue of a floral goddess... It doesnt speak. But you suddenly get the feeling that your mission here is more important."
 
 [node name="IntroInfo" parent="Talkables" unique_id=164483212 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.045444, 1.8578033, -29.740726)
@@ -939,11 +939,6 @@ dialogue_text = "Poison Cotton[4] - This plant takes over Wild Fern[3] if left t
 [node name="info_indicator" type="StaticBody3D" parent="Talkables" unique_id=1368415335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 4, -31)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Talkables/info_indicator" unique_id=1182394853]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99687386, 0.326025, 0.90572166)
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_oksur")
-
 [node name="info_indicator5" type="StaticBody3D" parent="Talkables" unique_id=669511604]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.287879, 4.4749813, -35.818573)
 
@@ -972,7 +967,7 @@ mesh = SubResource("PlaneMesh_oksur")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.27407, 1.831644, 35.282887)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Talkables/info_indicator4" unique_id=1397502808]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.127449, 1.1400716, -2.5860062)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0286827, 1.3291028, -2.7774734)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_oksur")
 
@@ -1603,6 +1598,7 @@ shape = SubResource("BoxShape3D_ql8jr")
 
 [node name="CloudShadow" type="Node3D" parent="World" unique_id=1455660758]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4438496, -17.574703)
+visible = false
 
 [node name="CloudClump2" type="Node3D" parent="World/CloudShadow" unique_id=1428585644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.600673)
@@ -3386,7 +3382,7 @@ transform = Transform3D(2.165, 0, 0, 0, 2.165, 0, 0, 0, 2.165, 29.74759, 0.05980
 cast_shadow = 0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="World/Lake/MeshInstance3D2" unique_id=1541944604]
-transform = Transform3D(1.92, 0, 0, 0, 1.92, 0, 0, 0, 1.92, -0.01778698, 0.13408351, -0.70079803)
+transform = Transform3D(1.92, 0, 0, 0, 1.92, 0, 0, 0, 1.92, -0.01778698, 0.13408351, 0.28883934)
 cast_shadow = 0
 axis = 1
 texture_filter = 0

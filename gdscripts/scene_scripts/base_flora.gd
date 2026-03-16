@@ -64,7 +64,7 @@ func _ready() -> void:
 
 func _on_interacted() -> void:
 	var amount := 1
-
+	
 	# Fused Bastions are more rewarding to harvest
 	if _is_fused_type2():
 		amount += fused_type2_bonus_harvest
@@ -72,8 +72,10 @@ func _on_interacted() -> void:
 	# Pickup now spends stamina via GameState; fail means no harvest
 	if GameState != null and GameState.has_method("try_pickup_plant"):
 		if not GameState.try_pickup_plant(int(current_type), amount):
+			
 			return
 	else:
+		
 		GameState.add_to_inventory(int(current_type), amount)
 
 	# Removing this node may change nearby TYPE_2 fusion states

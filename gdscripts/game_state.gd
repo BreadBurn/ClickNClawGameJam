@@ -196,6 +196,8 @@ func add_coins(amount: int) -> void:
 
 
 func add_to_inventory(type: int, amount: int = 1) -> void:
+	print("hell yeah")
+	SoundHandler.play_harvest()
 	match type:
 		0: type_1_count += amount
 		1: type_2_count += amount
@@ -324,6 +326,7 @@ func try_place_held_plant(world_pos: Vector3) -> bool:
 		stamina_changed.emit(current_stamina, max_stamina)
 		return false
 
+	SoundHandler.play_plant()
 	flora_container.add_child(new_flora)
 	new_flora.global_position = target_pos
 
