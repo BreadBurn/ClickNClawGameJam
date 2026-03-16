@@ -38,7 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://domqhmud1ut4w" path="res://world_sprites/cliffside1.png" id="20_pqd0y"]
 [ext_resource type="Texture2D" uid="uid://0v6a56oml4le" path="res://world_sprites/cliffside2.png" id="21_5k0ak"]
 [ext_resource type="Texture2D" uid="uid://kctvac26pxps" path="res://world_sprites/housefloor.png" id="21_bhb1k"]
-[ext_resource type="Material" path="res://scenes/wallforhouse.tres" id="22_tcyu4"]
+[ext_resource type="Material" uid="uid://bfgph1oaf4q64" path="res://scenes/wallforhouse.tres" id="22_tcyu4"]
 [ext_resource type="Texture2D" uid="uid://c4spla7wq4thj" path="res://world_sprites/houseside2_window.png" id="23_vmndo"]
 [ext_resource type="Texture2D" uid="uid://dhvgxtyabhimf" path="res://world_sprites/rug.png" id="24_bo6tc"]
 [ext_resource type="Texture2D" uid="uid://bi64qidsvhs6l" path="res://world_sprites/bigstairs.png" id="24_xy2fk"]
@@ -47,7 +47,7 @@
 [ext_resource type="Material" uid="uid://q6qdtn58ljlj" path="res://scenes/quickstairs.tres" id="25_cmcjb"]
 [ext_resource type="PackedScene" uid="uid://c8g1osdbbvkqx" path="res://scenes/drawer.gltf" id="26_v4d4p"]
 [ext_resource type="PackedScene" uid="uid://bwo0ws2jp7gy5" path="res://scenes/model.gltf" id="27_30hdq"]
-[ext_resource type="PackedScene" path="res://scenes/tree_sml.tscn" id="27_lqb7q"]
+[ext_resource type="PackedScene" uid="uid://dt2mewg27svhe" path="res://scenes/tree_sml.tscn" id="27_lqb7q"]
 [ext_resource type="PackedScene" uid="uid://bqdvdbce5vdlp" path="res://scenes/piano.gltf" id="27_sc620"]
 [ext_resource type="Texture2D" uid="uid://dq4ghsvv5vbjs" path="res://world_sprites/goddess_painting.png" id="28_3fqns"]
 [ext_resource type="Texture2D" uid="uid://b05rtfpd1wumd" path="res://world_sprites/postbox.png" id="28_ok3ci"]
@@ -57,11 +57,13 @@
 [ext_resource type="Texture2D" uid="uid://i0dwvfr2suql" path="res://world_sprites/tree3.png" id="30_2e2fo"]
 [ext_resource type="Texture2D" uid="uid://v0i7e0bdaxa8" path="res://world_sprites/fireplacebricks.png" id="30_oksur"]
 [ext_resource type="Texture2D" uid="uid://c6fnof2dwl27e" path="res://world_sprites/fireplaceopening.png" id="31_jide8"]
-[ext_resource type="PackedScene" uid="uid://d143v1xlbxgdm" path="res://scenes/Hive bedwars bed.gltf" id="32_4h8xp"]
+[ext_resource type="PackedScene" uid="uid://br6cxeltgob63" path="res://scenes/new bed.gltf" id="32_ql8jr"]
 [ext_resource type="Texture2D" uid="uid://3c7mh5xid72t" path="res://world_sprites/lake/lake_frame1.png" id="42_iafhg"]
 [ext_resource type="Texture2D" uid="uid://bf3irruj24x6j" path="res://world_sprites/lake/lake_frame2.png" id="43_uhfbm"]
 [ext_resource type="Texture2D" uid="uid://dfehqcu70fqph" path="res://world_sprites/lake/lake_frame3.png" id="44_lqb7q"]
 [ext_resource type="PackedScene" uid="uid://c7n5mgjkqg3e4" path="res://scenes/shop.glb" id="59_421lv"]
+[ext_resource type="PackedScene" uid="uid://cpwda1bpshg4h" path="res://scenes/statue_base.glb" id="63_ql8jr"]
+[ext_resource type="Texture2D" uid="uid://d1c28d2x8esfh" path="res://world_sprites/goddess1.png" id="64_5ga6x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_421lv"]
 transparency = 1
@@ -739,6 +741,17 @@ fog_density = 1.0
 fog_sky_affect = 0.0
 fog_depth_curve = 6.964401
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmwm8"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("64_5ga6x")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_msn66"]
+material = SubResource("StandardMaterial3D_xmwm8")
+orientation = 2
+
 [node name="Node3D" type="Node3D" unique_id=252116335]
 script = ExtResource("1_2jdvr")
 
@@ -852,8 +865,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.062153, 3.7532475, -32.82
 interior_spawn = NodePath("../ExitHouse")
 
 [node name="ExitHouse" parent="." unique_id=887263288 node_paths=PackedStringArray("exterior_spawn") instance=ExtResource("8_arp2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.871972, -12.182063, 4.3137817)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.310683, -12.182063, 4.3137817)
 exterior_spawn = NodePath("../EnterHouse")
 
 [node name="Talkables" type="Node3D" parent="." unique_id=649817371]
@@ -1480,7 +1492,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010172844, -7.574341, 4.955
 shape = SubResource("ConcavePolygonShape3D_j4eoh")
 
 [node name="doorindicator" type="MeshInstance3D" parent="House" unique_id=740506780]
-transform = Transform3D(1.079024, 0, 0, 0, 1, 0, 0, 0, 0.4126492, 2.9481049, -10.070018, 5.299767)
+transform = Transform3D(1.079024, 0, 0, 0, 1, 0, 0, 0, 0.4126492, 2.605482, -10.070018, 5.299767)
 mesh = SubResource("PlaneMesh_4h8xp")
 
 [node name="buyables" type="Node" parent="House" unique_id=2047609326]
@@ -1536,12 +1548,13 @@ shape = SubResource("ConcavePolygonShape3D_oksur")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5043812, -3.2355614, 0)
 mesh = SubResource("PlaneMesh_xmwm8")
 
-[node name="bed3dmodel" parent="House" unique_id=815217841 instance=ExtResource("32_4h8xp")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -1.8195009, -10.0841, -3.622579)
+[node name="bedmodel" parent="House" unique_id=1280882899 instance=ExtResource("32_ql8jr")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -1.8099413, -10.069225, -3.6314034)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="House/bed3dmodel" unique_id=1521711828]
+[node name="StaticBody3D" type="StaticBody3D" parent="House/bedmodel" unique_id=1521711828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004412174, -0.007437229, 0.0047798157)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="House/bed3dmodel/StaticBody3D" unique_id=1885834146]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/bedmodel/StaticBody3D" unique_id=1885834146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05126953, 0.66967773)
 shape = SubResource("BoxShape3D_ql8jr")
 
@@ -3314,3 +3327,10 @@ environment = SubResource("Environment_wc255")
 
 [node name="shop" parent="." unique_id=1172134662 instance=ExtResource("59_421lv")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 14.353336, 0.54413915, -37.627922)
+
+[node name="statue_base" parent="." unique_id=838536515 instance=ExtResource("63_ql8jr")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 29.244522, 0.005130768, 32.526913)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="statue_base" unique_id=2012480603]
+transform = Transform3D(1, 0, 0, 0, 1.3828411, 0, 0, 0, 1, -0.042873383, 3.4869184, 0)
+mesh = SubResource("PlaneMesh_msn66")
