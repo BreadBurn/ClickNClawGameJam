@@ -81,17 +81,45 @@ theme_override_constants/separation = 50
 layout_mode = 2
 texture = ExtResource("2_wmgi7")
 
+[node name="Plant1Rect" type="ColorRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer/TextureRect" unique_id=1536112324]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 51.7955
+offset_bottom = 53.48645
+color = Color(0.40316302, 0.19719368, 0.1162199, 0.78431374)
+
 [node name="TextureRect2" type="TextureRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer" unique_id=1906829264]
 layout_mode = 2
 texture = ExtResource("3_231b4")
+
+[node name="Plant2Rect" type="ColorRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer/TextureRect2" unique_id=777423909]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 51.7955
+offset_bottom = 53.48645
+color = Color(0.40316302, 0.19719368, 0.1162199, 0.78431374)
 
 [node name="TextureRect3" type="TextureRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer" unique_id=1056319182]
 layout_mode = 2
 texture = ExtResource("4_pyuu8")
 
+[node name="Plant3Rect" type="ColorRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer/TextureRect3" unique_id=1321020407]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 51.7955
+offset_bottom = 53.48645
+color = Color(0.40316302, 0.19719368, 0.1162199, 0.78431374)
+
 [node name="TextureRect4" type="TextureRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer" unique_id=920031156]
 layout_mode = 2
 texture = ExtResource("5_m46ld")
+
+[node name="Plant4Rect" type="ColorRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer/TextureRect4" unique_id=1697757691]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 51.7955
+offset_bottom = 53.48645
+color = Color(0.40316302, 0.19719368, 0.1162199, 0.78431374)
 
 [node name="InventoryLabel" type="Label" parent="Control/BottomMidMargin/HBoxContainer" unique_id=234564294]
 unique_name_in_owner = true

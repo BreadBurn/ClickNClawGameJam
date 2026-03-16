@@ -15,15 +15,20 @@ extends CanvasLayer
 
 var _is_active: bool = false
 var _is_transitioning: bool = false
+var _should_load_win_scene: bool = false
 var main_cam: Camera3D
 
 func _ready() -> void:
 	hide()
 	_is_active = false
 	_is_transitioning = false
+	_should_load_win_scene = false
 
 	if GameState != null and GameState.has_signal("daily_evaluated"):
 		GameState.daily_evaluated.connect(_on_daily_evaluated)
+
+	if GameState != null and GameState.has_signal("game_won"):
+		GameState.game_won.connect(_on_game_won)
 
 	set_process_input(true)
 
@@ -40,7 +45,6 @@ func set_main_camera(cam: Camera3D) -> void:
 		preview_cam.fov = cam.fov
 	elif cam.projection == Camera3D.PROJECTION_ORTHOGONAL:
 		preview_cam.size = cam.size
-
 
 func _process(_delta: float) -> void:
 	if not is_instance_valid(main_cam):
@@ -63,15 +67,21 @@ func _process(_delta: float) -> void:
 	elif main_cam.projection == Camera3D.PROJECTION_ORTHOGONAL:
 		preview_cam.size = main_cam.size
 
-
-func _on_daily_evaluated(coins_earned: int, _types_in_bounds: int, _current_streak: int) -> void:
+func _on_daily_evaluated(coins_earned: int, _types_in_bounds: int, current_streak: int) -> void:
 	_populate_from_state(coins_earned)
 
 	var new_day := GameState.cur_day
 	var old_day: int = max(new_day - 1, 0)
 	day_label.text = "Day %d -> %d" % [old_day, new_day]
 
+	# If this evaluation completes the 3-day streak,
+	# remember to send the player to the win scene when they exit.
+	_should_load_win_scene = current_streak >= 3
+
 	activate_scene()
+
+func _on_game_won() -> void:
+	_should_load_win_scene = true
 
 func _populate_from_state(coins_earned: int) -> void:
 	var ratios: Dictionary = {}
@@ -114,6 +124,7 @@ func activate_scene() -> void:
 
 	_is_transitioning = false
 
+
 func deactivate_scene() -> void:
 	if not _is_active or _is_transitioning:
 		return
@@ -123,6 +134,21 @@ func deactivate_scene() -> void:
 	SceneTransition.transition_in()
 	await SceneTransition.transition_in_finished
 
+	# WIN BRANCH: restore player mode before leaving this scene
+	if _should_load_win_scene or (GameState != null and GameState.consecutive_balanced_days >= 3):
+		hide()
+		_is_active = false
+
+		if GameState != null:
+			if GameState.has_method("end_interaction"):
+				GameState.end_interaction()
+			elif GameState.has_method("set_player_mode") and "PlayerMode" in GameState:
+				GameState.set_player_mode(GameState.PlayerMode.PLAYER_ACTIVE)
+
+		get_tree().change_scene_to_file("res://scenes/GameWon.tscn")
+		return
+
+	# NORMAL CLOSE
 	hide()
 	_is_active = false
 
@@ -136,6 +162,8 @@ func deactivate_scene() -> void:
 	SceneTransition.transition_out()
 
 	_is_transitioning = false
+
+
 
 func _input(event: InputEvent) -> void:
 	if not _is_active:

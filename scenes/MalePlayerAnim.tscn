@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://dtbffkcapjy2"]
+
+[ext_resource type="Script" uid="uid://by0tjgpuiw5vr" path="res://scenes/male_player_anim.gd" id="1_0caa6"]
+[ext_resource type="Texture2D" uid="uid://bpa5p7u0r70kl" path="res://assets/player_assets/players.png" id="2_pct22"]
+[ext_resource type="Texture2D" uid="uid://dfr63vny57tyq" path="res://assets/player_assets/player1_jumpFIXED.png" id="3_pct22"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abfon"]
+atlas = ExtResource("2_pct22")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d2ff"]
+atlas = ExtResource("3_pct22")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sw3q"]
+atlas = ExtResource("2_pct22")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b30og"]
+atlas = ExtResource("2_pct22")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avg6s"]
+atlas = ExtResource("2_pct22")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6lt0"]
+atlas = ExtResource("2_pct22")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srjjj"]
+atlas = ExtResource("2_pct22")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aw2p"]
+atlas = ExtResource("2_pct22")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wktd0"]
+atlas = ExtResource("2_pct22")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4d2ff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abfon")
+}],
+"loop": true,
+"name": &"MaleIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d2ff")
+}],
+"loop": true,
+"name": &"MaleJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_5sw3q")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_b30og")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_avg6s")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_n6lt0")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_srjjj")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_7aw2p")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_wktd0")
+}],
+"loop": true,
+"name": &"MaleMove",
+"speed": 5.0
+}]
+
+[node name="MalePlayerAnim" type="Node3D" unique_id=1191519766]
+script = ExtResource("1_0caa6")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=201150652]
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_4d2ff")
+animation = &"MaleMove"

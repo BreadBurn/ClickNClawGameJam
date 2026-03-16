@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cr27lq83tyfws" path="res://gdscripts/scene_scripts/user_control.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dmqvhwbybn08q" path="res://gdscripts/scene_scripts/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://bdrrlseiupeuu" path="res://scenes/FemalePlayerAnim.tscn" id="2_d2wvv"]
+[ext_resource type="PackedScene" uid="uid://dtbffkcapjy2" path="res://scenes/MalePlayerAnim.tscn" id="2_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://n7x8p6hgjbu7" path="res://sounds/footstep_1.wav" id="3_smehm"]
-[ext_resource type="Script" uid="uid://c2b7vi8x2s786" path="res://scenes/footstep_sounds.gd" id="3_ur7pv"]
+[ext_resource type="Script" uid="uid://c2b7vi8x2s786" path="res://gdscripts/footstep_sounds.gd" id="3_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://cufj3lam82ybp" path="res://sounds/footstep_2.wav" id="4_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://0uw0wd5haeph" path="res://sounds/footstep_3.wav" id="5_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://cva5oohjer58c" path="res://sounds/footstep_4.wav" id="6_d2wvv"]
@@ -17,8 +19,6 @@ top_radius = 0.0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_color = Color(0.99607843, 0.20392157, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 
@@ -42,6 +42,16 @@ stream_5/stream = ExtResource("3_smehm")
 [node name="Player" type="CharacterBody3D" unique_id=1604628969]
 script = ExtResource("1_onrkg")
 
+[node name="PlaceholderViewMesh" type="Node3D" parent="." unique_id=672714213]
+
+[node name="FemalePlayerAnim" parent="PlaceholderViewMesh" unique_id=1191519766 instance=ExtResource("2_d2wvv")]
+unique_name_in_owner = true
+transform = Transform3D(6.42, 0, 0, 0, 6.42, 0, 0, 0, 6.42, 0, 1, 0)
+
+[node name="MalePlayerAnim" parent="PlaceholderViewMesh" unique_id=1452320259 instance=ExtResource("2_y4r1p")]
+unique_name_in_owner = true
+transform = Transform3D(6.42, 0, 0, 0, 6.42, 0, 0, 0, 6.42, 0, 1, 0)
+
 [node name="DEBUGNODEdirectionView" type="MeshInstance3D" parent="." unique_id=1157545569]
 transform = Transform3D(-2.1855694e-10, 0.5, 0, -0.005, -2.1855694e-08, 0, 0, 0, 0.5, 0, 2.5, 0)
 mesh = SubResource("CylinderMesh_onrkg")
@@ -49,11 +59,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4flbx")
 
 [node name="UserControl" type="Node" parent="." unique_id=642189157]
 script = ExtResource("1_4flbx")
-
-[node name="PlaceholderViewMesh" type="MeshInstance3D" parent="." unique_id=615091070]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0453546, -7.6293945e-06)
-mesh = SubResource("CapsuleMesh_sh265")
-surface_material_override/0 = SubResource("StandardMaterial3D_4flbx")
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=133487781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0436493, 0)

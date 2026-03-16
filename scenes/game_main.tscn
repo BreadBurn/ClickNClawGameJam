@@ -80,19 +80,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9402182, 0.005130768, -2.6
 [node name="FloraContainer" type="Node3D" parent="." unique_id=176586767]
 
 [node name="BaseFlora4" parent="FloraContainer" unique_id=930418277 instance=ExtResource("5_3qnxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3103409, 0, 3.2901678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3103409, 0, 25.158855)
 current_type = 3
+type1_growth_base_chance = 0.0
+type2_conversion_chance = 0.0
+type3_conversion_chance = 0.0
+type4_conversion_chance = 0.0
+type4_max_lifespan = 999
 
 [node name="BaseFlora3" parent="FloraContainer" unique_id=891807418 instance=ExtResource("5_3qnxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.094881, 0, 1.9501915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.951906, 0, 23.327707)
+type1_growth_base_chance = 0.0
+type2_conversion_chance = 0.0
+type3_conversion_chance = 0.0
+type4_conversion_chance = 0.0
+type4_max_lifespan = 999
 
 [node name="BaseFlora2" parent="FloraContainer" unique_id=1354161361 instance=ExtResource("5_3qnxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7493309, 0, 2.1124861)
 current_type = 1
+type1_growth_base_chance = 0.0
+type2_conversion_chance = 0.0
+type3_conversion_chance = 0.0
+type4_conversion_chance = 0.0
+type4_max_lifespan = 999
 
 [node name="BaseFlora" parent="FloraContainer" unique_id=56923005 instance=ExtResource("5_3qnxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.079987, -0.057105064, 3.233696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.464994, -0.057105064, 3.233696)
 current_type = 2
+type1_growth_base_chance = 0.0
+type2_conversion_chance = 0.0
+type3_conversion_chance = 0.0
+type4_conversion_chance = 0.0
+type4_max_lifespan = 999
 
 [node name="EnterHouse" parent="." unique_id=606512115 node_paths=PackedStringArray("interior_spawn") instance=ExtResource("6_4qd86")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9375322, 0.57423115, -3.6714969)

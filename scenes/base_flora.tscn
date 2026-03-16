@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b1vxxi5frql" path="res://assets/plant_assets/plant3_form2.png" id="5_xu88v"]
 [ext_resource type="Texture2D" uid="uid://ci6hraqoau64y" path="res://assets/plant_assets/plant4_form2.png" id="6_6nugu"]
 [ext_resource type="Texture2D" uid="uid://5lrd4kkqxw15" path="res://assets/plant_assets/plant3_form1.png" id="7_ioyh0"]
-[ext_resource type="Texture2D" uid="uid://d14vax8tcm8tl" path="res://assets/plant_assets/plant2_form2.png" id="7_vf74k"]
 [ext_resource type="Texture2D" uid="uid://d06bkqea7nxki" path="res://assets/plant_assets/plant4_form1.png" id="9_t86ka"]
+[ext_resource type="Texture2D" uid="uid://csg0ihtupmwdw" path="res://assets/plant_assets/plant5_form2.png" id="10_ioyh0"]
+[ext_resource type="Texture2D" uid="uid://ddyvbs02ocolp" path="res://assets/plant_assets/plant5_form1.png" id="11_t86ka"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qjg8l"]
 
@@ -43,7 +44,7 @@ texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t86ka"]
 transparency = 4
-albedo_texture = ExtResource("7_vf74k")
+albedo_texture = ExtResource("10_ioyh0")
 texture_filter = 0
 
 [node name="BaseFlora" type="Node3D" unique_id=930418277]
@@ -100,5 +101,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 visible = false
 mesh = SubResource("PlaneMesh_o0k0v")
 surface_material_override/0 = SubResource("StandardMaterial3D_t86ka")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Flora2FusedMesh" unique_id=21801731]
+transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -8.974818e-07, -20.53199)
+texture_filter = 0
+texture = ExtResource("11_t86ka")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

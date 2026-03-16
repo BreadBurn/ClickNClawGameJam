@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bpvg10p6yyd3t"]
+
+[ext_resource type="Script" uid="uid://2l02ata6b5pf" path="res://scenes/game_won.gd" id="1_7btj6"]
+
+[node name="GameWon" type="CanvasLayer" unique_id=1345610394]
+script = ExtResource("1_7btj6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1262203258]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29954746, 0.29954746, 0.29954743, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=519690288]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -17.5
+offset_right = 4.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1150837334]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=263512328]
+layout_mode = 2
+text = "CONGRATULATIONAS, YOUVE WON THE GAME!"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=850257545]
+layout_mode = 2
+text = "Continue Playing"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

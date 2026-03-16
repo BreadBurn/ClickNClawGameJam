@@ -24,6 +24,7 @@ enum HeldPlantState {
 
 var player_mode: PlayerMode = PlayerMode.PLAYER_ACTIVE
 var held_plant_state: HeldPlantState = HeldPlantState.IN_NONE
+var is_player_male: bool = true # Add this line
 
 @export var max_stamina: int = 6
 var current_stamina: int = 6
@@ -302,7 +303,7 @@ func try_place_held_plant(world_pos: Vector3) -> bool:
 	if not is_position_in_planting_zone(world_pos):
 		return false
 
-	var target_pos := world_pos
+	var target_pos := Vector3(world_pos.x, 0.0, world_pos.z)
 	if not _is_plant_position_clear(target_pos):
 		return false
 

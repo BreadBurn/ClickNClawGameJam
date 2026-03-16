@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csg0ihtupmwdw"
-path.s3tc="res://.godot/imported/plant5_form2.png-dada447afd65d4f20fa9a9b2c7c33633.s3tc.ctex"
+uid="uid://dfr63vny57tyq"
+path.s3tc="res://.godot/imported/player1_jumpFIXED.png-8c805bb232ce5cce104bba7719a7728e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/plant_assets/plant5_form2.png"
-dest_files=["res://.godot/imported/plant5_form2.png-dada447afd65d4f20fa9a9b2c7c33633.s3tc.ctex"]
+source_file="res://assets/player_assets/player1_jumpFIXED.png"
+dest_files=["res://.godot/imported/player1_jumpFIXED.png-8c805bb232ce5cce104bba7719a7728e.s3tc.ctex"]
 
 [params]
 

@@ -27,12 +27,19 @@ var interact_timer := 0.0
 @onready var interact_area: Area3D = $InteractArea
 @onready var debug_arrow: Node3D = $DEBUGNODEdirectionView
 
+@onready var female_player_anim: Node3D = %FemalePlayerAnim
+@onready var male_player_anim: Node3D = %MalePlayerAnim
 
 func _ready() -> void:
 	GameState.register_player(self)
 	motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED
 	floor_snap_length = floor_snap_len
 	up_direction = Vector3.UP
+	
+	# Apply the visual state based on the Singleton
+	if male_player_anim and female_player_anim:
+		male_player_anim.visible = GameState.is_player_male
+		female_player_anim.visible = not GameState.is_player_male
 
 
 func _exit_tree() -> void:
@@ -217,7 +224,6 @@ func _update_facing(dir: Vector3) -> void:
 
 
 func _set_y_rotation(degrees: float) -> void:
-	view_mesh.rotation_degrees.y = degrees
 	interact_area.rotation_degrees.y = degrees
 	debug_arrow.rotation_degrees.y = degrees
 

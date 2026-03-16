@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dhiwa1aa53s26"]
+
+[ext_resource type="Script" uid="uid://ccao1iamv1wvs" path="res://scenes/choose_genders.gd" id="1_ictoy"]
+[ext_resource type="Texture2D" uid="uid://b83nkeksb7bsd" path="res://assets/player_assets/characters1.png" id="2_2dqx0"]
+
+[node name="ChooseGender" type="CanvasLayer" unique_id=1345610394]
+script = ExtResource("1_ictoy")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1262203258]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.048456714, 0.1689809, 0.13557315, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1384051805]
+texture_filter = 1
+custom_minimum_size = Vector2(1000, 616.07)
+offset_left = 76.0
+offset_top = 15.964996
+offset_right = 1076.0
+offset_bottom = 632.03503
+texture = ExtResource("2_2dqx0")
+expand_mode = 1
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=928554264]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.047058824, 0.16862746, 0.13725491, 0.62352943)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=519690288]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -29.0
+offset_right = 98.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1150837334]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=263512328]
+layout_mode = 2
+text = "Would you like to play as:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1123029686]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="Male" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=850257545]
+layout_mode = 2
+text = "Boy"
+
+[node name="Female" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1836595448]
+layout_mode = 2
+text = "Girl"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Male" to="." method="_on_male_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Female" to="." method="_on_female_pressed"]
