@@ -550,6 +550,15 @@ data = PackedVector3Array(-2.090355, -0.20145416, 0.45718193, -2.090355, -0.2014
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0fmhk"]
 data = PackedVector3Array(-0.5377052, -2.684518, 0.7473333, -0.5377052, -2.684518, -0.7473333, -0.5377052, 2.684518, -0.7473333, 0.5377052, -2.684518, -0.7473333, -0.5377052, -2.684518, -0.7473333, -0.5377052, -2.684518, 0.7473333, -0.5377052, 2.684518, -0.7473333, -0.5377052, -2.684518, -0.7473333, 0.5377052, -2.684518, -0.7473333, -0.5377052, 2.684518, -0.7473333, -0.5377052, 2.684518, 0.7473333, -0.5377052, -2.684518, 0.7473333, -0.5377052, -2.684518, 0.7473333, -0.5377052, 2.684518, 0.7473333, 0.5377052, 2.684518, 0.7473333, 0.5377052, 2.684518, 0.7473333, -0.5377052, 2.684518, 0.7473333, -0.5377052, 2.684518, -0.7473333, -0.5377052, -2.684518, 0.7473333, 0.5377052, -2.684518, 0.7473333, 0.5377052, -2.684518, -0.7473333, 0.5377052, 2.684518, 0.7473333, 0.5377052, -2.684518, 0.7473333, -0.5377052, -2.684518, 0.7473333, 0.5377052, -2.684518, -0.7473333, 0.5377052, -2.684518, 0.7473333, 0.5377052, 2.684518, 0.7473333, 0.5377052, -2.684518, -0.7473333, 0.5377052, 2.684518, -0.7473333, -0.5377052, 2.684518, -0.7473333, -0.5377052, 2.684518, -0.7473333, 0.5377052, 2.684518, -0.7473333, 0.5377052, 2.684518, 0.7473333, 0.5377052, 2.684518, 0.7473333, 0.5377052, 2.684518, -0.7473333, 0.5377052, -2.684518, -0.7473333)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_0fmhk"]
+top_radius = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7iqcu"]
+transparency = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(1, 1, 1, 0.4862745)
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ux5qa"]
 panorama = ExtResource("16_arp2o")
 
@@ -592,7 +601,7 @@ height_above_target = 10.0
 back_offset = 20.0
 
 [node name="ReviewCam" type="Camera3D" parent="." unique_id=254506874 groups=["main_camera"]]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.0226297, 14.781004, 17.945463)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.0226297, 23.505695, 17.945463)
 projection = 1
 size = 36.615
 script = ExtResource("8_q4oe8")
@@ -695,7 +704,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.591145, 1.8578033, -29.49
 npc_name = "Game Introduction"
 dialogue_text = "You are in charge of reintroducing 4 native species that have been long gone from this ecosystem, plant everyday and check your progress by sleeping!
 Ensure that each plant reaches a ~25% ratio, if all plants are within this ratio, keep the streak for 3 days to win the game!
-But be sure to not overwork yourself, work that relates to your ecosystem task consumes stamina. Replenish it back to full by sleeping!"
+But be sure to not overwork yourself, work that relates to your ecosystem task consumes stamina. Replenish it back to full by sleeping!
+(You can sleep by entering LMB in front of the door)"
 
 [node name="IntroInfo2" parent="Talkables" unique_id=1719319179 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.489292, 1.8578033, -16.080654)
@@ -2904,6 +2914,11 @@ shape = SubResource("ConcavePolygonShape3D_50fbu")
 [node name="CSGBakedCollisionShape3D10" type="CollisionShape3D" parent="World/PlayerHouse/StaticBody3D" unique_id=915592596]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.9883842, 1.7830269, 3.0268555)
 shape = SubResource("ConcavePolygonShape3D_0fmhk")
+
+[node name="DEBUGNODEdirectionView" type="MeshInstance3D" parent="World/PlayerHouse" unique_id=1403607612]
+transform = Transform3D(9.553427e-18, -2.1855694e-08, 0.5, -0.005, -2.1855694e-08, 0, 2.1855694e-10, -0.5, -2.1855694e-08, -32.02312, 3.134777, -32.89883)
+mesh = SubResource("CylinderMesh_0fmhk")
+surface_material_override/0 = SubResource("StandardMaterial3D_7iqcu")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1783066778]
 environment = SubResource("Environment_wc255")

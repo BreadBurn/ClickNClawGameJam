@@ -597,3 +597,43 @@ func _create_flora_instance_for_planting() -> Node3D:
 					return packed.instantiate() as Node3D
 
 	return null
+
+
+func _set_held_from_input(action_name: String) -> void:
+	# Map action → type index
+	var action_to_type := {
+		"IN_PLANT1": 0,
+		"IN_PLANT2": 1,
+		"IN_PLANT3": 2,
+		"IN_PLANT4": 3,
+	}
+
+	if not action_to_type.has(action_name):
+		return
+
+	var type: int = int(action_to_type[action_name])
+
+	# Check inventory before switching
+	var has_count := false
+	match type:
+		0: has_count = type_1_count > 0
+		1: has_count = type_2_count > 0
+		2: has_count = type_3_count > 0
+		3: has_count = type_4_count > 0
+
+	if has_count:
+		set_held_plant_from_type(type)
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Only allow switching while the player is active
+	if not is_player_active():
+		return
+
+	if event.is_action_pressed("IN_PLANT1"):
+		_set_held_from_input("IN_PLANT1")
+	elif event.is_action_pressed("IN_PLANT2"):
+		_set_held_from_input("IN_PLANT2")
+	elif event.is_action_pressed("IN_PLANT3"):
+		_set_held_from_input("IN_PLANT3")
+	elif event.is_action_pressed("IN_PLANT4"):
+		_set_held_from_input("IN_PLANT4")

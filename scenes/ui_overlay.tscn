@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://iogr6857y3ck"]
 
 [ext_resource type="Script" uid="uid://rrcgm56dfber" path="res://gdscripts/scene_scripts/ui_overlay.gd" id="1_5mppo"]
+[ext_resource type="Texture2D" uid="uid://dp2w20ou34km4" path="res://assets/plant_assets/plant1_form1.png" id="2_wmgi7"]
+[ext_resource type="Texture2D" uid="uid://dkbsuswmai40" path="res://assets/plant_assets/plant2_form1.png" id="3_231b4"]
+[ext_resource type="Texture2D" uid="uid://5lrd4kkqxw15" path="res://assets/plant_assets/plant3_form1.png" id="4_pyuu8"]
+[ext_resource type="Texture2D" uid="uid://d06bkqea7nxki" path="res://assets/plant_assets/plant4_form1.png" id="5_m46ld"]
 
 [node name="UIOverlay" type="CanvasLayer" unique_id=1500083861]
 script = ExtResource("1_5mppo")
@@ -67,6 +71,27 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Control/BottomMidMargin" unique_id=910214140]
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BottomMidMargin/HBoxContainer" unique_id=626893116]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 50
+
+[node name="TextureRect" type="TextureRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer" unique_id=966076918]
+layout_mode = 2
+texture = ExtResource("2_wmgi7")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer" unique_id=1906829264]
+layout_mode = 2
+texture = ExtResource("3_231b4")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer" unique_id=1056319182]
+layout_mode = 2
+texture = ExtResource("4_pyuu8")
+
+[node name="TextureRect4" type="TextureRect" parent="Control/BottomMidMargin/HBoxContainer/HBoxContainer" unique_id=920031156]
+layout_mode = 2
+texture = ExtResource("5_m46ld")
 
 [node name="InventoryLabel" type="Label" parent="Control/BottomMidMargin/HBoxContainer" unique_id=234564294]
 unique_name_in_owner = true

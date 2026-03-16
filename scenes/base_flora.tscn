@@ -50,6 +50,7 @@ texture_filter = 0
 script = ExtResource("1_6co6x")
 
 [node name="Interactable" parent="." unique_id=934362047 instance=ExtResource("2_tslgx")]
+visible = false
 
 [node name="Flora1Mesh" type="MeshInstance3D" parent="." unique_id=1773554889]
 transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0.42371058, 0)
@@ -57,7 +58,7 @@ mesh = SubResource("PlaneMesh_qjg8l")
 surface_material_override/0 = SubResource("StandardMaterial3D_rpmxt")
 
 [node name="Sprite3D" type="Sprite3D" parent="Flora1Mesh" unique_id=132899535]
-transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -7.9202863e-07, -18.119501)
+transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -1.8306425e-06, -41.88022)
 texture_filter = 0
 texture = ExtResource("4_o0k0v")
 
@@ -68,7 +69,7 @@ mesh = SubResource("PlaneMesh_xu88v")
 surface_material_override/0 = SubResource("StandardMaterial3D_vf74k")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Flora2SingleMesh" unique_id=503241995]
-transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -7.931528e-07, -18.14522)
+transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -1.8317667e-06, -41.905933)
 texture_filter = 0
 texture = ExtResource("4_qjg8l")
 
@@ -79,7 +80,7 @@ mesh = SubResource("PlaneMesh_6nugu")
 surface_material_override/0 = SubResource("StandardMaterial3D_tbagt")
 
 [node name="Sprite3D3" type="Sprite3D" parent="Flora3Mesh" unique_id=1916265690]
-transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -7.967458e-07, -18.227417)
+transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -1.8353596e-06, -41.988132)
 texture_filter = 0
 texture = ExtResource("7_ioyh0")
 
@@ -90,7 +91,7 @@ mesh = SubResource("PlaneMesh_vf74k")
 surface_material_override/0 = SubResource("StandardMaterial3D_ioyh0")
 
 [node name="Sprite3D4" type="Sprite3D" parent="Flora4Mesh" unique_id=1888599755]
-transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -3.790414e-07, -8.671456)
+transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -8.983483e-07, -20.551813)
 texture_filter = 0
 texture = ExtResource("9_t86ka")
 
