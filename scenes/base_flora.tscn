@@ -2,31 +2,49 @@
 
 [ext_resource type="Script" uid="uid://bvn1lc30c2eot" path="res://gdscripts/scene_scripts/base_flora.gd" id="1_6co6x"]
 [ext_resource type="PackedScene" uid="uid://dm7p1goaoimx7" path="res://scenes/interactable.tscn" id="2_tslgx"]
+[ext_resource type="Texture2D" uid="uid://cmn31cawatthw" path="res://assets/plant_assets/plant1_form2.png" id="3_rpmxt"]
+[ext_resource type="Texture2D" uid="uid://dp2w20ou34km4" path="res://assets/plant_assets/plant1_form1.png" id="4_o0k0v"]
+[ext_resource type="Texture2D" uid="uid://dkbsuswmai40" path="res://assets/plant_assets/plant2_form1.png" id="4_qjg8l"]
+[ext_resource type="Texture2D" uid="uid://b1vxxi5frql" path="res://assets/plant_assets/plant3_form2.png" id="5_xu88v"]
+[ext_resource type="Texture2D" uid="uid://ci6hraqoau64y" path="res://assets/plant_assets/plant4_form2.png" id="6_6nugu"]
+[ext_resource type="Texture2D" uid="uid://5lrd4kkqxw15" path="res://assets/plant_assets/plant3_form1.png" id="7_ioyh0"]
+[ext_resource type="Texture2D" uid="uid://d14vax8tcm8tl" path="res://assets/plant_assets/plant2_form2.png" id="7_vf74k"]
+[ext_resource type="Texture2D" uid="uid://d06bkqea7nxki" path="res://assets/plant_assets/plant4_form1.png" id="9_t86ka"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_26tk5"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_qjg8l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpmxt"]
-albedo_color = Color(1, 0, 1, 1)
+transparency = 4
+albedo_texture = ExtResource("3_rpmxt")
+texture_filter = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_rpmxt"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_xu88v"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjg8l"]
-albedo_color = Color(0, 1, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf74k"]
+transparency = 4
+albedo_texture = ExtResource("4_qjg8l")
+texture_filter = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_qjg8l"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_6nugu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xu88v"]
-albedo_color = Color(0.40784314, 1, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbagt"]
+transparency = 4
+albedo_texture = ExtResource("5_xu88v")
+texture_filter = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_xu88v"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_vf74k"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nugu"]
-albedo_color = Color(1, 1, 0.23137255, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioyh0"]
+transparency = 4
+albedo_texture = ExtResource("6_6nugu")
+texture_filter = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_vf74k"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_o0k0v"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0k0v"]
-albedo_color = Color(1, 0.4745098, 0.6039216, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t86ka"]
+transparency = 4
+albedo_texture = ExtResource("7_vf74k")
+texture_filter = 0
 
 [node name="BaseFlora" type="Node3D" unique_id=930418277]
 script = ExtResource("1_6co6x")
@@ -34,28 +52,52 @@ script = ExtResource("1_6co6x")
 [node name="Interactable" parent="." unique_id=934362047 instance=ExtResource("2_tslgx")]
 
 [node name="Flora1Mesh" type="MeshInstance3D" parent="." unique_id=1773554889]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("BoxMesh_26tk5")
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0.42371058, 0)
+mesh = SubResource("PlaneMesh_qjg8l")
 surface_material_override/0 = SubResource("StandardMaterial3D_rpmxt")
 
+[node name="Sprite3D" type="Sprite3D" parent="Flora1Mesh" unique_id=132899535]
+transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -7.9202863e-07, -18.119501)
+texture_filter = 0
+texture = ExtResource("4_o0k0v")
+
 [node name="Flora2SingleMesh" type="MeshInstance3D" parent="." unique_id=1368261070]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("BoxMesh_rpmxt")
-surface_material_override/0 = SubResource("StandardMaterial3D_qjg8l")
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0.4108516, 0)
+visible = false
+mesh = SubResource("PlaneMesh_xu88v")
+surface_material_override/0 = SubResource("StandardMaterial3D_vf74k")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Flora2SingleMesh" unique_id=503241995]
+transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -7.931528e-07, -18.14522)
+texture_filter = 0
+texture = ExtResource("4_qjg8l")
 
 [node name="Flora3Mesh" type="MeshInstance3D" parent="." unique_id=2076313238]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("BoxMesh_qjg8l")
-surface_material_override/0 = SubResource("StandardMaterial3D_xu88v")
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0.36975294, 0)
+visible = false
+mesh = SubResource("PlaneMesh_6nugu")
+surface_material_override/0 = SubResource("StandardMaterial3D_tbagt")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Flora3Mesh" unique_id=1916265690]
+transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -7.967458e-07, -18.227417)
+texture_filter = 0
+texture = ExtResource("7_ioyh0")
 
 [node name="Flora4Mesh" type="MeshInstance3D" parent="." unique_id=1237465532]
-transform = Transform3D(0.0625, 0, 0, 0, 0.0625, 0, 0, 0, 0.0625, 0, 0, 0)
-mesh = SubResource("BoxMesh_xu88v")
-surface_material_override/0 = SubResource("StandardMaterial3D_6nugu")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.8120052, 0)
+visible = false
+mesh = SubResource("PlaneMesh_vf74k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ioyh0")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Flora4Mesh" unique_id=1888599755]
+transform = Transform3D(-10, 1.509958e-06, 0, -1.509958e-06, -10, 0, 0, 0, 10, 0, -3.790414e-07, -8.671456)
+texture_filter = 0
+texture = ExtResource("9_t86ka")
 
 [node name="Flora2FusedMesh" type="MeshInstance3D" parent="." unique_id=716665754]
-transform = Transform3D(0.0625, 0, 0, 0, 0.0625, 0, 0, 0, 0.0625, 0, 0, 0)
-mesh = SubResource("BoxMesh_vf74k")
-surface_material_override/0 = SubResource("StandardMaterial3D_o0k0v")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.8318286, 0)
+visible = false
+mesh = SubResource("PlaneMesh_o0k0v")
+surface_material_override/0 = SubResource("StandardMaterial3D_t86ka")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

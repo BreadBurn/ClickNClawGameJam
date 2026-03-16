@@ -5,25 +5,26 @@ enum FloraType { TYPE_1, TYPE_2, TYPE_3, TYPE_4 }
 @export var current_type: FloraType = FloraType.TYPE_1
 
 # Spawn & Conversion distances
-@export var min_spawn_distance: float = 2.0
-@export var max_spawn_distance: float = 6.0
-@export var conversion_radius: float = 4.0
+@export var min_spawn_distance: float = 0.05
+@export var max_spawn_distance: float = 4
+@export var conversion_radius: float = 10.0
 
 # True empty-space spawning
-@export var spawn_clearance_radius: float = 1.25
-@export var spawn_attempts: int = 6
+@export var spawn_clearance_radius: float = 0.5
+@export var spawn_attempts: int = 20
+
 
 # --- Playable Area Boundaries ---
 # moved to GameState (planting zone authority)
 # -------------------------------
 
 # Growth limiting for TYPE_1 (Pioneer)
-@export var density_check_radius: float = 6.0
-@export var max_local_density: int = 5
-@export var type1_growth_base_chance: float = 0.8
+@export var density_check_radius: float = 3.0
+@export var max_local_density: int = 100
+@export var type1_growth_base_chance: float = 0.95
 
 # Conversion chances
-@export var type2_conversion_chance: float = 0.6
+@export var type2_conversion_chance: float = 0.9
 @export var type3_conversion_chance: float = 0.7
 @export var type4_conversion_chance: float = 0.5
 
@@ -289,10 +290,12 @@ func _deferred_add_flora(new_flora: Node3D, spawn_pos: Vector3) -> void:
 # ------------------------------------------------------------
 
 func _can_gain_population(type: FloraType) -> bool:
-	if GameState != null and GameState.has_method("can_type_gain_population"):
-		return GameState.can_type_gain_population(int(type))
+	if GameState != null:
+		if GameState.has_method("can_type_self_spread"):
+			return GameState.can_type_self_spread(int(type))
+		elif GameState.has_method("can_type_gain_population"):
+			return GameState.can_type_gain_population(int(type))
 	return true
-
 
 func _can_convert_population(from_type: FloraType, to_type: FloraType) -> bool:
 	if GameState != null and GameState.has_method("can_convert_population"):

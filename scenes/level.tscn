@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://dwb0oxw5ndan3"]
 
+[ext_resource type="Script" uid="uid://br3gnqh6s3616" path="res://scenes/level.gd" id="1_2jdvr"]
 [ext_resource type="PackedScene" uid="uid://k0olv4vextkv" path="res://scenes/dialogue.tscn" id="1_8c41q"]
+[ext_resource type="PackedScene" uid="uid://tvqkki4xwkin" path="res://scenes/scene_transition.tscn" id="1_asl66"]
+[ext_resource type="PackedScene" uid="uid://iogr6857y3ck" path="res://scenes/ui_overlay.tscn" id="2_2jdvr"]
 [ext_resource type="Script" uid="uid://igd46ey8i10w" path="res://gdscripts/scene_scripts/camera_3d.gd" id="2_olg7q"]
 [ext_resource type="PackedScene" uid="uid://cii23b3yvwyys" path="res://scenes/player.tscn" id="3_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://dof3ogmfxuoh7" path="res://scenes/pause_menu.tscn" id="4_8iemx"]
+[ext_resource type="PackedScene" uid="uid://dgduvt71d4hxf" path="res://scenes/ShopOverlay.tscn" id="4_q4oe8"]
 [ext_resource type="PackedScene" uid="uid://dnwbtjsmreoue" path="res://scenes/player_sleep.tscn" id="5_64w2a"]
 [ext_resource type="PackedScene" uid="uid://cqfwd3oawqdme" path="res://scenes/base_flora.tscn" id="6_fpun6"]
 [ext_resource type="PackedScene" uid="uid://dly7hhg7b6tf0" path="res://scenes/enter_house.tscn" id="7_wc255"]
 [ext_resource type="PackedScene" uid="uid://bx7l02ipro8bt" path="res://scenes/exit_house.tscn" id="8_arp2o"]
+[ext_resource type="Script" uid="uid://co1xniinm4ppw" path="res://scenes/review_cam.gd" id="8_q4oe8"]
 [ext_resource type="PackedScene" uid="uid://di7rixm3ybd6u" path="res://scenes/npc.tscn" id="9_ux5qa"]
 [ext_resource type="PackedScene" uid="uid://cl187ryva4y2j" path="res://scenes/player house.glb" id="10_olg7q"]
 [ext_resource type="Texture2D" uid="uid://cqqu1yn54aqde" path="res://world_sprites/lower_ground.png" id="10_t1rx8"]
@@ -17,12 +22,17 @@
 [ext_resource type="Texture2D" uid="uid://dud7bp75j4yck" path="res://world_sprites/grass4.png" id="14_ux5qa"]
 [ext_resource type="PackedScene" uid="uid://cakqhwtj6buax" path="res://scenes/tree_lrg.tscn" id="14_wu01b"]
 [ext_resource type="PackedScene" uid="uid://b822cs51qkgiy" path="res://scenes/tree_med.tscn" id="15_3ies3"]
+[ext_resource type="PackedScene" uid="uid://dky4rx6gk6hoi" path="res://scenes/flora_collection.tscn" id="15_svjb4"]
 [ext_resource type="Texture2D" uid="uid://c7egrs41hexus" path="res://world_sprites/cliff5_side.png" id="15_ux5qa"]
 [ext_resource type="Texture2D" uid="uid://dd2dfh7i4tsbt" path="res://world_sprites/house_ground.png" id="16_82cfe"]
 [ext_resource type="Texture2D" uid="uid://c7dfw1ksl66nf" path="res://world_sprites/fence.png" id="16_556r4"]
 [ext_resource type="Texture2D" uid="uid://duxxkcaf7rpwq" path="res://world_sprites/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="16_arp2o"]
+[ext_resource type="Texture2D" uid="uid://45tfu17vls4s" path="res://assets/plant_assets/plant1_form3.png" id="16_c1pbi"]
+[ext_resource type="Texture2D" uid="uid://8ju3ghiumcut" path="res://assets/plant_assets/plant2_form3.png" id="17_0fmhk"]
 [ext_resource type="Texture2D" uid="uid://d7kwshq2uulv" path="res://world_sprites/cliff4_side.png" id="17_gunhw"]
 [ext_resource type="Texture2D" uid="uid://ddgplfcb06kk0" path="res://world_sprites/cliff3_ground.png" id="18_8gofh"]
+[ext_resource type="Texture2D" uid="uid://c6m5btgmemb5k" path="res://assets/plant_assets/plant3_form3.png" id="18_iafhg"]
+[ext_resource type="Texture2D" uid="uid://bhqdmfyhtst2s" path="res://assets/plant_assets/plant4_form3.png" id="19_cr74b"]
 [ext_resource type="Texture2D" uid="uid://b2vyqmrc0vajf" path="res://world_sprites/cliff1_ground.png" id="19_h6wmr"]
 [ext_resource type="Texture2D" uid="uid://domqhmud1ut4w" path="res://world_sprites/cliffside1.png" id="20_pqd0y"]
 [ext_resource type="Texture2D" uid="uid://0v6a56oml4le" path="res://world_sprites/cliffside2.png" id="21_5k0ak"]
@@ -33,7 +43,46 @@
 [ext_resource type="Texture2D" uid="uid://crj0mi1baufbd" path="res://world_sprites/tree1.png" id="29_2e2fo"]
 [ext_resource type="Texture2D" uid="uid://i0dwvfr2suql" path="res://world_sprites/tree3.png" id="30_2e2fo"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_bhb1k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcyu4"]
+transparency = 4
+albedo_texture = ExtResource("16_c1pbi")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhb1k"]
+transparency = 4
+albedo_texture = ExtResource("17_0fmhk")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmndo"]
+transparency = 4
+albedo_texture = ExtResource("18_iafhg")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bo6tc"]
+transparency = 4
+albedo_texture = ExtResource("19_cr74b")
+texture_filter = 0
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_82cfe"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lqb7q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4eoh"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gunhw"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8gofh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6wmr"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.28627452, 0.3882353, 0.20784314, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hv3ux"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok3ci"]
 albedo_color = Color(0.63529414, 0.75686276, 0.46666667, 1)
@@ -104,11 +153,6 @@ data = PackedVector3Array(-4, 0.5, 2, 4, 0.5, 2, -4, -0.5, 2, 4, 0.5, 2, 4, -0.5
 [sub_resource type="BoxMesh" id="BoxMesh_fpun6"]
 resource_local_to_scene = true
 size = Vector3(4, 1, 6)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6wmr"]
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_color = Color(0.28627452, 0.3882353, 0.20784314, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82cfe"]
 transparency = 2
@@ -394,11 +438,6 @@ material = SubResource("StandardMaterial3D_lqb7q")
 size = Vector2(24, 1)
 orientation = 2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gunhw"]
-size = Vector3(10, 1, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8gofh"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fmhk"]
 albedo_texture = ExtResource("24_xy2fk")
 uv1_scale = Vector3(0.22, 0.22, 0.22)
@@ -530,8 +569,17 @@ fog_sky_affect = 0.0
 fog_depth_curve = 6.964401
 
 [node name="Node3D" type="Node3D" unique_id=252116335]
+script = ExtResource("1_2jdvr")
+
+[node name="SceneTransition" parent="." unique_id=1010982004 instance=ExtResource("1_asl66")]
+
+[node name="UIOverlay" parent="." unique_id=1500083861 instance=ExtResource("2_2jdvr")]
 
 [node name="Dialogue" parent="." unique_id=1050487385 instance=ExtResource("1_8c41q")]
+
+[node name="ShopOverlay" parent="." unique_id=2044294706 instance=ExtResource("4_q4oe8")]
+
+[node name="PauseMenu" parent="." unique_id=2083233339 instance=ExtResource("4_8iemx")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=201041030 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.92050487, 0.39073113, 0, -0.39073113, 0.92050487, 0, 6.645053, 5.108061)
@@ -543,43 +591,960 @@ target = NodePath("../Player2")
 height_above_target = 10.0
 back_offset = 20.0
 
+[node name="ReviewCam" type="Camera3D" parent="." unique_id=254506874 groups=["main_camera"]]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.0226297, 14.781004, 17.945463)
+projection = 1
+size = 36.615
+script = ExtResource("8_q4oe8")
+
 [node name="Player2" parent="." unique_id=1604628969 instance=ExtResource("3_t1rx8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.047020614, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.353138, 2.5525253, -28.191391)
+speed = 10.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1214405285]
-transform = Transform3D(1, 0, 0, 0, 0.47869188, 0.877983, 0, -0.877983, 0.47869188, 0, 9.480016, -4.994448)
+transform = Transform3D(1, 0, 0, 0, 0.47869188, 0.877983, 0, -0.877983, 0.47869188, 0, 25.378002, -4.994448)
 light_energy = 0.4
 shadow_enabled = true
-
-[node name="PauseMenu" parent="." unique_id=2083233339 instance=ExtResource("4_8iemx")]
+shadow_opacity = 0.75
+shadow_blur = 10.0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 99.3
 
 [node name="PlayerSleep" parent="." unique_id=1172711439 instance=ExtResource("5_64w2a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9402182, 0.005130768, -2.6092248)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.266209, -11.570661, -2.6092248)
 
 [node name="FloraContainer" type="Node3D" parent="." unique_id=1628521364]
 
-[node name="BaseFlora3" parent="FloraContainer" unique_id=930418277 instance=ExtResource("6_fpun6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1539185, 0, 1.9197931)
+[node name="BaseFlora" parent="FloraContainer" unique_id=930418277 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 13.863815)
 
-[node name="BaseFlora2" parent="FloraContainer" unique_id=1838416354 instance=ExtResource("6_fpun6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5430317, 0, 2.1124861)
+[node name="BaseFlora2" parent="FloraContainer" unique_id=849660891 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 4.274)
 
-[node name="BaseFlora" parent="FloraContainer" unique_id=1434653276 instance=ExtResource("6_fpun6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41734886, 0, 0.8723366)
+[node name="BaseFlora3" parent="FloraContainer" unique_id=1507291067 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9715605, 0, 16.289825)
+
+[node name="BaseFlora4" parent="FloraContainer" unique_id=529684795 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69146156, 0, 4)
+
+[node name="BaseFlora5" parent="FloraContainer" unique_id=426723372 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.028312, 0, 16.626753)
+
+[node name="BaseFlora6" parent="FloraContainer" unique_id=1487230269 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.116297, 0, 12.211586)
+
+[node name="BaseFlora7" parent="FloraContainer" unique_id=1938233423 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.718356, 0, 10.348684)
+
+[node name="BaseFlora8" parent="FloraContainer" unique_id=1299512726 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.74802, 0, 10.348684)
+
+[node name="BaseFlora9" parent="FloraContainer" unique_id=680549748 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.74802, 0, 24.259073)
+
+[node name="BaseFlora10" parent="FloraContainer" unique_id=433759391 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.736046, 0, 25.755814)
+
+[node name="BaseFlora11" parent="FloraContainer" unique_id=611446333 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9695988, 0, 21.216824)
+
+[node name="BaseFlora12" parent="FloraContainer" unique_id=1339894003 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.394863, 0, 17.624382)
+
+[node name="BaseFlora13" parent="FloraContainer" unique_id=1787577092 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.401459, 0, 22.844439)
+
+[node name="BaseFlora14" parent="FloraContainer" unique_id=1063833505 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.506088, 0, 22.844439)
+
+[node name="BaseFlora15" parent="FloraContainer" unique_id=258283490 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.506088, 0, 8.83279)
+
+[node name="BaseFlora16" parent="FloraContainer" unique_id=580540344 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0606937, 0, 15.92396)
+
+[node name="BaseFlora17" parent="FloraContainer" unique_id=293098925 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.53863, 0, 13.16304)
+
+[node name="BaseFlora18" parent="FloraContainer" unique_id=516387665 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.469739, 0, 7.599636)
+
+[node name="BaseFlora19" parent="FloraContainer" unique_id=1373087521 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.979388, 0, 7.599636)
+
+[node name="BaseFlora20" parent="FloraContainer" unique_id=2013816750 instance=ExtResource("6_fpun6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7950773, 0, 18.85485)
 current_type = 1
 
 [node name="EnterHouse" parent="." unique_id=606512115 node_paths=PackedStringArray("interior_spawn") instance=ExtResource("7_wc255")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9375322, 0.57423115, -3.6714969)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.062153, 3.7532475, -32.822136)
 interior_spawn = NodePath("../ExitHouse")
 
 [node name="ExitHouse" parent="." unique_id=887263288 node_paths=PackedStringArray("exterior_spawn") instance=ExtResource("8_arp2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2968359, -9.705484, -4.0545006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.907752, -12.182063, 4.01839)
 exterior_spawn = NodePath("../EnterHouse")
 
-[node name="Npc" parent="." unique_id=1463559982 instance=ExtResource("9_ux5qa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3407863, 0.005130291, -3.4123616)
+[node name="Talkables" type="Node3D" parent="." unique_id=649817371]
+
+[node name="GoddessStatue" parent="Talkables" unique_id=1463559982 instance=ExtResource("9_ux5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.425066, 0.005130291, 32.80551)
+dialogue_text = "Goddess Text Here!"
+
+[node name="IntroInfo" parent="Talkables" unique_id=164483212 instance=ExtResource("9_ux5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.591145, 1.8578033, -29.490166)
+npc_name = "Game Introduction"
+dialogue_text = "You are in charge of reintroducing 4 native species that have been long gone from this ecosystem, plant everyday and check your progress by sleeping!
+Ensure that each plant reaches a ~25% ratio, if all plants are within this ratio, keep the streak for 3 days to win the game!
+But be sure to not overwork yourself, work that relates to your ecosystem task consumes stamina. Replenish it back to full by sleeping!"
+
+[node name="IntroInfo2" parent="Talkables" unique_id=1719319179 instance=ExtResource("9_ux5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.489292, 1.8578033, -16.080654)
+npc_name = "Game Introduction"
+dialogue_text = "The regioned enclosed by the pathway down the hill is your planting ground. For a plant, you maya collect it (LMS) [Consumes stamina]or plant (RMS)[Consumes stamina]. Select what you want to plant by pressing 1, 2, 3 or 4 on the keyboard."
+
+[node name="IntroInfo3" parent="Talkables" unique_id=1026686394 instance=ExtResource("9_ux5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.311918, 0.5604527, -26.355383)
+npc_name = "Game Introduction"
+dialogue_text = "The regioned enclosed by the pathway down the hill is your planting ground. For a plant, you maya collect it (LMS) [Consumes stamina]or plant (RMS)[Consumes stamina]. Select what you want to plant by pressing 1, 2, 3 or 4 on the keyboard."
+
+[node name="AbtPlant1" parent="Talkables" unique_id=521872349 instance=ExtResource("9_ux5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.500992, 1.8578033, -30.906673)
+npc_name = "Plant Info"
+dialogue_text = "Plant 1 species info.
+Collect by pressing (LMS) [Consumes stamina]."
+
+[node name="AbtPlant2" parent="Talkables" unique_id=398553502 instance=ExtResource("9_ux5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.760202, 1.8578033, -30.913641)
+npc_name = "Plant Info"
+dialogue_text = "Plant 2 species info.
+Collect by pressing (LMS) [Consumes stamina]."
+
+[node name="AbtPlant3" parent="Talkables" unique_id=2006384977 instance=ExtResource("9_ux5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.956161, 1.8578033, -30.92656)
+npc_name = "Plant Info"
+dialogue_text = "Plant 3 species info.
+Collect by pressing (LMS) [Consumes stamina]."
+
+[node name="AbtPlant4" parent="Talkables" unique_id=692994156 instance=ExtResource("9_ux5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.002037, 1.8578033, -30.931698)
+npc_name = "Plant Info"
+dialogue_text = "Plant 4 species info.
+Collect by pressing (LMS) [Consumes stamina]."
+
+[node name="FloraCollectionHolder" type="Node3D" parent="." unique_id=644299954]
+
+[node name="FloraCollection" parent="FloraCollectionHolder" unique_id=457617331 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.62295, 2.2551298, -33.229813)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection" unique_id=1393172744]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection22" parent="FloraCollectionHolder" unique_id=13061755 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.04067, 2.2551298, -33.768753)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection22" unique_id=211112016]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection23" parent="FloraCollectionHolder" unique_id=2040446388 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.04067, 2.2551298, -36.768753)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection23" unique_id=1401732837]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection24" parent="FloraCollectionHolder" unique_id=1353262910 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.04067, 2.2551298, -38.569874)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection24" unique_id=793448439]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection25" parent="FloraCollectionHolder" unique_id=1541265372 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.345036, 2.2551298, -38.569874)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection25" unique_id=527763666]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection26" parent="FloraCollectionHolder" unique_id=912224423 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.345036, 2.2551298, -37.46531)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection26" unique_id=118799114]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection5" parent="FloraCollectionHolder" unique_id=1498213160 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.231092, 2.2551298, -34.724037)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection5" unique_id=1987404703]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection21" parent="FloraCollectionHolder" unique_id=61649310 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.192808, 2.2551298, -34.724037)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection21" unique_id=2056698677]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, -0.8308029)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection6" parent="FloraCollectionHolder" unique_id=1017375957 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.982712, 2.2551298, -36.1668)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection6" unique_id=2098617203]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection7" parent="FloraCollectionHolder" unique_id=437497689 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.272362, 2.2551298, -37.774395)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection7" unique_id=576093951]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection8" parent="FloraCollectionHolder" unique_id=449912410 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.067135, 2.2551298, -39.30647)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection8" unique_id=1766136369]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7036226, 0)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcyu4")
+
+[node name="FloraCollection2" parent="FloraCollectionHolder" unique_id=1732845764 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.840158, 2.2551298, -33.233894)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection2" unique_id=262708204]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection27" parent="FloraCollectionHolder" unique_id=984214241 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.119907, 2.2551298, -33.92501)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection27" unique_id=460094825]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection28" parent="FloraCollectionHolder" unique_id=1196240475 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234018, 2.2551298, -35.13349)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection28" unique_id=1258718728]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection29" parent="FloraCollectionHolder" unique_id=224122444 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.234018, 2.2551298, -34.461647)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection29" unique_id=1238006292]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection30" parent="FloraCollectionHolder" unique_id=1265348252 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.076551, 2.2551298, -35.11436)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection30" unique_id=1064774143]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection31" parent="FloraCollectionHolder" unique_id=1372456563 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.23332, 2.2551298, -35.591953)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection31" unique_id=709450251]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection32" parent="FloraCollectionHolder" unique_id=369497482 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.707365, 2.2551298, -35.022465)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection32" unique_id=1962992113]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection33" parent="FloraCollectionHolder" unique_id=70564788 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.707365, 2.2551298, -36.640938)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection33" unique_id=1376831964]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection34" parent="FloraCollectionHolder" unique_id=1291994872 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.557764, 2.2551298, -37.113377)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection34" unique_id=1285114611]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection35" parent="FloraCollectionHolder" unique_id=1041488444 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.571198, 2.2551298, -38.3276)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection35" unique_id=1153070830]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection36" parent="FloraCollectionHolder" unique_id=113416278 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.318317, 2.2551298, -37.71143)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection36" unique_id=245356530]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection37" parent="FloraCollectionHolder" unique_id=1052626613 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.835018, 2.2551298, -39.208282)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection37" unique_id=301421001]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection38" parent="FloraCollectionHolder" unique_id=1182210057 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.310486, 2.2551298, -38.628048)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection38" unique_id=557330733]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection9" parent="FloraCollectionHolder" unique_id=2058117083 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.620405, 2.2551298, -34.592014)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection9" unique_id=1774711258]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.5110817, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection10" parent="FloraCollectionHolder" unique_id=1092314385 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.620405, 2.2551298, -35.96336)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection10" unique_id=982904743]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.7052727, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection11" parent="FloraCollectionHolder" unique_id=652537871 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.620405, 2.2551298, -37.59604)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection11" unique_id=1092290080]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.4781227, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection12" parent="FloraCollectionHolder" unique_id=2085380479 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.620405, 2.2551298, -39.08443)
+flora_type = 1
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection12" unique_id=2144015767]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.04007721, 0.7036226, 0.082710266)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhb1k")
+
+[node name="FloraCollection3" parent="FloraCollectionHolder" unique_id=1438251248 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.190235, 2.2551298, -33.191376)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection3" unique_id=598317359]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection39" parent="FloraCollectionHolder" unique_id=262427834 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.190235, 2.2551298, -33.83696)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection39" unique_id=338968401]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection40" parent="FloraCollectionHolder" unique_id=1947121696 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.086079, 2.2551298, -33.348198)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection40" unique_id=851359258]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection41" parent="FloraCollectionHolder" unique_id=1345239913 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.010311, 2.2551298, -35.243538)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection41" unique_id=308094302]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection42" parent="FloraCollectionHolder" unique_id=100169596 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.97965, 2.2551298, -36.66134)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection42" unique_id=275681780]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection43" parent="FloraCollectionHolder" unique_id=1602091068 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.269136, 2.2551298, -38.19416)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection43" unique_id=1303251172]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection44" parent="FloraCollectionHolder" unique_id=638366463 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.963596, 2.2551298, -37.20556)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection44" unique_id=2074685757]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection45" parent="FloraCollectionHolder" unique_id=1681468515 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.224045, 2.2551298, -35.456425)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection45" unique_id=486276304]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection46" parent="FloraCollectionHolder" unique_id=613196834 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2924, 2.2551298, -34.672783)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection46" unique_id=526248494]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection13" parent="FloraCollectionHolder" unique_id=1129066337 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.85287, 2.2551298, -34.502853)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection13" unique_id=1949495370]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection14" parent="FloraCollectionHolder" unique_id=996418645 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.643353, 2.2551298, -35.917698)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection14" unique_id=818861547]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection15" parent="FloraCollectionHolder" unique_id=597029200 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.84241, 2.2551298, -37.330315)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection15" unique_id=2025994448]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection16" parent="FloraCollectionHolder" unique_id=1205159540 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.953623, 2.2551298, -38.695076)
+flora_type = 2
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection16" unique_id=1465657140]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.054885864, 0.7036226, 0.041110992)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmndo")
+
+[node name="FloraCollection4" parent="FloraCollectionHolder" unique_id=1858245155 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.460171, 2.2551298, -33.21991)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection4" unique_id=379004643]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection47" parent="FloraCollectionHolder" unique_id=1106142134 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.460171, 2.2551298, -33.97741)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection47" unique_id=103748455]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection48" parent="FloraCollectionHolder" unique_id=907711202 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.014011, 2.2551298, -33.60527)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection48" unique_id=1551195629]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection52" parent="FloraCollectionHolder" unique_id=363206876 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.014011, 2.2551298, -36.402664)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection52" unique_id=1469223457]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection53" parent="FloraCollectionHolder" unique_id=1666775439 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.014011, 2.2551298, -38.968723)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection53" unique_id=1468297809]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection54" parent="FloraCollectionHolder" unique_id=1883365137 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.926852, 2.2551298, -38.140293)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection54" unique_id=1273686345]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection55" parent="FloraCollectionHolder" unique_id=602127400 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.926852, 2.2551298, -37.447258)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection55" unique_id=954697663]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection49" parent="FloraCollectionHolder" unique_id=959424195 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.700366, 2.2551298, -34.78927)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection49" unique_id=410899198]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection50" parent="FloraCollectionHolder" unique_id=466691027 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.432872, 2.2551298, -35.38471)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection50" unique_id=1575793022]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection51" parent="FloraCollectionHolder" unique_id=49894416 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.432872, 2.2551298, -36.332935)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection51" unique_id=1633686154]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection17" parent="FloraCollectionHolder" unique_id=1968661889 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.854275, 2.2551298, -34.544373)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection17" unique_id=1215971153]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection18" parent="FloraCollectionHolder" unique_id=670713005 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.810575, 2.2551298, -35.756134)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection18" unique_id=494778283]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection19" parent="FloraCollectionHolder" unique_id=1337014867 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.835725, 2.2551298, -36.97121)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection19" unique_id=1483026504]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="FloraCollection20" parent="FloraCollectionHolder" unique_id=1045933417 instance=ExtResource("15_svjb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.019747, 2.2551298, -38.79535)
+flora_type = 3
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FloraCollectionHolder/FloraCollection20" unique_id=886162084]
+transform = Transform3D(1, 0, 0, 0, -3.999592e-08, -0.5822431, 0, 0.915, -2.5450653e-08, -0.0023326874, 0.309726, 0.07194519)
+mesh = SubResource("PlaneMesh_bhb1k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bo6tc")
+
+[node name="HouseFloor" type="StaticBody3D" parent="." unique_id=468460040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.877223, -2.532306, -1.5258789e-05)
+physics_material_override = SubResource("PhysicsMaterial_82cfe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HouseFloor" unique_id=1793656033]
+transform = Transform3D(31.125, 0, 0, 0, -1.4818161e-07, -23.91, 0, 3.39, -1.0451392e-06, -1.2463923, -22.341816, -10.101)
+mesh = SubResource("PlaneMesh_lqb7q")
+surface_material_override/0 = SubResource("StandardMaterial3D_j4eoh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HouseFloor" unique_id=1120271866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.569225, 0)
+shape = SubResource("BoxShape3D_gunhw")
+
+[node name="Ground2" type="MeshInstance3D" parent="HouseFloor" unique_id=400495646]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -10.575672, 0)
+mesh = SubResource("BoxMesh_8gofh")
+surface_material_override/0 = SubResource("StandardMaterial3D_h6wmr")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="HouseFloor" unique_id=869308946]
+transform = Transform3D(1, 0, 0, 0, -0.00872653, 0.9999619, 0, -0.9999619, -0.00872653, 0, -5.4918623, 0)
+light_color = Color(0.9218517, 0.9998817, 0.77188116, 1)
+light_energy = 7.122
+light_indirect_energy = 3.155
+spot_range = 11.982581
+spot_angle = 57.656254
 
 [node name="World" type="Node" parent="." unique_id=2004693978]
+
+[node name="CloudShadow" type="Node3D" parent="World" unique_id=1455660758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4438496, -17.574703)
+
+[node name="CloudClump2" type="Node3D" parent="World/CloudShadow" unique_id=1428585644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.600673)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump2" unique_id=669135035]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump2" unique_id=272935081]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump2" unique_id=593528293]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, 0.25692582, 19.852001, 8.636999)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/CloudShadow/CloudClump2" unique_id=626826782]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.062002182, 19.852001, -7.126072)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="World/CloudShadow/CloudClump2" unique_id=230054507]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -5.286887, 19.852001, 3.7131205)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="World/CloudShadow/CloudClump2" unique_id=1280849351]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.0087032, 19.852001, 14.095799)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="CloudClump9" type="Node3D" parent="World/CloudShadow" unique_id=2124892918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.321045, 0, 53.806282)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump9" unique_id=1108191022]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump9" unique_id=1998864506]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump9" unique_id=83705579]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, 0.25692582, 19.852001, 8.636999)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/CloudShadow/CloudClump9" unique_id=1577477963]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.062002182, 19.852001, -7.126072)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="World/CloudShadow/CloudClump9" unique_id=823251384]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -5.286887, 19.852001, 3.7131205)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="World/CloudShadow/CloudClump9" unique_id=692878755]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.0087032, 19.852001, 14.095799)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="CloudClump3" type="Node3D" parent="World/CloudShadow" unique_id=600726294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.640348, 0, 11.5450535)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump3" unique_id=1652170384]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/CloudShadow/CloudClump3" unique_id=685718061]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, -4.754607, 19.852001, 10.391348)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump3" unique_id=807716860]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump3" unique_id=723503820]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, -3.3733146, 19.852001, 3.0364304)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/CloudShadow/CloudClump3" unique_id=1085076213]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.4946804, 19.852001, 4.591219)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/CloudShadow/CloudClump3" unique_id=331275988]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -4.7915077, 19.852001, 13.158571)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/CloudShadow/CloudClump3" unique_id=1371845896]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.062002182, 19.852001, -7.126072)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="CloudClump4" type="Node3D" parent="World/CloudShadow" unique_id=1207041144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.429777, 0, 27.17099)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump4" unique_id=1061978574]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/CloudShadow/CloudClump4" unique_id=544853453]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.1761904, 19.852001, 10.391348)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/CloudShadow/CloudClump4" unique_id=722434112]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.1761904, 19.852001, 12.632893)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/CloudShadow/CloudClump4" unique_id=2046804760]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.4946804, 19.852001, 6.9446487)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/CloudShadow/CloudClump4" unique_id=1415500674]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.3067932, 19.852001, -7.6563644)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump4" unique_id=333177620]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump4" unique_id=1563909694]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, -3.3733146, 19.852001, 3.0364304)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="CloudClump11" type="Node3D" parent="World/CloudShadow" unique_id=506133387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3644123, 0, 45.374985)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump11" unique_id=1035012109]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/CloudShadow/CloudClump11" unique_id=328772438]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.1761904, 19.852001, 10.391348)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/CloudShadow/CloudClump11" unique_id=2014302133]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.1761904, 19.852001, 12.632893)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/CloudShadow/CloudClump11" unique_id=520646441]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.4946804, 19.852001, 6.9446487)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/CloudShadow/CloudClump11" unique_id=862299976]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.3067932, 19.852001, -7.6563644)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump11" unique_id=1654231651]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump11" unique_id=1219791179]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, -3.3733146, 19.852001, 3.0364304)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="CloudClump5" type="Node3D" parent="World/CloudShadow" unique_id=197578294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.20385, 0, -33.28538)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump5" unique_id=698929653]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump5" unique_id=259006570]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump5" unique_id=1532343778]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, 0.25692582, 19.852001, 8.636999)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/CloudShadow/CloudClump5" unique_id=1829797993]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.062002182, 19.852001, -7.126072)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="World/CloudShadow/CloudClump5" unique_id=620508109]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -5.286887, 19.852001, 3.7131205)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="World/CloudShadow/CloudClump5" unique_id=1218740171]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.0087032, 19.852001, 14.095799)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="CloudClump6" type="Node3D" parent="World/CloudShadow" unique_id=163298767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.563501, 0, -15.139656)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump6" unique_id=882546232]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/CloudShadow/CloudClump6" unique_id=259426408]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, -4.754607, 19.852001, 10.391348)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump6" unique_id=2055025806]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump6" unique_id=312231988]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, -3.3733146, 19.852001, 3.0364304)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/CloudShadow/CloudClump6" unique_id=810057977]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.4946804, 19.852001, 4.591219)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/CloudShadow/CloudClump6" unique_id=347806923]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -4.7915077, 19.852001, 13.158571)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/CloudShadow/CloudClump6" unique_id=385051533]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.062002182, 19.852001, -7.126072)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="CloudClump10" type="Node3D" parent="World/CloudShadow" unique_id=1766598012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.751595, 0, 33.98266)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump10" unique_id=1471423367]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/CloudShadow/CloudClump10" unique_id=1138807419]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, -4.754607, 19.852001, 10.391348)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump10" unique_id=2092860842]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump10" unique_id=903647047]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, -3.3733146, 19.852001, 3.0364304)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/CloudShadow/CloudClump10" unique_id=335777664]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.4946804, 19.852001, 4.591219)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/CloudShadow/CloudClump10" unique_id=1138392441]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -4.7915077, 19.852001, 13.158571)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/CloudShadow/CloudClump10" unique_id=568130732]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.062002182, 19.852001, -7.126072)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="CloudClump7" type="Node3D" parent="World/CloudShadow" unique_id=1675122170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.63363, 0, 0.48628044)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump7" unique_id=1239741951]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/CloudShadow/CloudClump7" unique_id=1234619980]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.1761904, 19.852001, 10.391348)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/CloudShadow/CloudClump7" unique_id=1860880161]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.1761904, 19.852001, 12.632893)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/CloudShadow/CloudClump7" unique_id=1833433344]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.4946804, 19.852001, 6.9446487)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/CloudShadow/CloudClump7" unique_id=1275659667]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.3067932, 19.852001, -7.6563644)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump7" unique_id=1412090439]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump7" unique_id=361955615]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, -3.3733146, 19.852001, 3.0364304)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="CloudClump8" type="Node3D" parent="World/CloudShadow" unique_id=665982828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.350296, 0, -21.74141)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/CloudShadow/CloudClump8" unique_id=242166470]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 0, 19.852001, -3.0879593)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/CloudShadow/CloudClump8" unique_id=871276271]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.1761904, 19.852001, 10.391348)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/CloudShadow/CloudClump8" unique_id=1746105572]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, -1.1761904, 19.852001, 12.632893)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/CloudShadow/CloudClump8" unique_id=1435784442]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.4946804, 19.852001, 6.9446487)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/CloudShadow/CloudClump8" unique_id=1012371529]
+transform = Transform3D(1.27, 0, 0, 0, 1, 0, 0, 0, 5.09, 0.3067932, 19.852001, -7.6563644)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/CloudShadow/CloudClump8" unique_id=1229204849]
+transform = Transform3D(3.31, 0, 0, 0, 1, 0, 0, 0, 5.09, 2.960694, 19.852001, 3.461712)
+mesh = SubResource("PlaneMesh_hv3ux")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/CloudShadow/CloudClump8" unique_id=684396120]
+transform = Transform3D(-1.4468469e-07, 0, 5.09, 0, 1, 0, -3.31, 0, -2.2249097e-07, -3.3733146, 19.852001, 3.0364304)
+mesh = SubResource("PlaneMesh_hv3ux")
 
 [node name="Ground" type="Node" parent="World" unique_id=1848901212]
 
@@ -1024,6 +1989,148 @@ mesh = SubResource("PlaneMesh_cr74b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/fence7" unique_id=1583088477]
 shape = SubResource("BoxShape3D_556r4")
 
+[node name="fence10" type="StaticBody3D" parent="World/Ground/3D Decor" unique_id=336086954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.96033, 2.533792, -33.183884)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/3D Decor/fence10" unique_id=65286527]
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/fence10" unique_id=1766980956]
+shape = SubResource("BoxShape3D_556r4")
+
+[node name="fence11" type="StaticBody3D" parent="World/Ground/3D Decor" unique_id=2027784430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.96033, 2.533792, -34.326332)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/3D Decor/fence11" unique_id=639514973]
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/fence11" unique_id=1492387068]
+shape = SubResource("BoxShape3D_556r4")
+
+[node name="fence12" type="StaticBody3D" parent="World/Ground/3D Decor" unique_id=362973360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.96033, 2.533792, -35.508507)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/3D Decor/fence12" unique_id=238967884]
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/fence12" unique_id=671016392]
+shape = SubResource("BoxShape3D_556r4")
+
+[node name="fence13" type="StaticBody3D" parent="World/Ground/3D Decor" unique_id=208811863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.96033, 2.533792, -36.508507)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/3D Decor/fence13" unique_id=101784151]
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/fence13" unique_id=22947117]
+shape = SubResource("BoxShape3D_556r4")
+
+[node name="fence14" type="StaticBody3D" parent="World/Ground/3D Decor" unique_id=1745129522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.96033, 2.533792, -36.508507)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=866452913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1067276)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=541934560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2694817)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=890135359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=46347110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6157093, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1316989241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.250473, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1658449611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.012966, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=2129628257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7892513, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=41601084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.454924, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1292468613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.152056, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1549020580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.798574, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=581963975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.394095, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1036092708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.103377, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=2135619959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, -3.4970474)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=209159310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, -2.3839417)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1896792350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, -1.2171059)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=19952639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, -0.22515869)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=209447774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, 0.7685394)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1853687233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, 1.6864052)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1967447350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, 2.5119247)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1497692088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, 3.4822388)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1220485816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, 4.652775)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=176675345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817135, 0, 5.73267)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1204250293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.131192, 0, 5.73267)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=554388551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.482934, 0, 5.73267)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="World/Ground/3D Decor/fence14" unique_id=1606077421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.662851, 0, 5.73267)
+mesh = SubResource("PlaneMesh_cr74b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/fence14" unique_id=1034750576]
+shape = SubResource("BoxShape3D_556r4")
+
 [node name="fence8" type="StaticBody3D" parent="World/Ground/3D Decor" unique_id=1060968344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.70028, 2.533792, -15.104519)
 
@@ -1043,7 +2150,7 @@ mesh = SubResource("PlaneMesh_cr74b")
 shape = SubResource("BoxShape3D_556r4")
 
 [node name="lowerbase_groundtexture" type="MeshInstance3D" parent="World/Ground" unique_id=112353984]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015130758, -5.0000153)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015130758, -4.969101)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_olg7q")
 
@@ -1057,7 +2164,7 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_h6wmr")
 
 [node name="Cliff2_groundtexture" type="MeshInstance3D" parent="World/Ground/Textureplanes/ground" unique_id=384827997]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 2.01, -32.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.003363, 2.031147, -32.511395)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_pqd0y")
 
@@ -1099,7 +2206,7 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_wu01b")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="World/Ground/Textureplanes/cliffside" unique_id=865499873]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.5, -10.999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.5, -10.977435)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_asl66")
 
@@ -1187,19 +2294,6 @@ mesh = SubResource("PlaneMesh_ok3ci")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.99, 1.5, -109.990005)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_ok3ci")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="World" unique_id=468460040]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49486923, -1.5258789e-05)
-physics_material_override = SubResource("PhysicsMaterial_82cfe")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/StaticBody3D2" unique_id=1120271866]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.569225, 0)
-shape = SubResource("BoxShape3D_gunhw")
-
-[node name="Ground2" type="MeshInstance3D" parent="World/StaticBody3D2" unique_id=400495646]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -10.575672, 0)
-mesh = SubResource("BoxMesh_8gofh")
-surface_material_override/0 = SubResource("StandardMaterial3D_h6wmr")
 
 [node name="Ramps" type="Node" parent="World" unique_id=1314427635]
 
@@ -1712,7 +2806,7 @@ mesh = SubResource("PlaneMesh_uhfbm")
 [node name="PlayerHouse" type="Node" parent="World" unique_id=1061670302]
 
 [node name="PlayerHouseMesh" parent="World/PlayerHouse" unique_id=787610036 instance=ExtResource("10_olg7q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.33116, 2, -36.5)
+transform = Transform3D(1.19, 0, 0, 0, 1.19, 0, 0, 0, 1.19, -33.33116, 2, -36.5)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/PlayerHouse" unique_id=268787040]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -32.06895, 2.5264823, -32.40191)

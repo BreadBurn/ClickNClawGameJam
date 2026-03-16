@@ -21,6 +21,10 @@ GameState="*uid://ci68q6ibkvdhl"
 SceneTransition="*uid://tvqkki4xwkin"
 DayRecap="*uid://vdcywcc304ai"
 
+[global_group]
+
+main_camera=""
+
 [input]
 
 IN_M_LEFT={

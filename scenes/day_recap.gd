@@ -8,10 +8,14 @@ extends CanvasLayer
 @onready var progress_t3: ProgressBar = $"PanelContainer/MarginContainer/VBoxContainer/ProgressBarT3"
 @onready var progress_t4: ProgressBar = $"PanelContainer/MarginContainer/VBoxContainer/ProgressBarT4"
 
+@onready var sub_viewport: SubViewport = $PanelContainer/MarginContainer2/VBoxContainer/SubViewportContainer/SubViewport
+@onready var preview_cam: Camera3D = $PanelContainer/MarginContainer2/VBoxContainer/SubViewportContainer/SubViewport/PreviewCamera
+
 @onready var bars: Array[ProgressBar] = [progress_t1, progress_t2, progress_t3, progress_t4]
 
 var _is_active: bool = false
 var _is_transitioning: bool = false
+var main_cam: Camera3D
 
 func _ready() -> void:
 	hide()
@@ -21,8 +25,44 @@ func _ready() -> void:
 	if GameState != null and GameState.has_signal("daily_evaluated"):
 		GameState.daily_evaluated.connect(_on_daily_evaluated)
 
-	# Use _input instead of _unhandled_input for a UI overlay like this
 	set_process_input(true)
+
+func set_main_camera(cam: Camera3D) -> void:
+	main_cam = cam
+	sub_viewport.world_3d = cam.get_viewport().world_3d
+
+	preview_cam.projection = cam.projection
+	preview_cam.near = cam.near
+	preview_cam.far = cam.far
+	preview_cam.keep_aspect = cam.keep_aspect
+
+	if cam.projection == Camera3D.PROJECTION_PERSPECTIVE:
+		preview_cam.fov = cam.fov
+	elif cam.projection == Camera3D.PROJECTION_ORTHOGONAL:
+		preview_cam.size = cam.size
+
+
+func _process(_delta: float) -> void:
+	if not is_instance_valid(main_cam):
+		return
+
+	# Copy transform
+	preview_cam.global_transform = main_cam.global_transform
+
+	# Copy projection mode
+	preview_cam.projection = main_cam.projection
+
+	# Copy shared camera settings
+	preview_cam.near = main_cam.near
+	preview_cam.far = main_cam.far
+	preview_cam.keep_aspect = main_cam.keep_aspect
+
+	# Copy the correct projection-specific setting
+	if main_cam.projection == Camera3D.PROJECTION_PERSPECTIVE:
+		preview_cam.fov = main_cam.fov
+	elif main_cam.projection == Camera3D.PROJECTION_ORTHOGONAL:
+		preview_cam.size = main_cam.size
+
 
 func _on_daily_evaluated(coins_earned: int, _types_in_bounds: int, _current_streak: int) -> void:
 	_populate_from_state(coins_earned)
@@ -57,7 +97,6 @@ func activate_scene() -> void:
 
 	_is_transitioning = true
 
-	# Disable player while recap is active
 	if GameState != null:
 		if GameState.has_method("begin_interaction"):
 			GameState.begin_interaction()
@@ -87,7 +126,6 @@ func deactivate_scene() -> void:
 	hide()
 	_is_active = false
 
-	# Re-enable player
 	if GameState != null:
 		if GameState.has_method("end_interaction"):
 			GameState.end_interaction()

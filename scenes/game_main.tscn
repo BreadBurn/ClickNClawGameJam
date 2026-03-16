@@ -38,6 +38,8 @@ script = ExtResource("1_lla21")
 
 [node name="ShopOverlay" parent="." unique_id=2044294706 instance=ExtResource("12_5pnww")]
 
+[node name="PauseMenu" parent="." unique_id=2083233339 instance=ExtResource("4_cbeu7")]
+
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=830392251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49486923, -1.5258789e-05)
 physics_material_override = SubResource("PhysicsMaterial_r2uep")
@@ -72,8 +74,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.047020614, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=162162419]
 transform = Transform3D(1, 0, 0, 0, -0.44396278, 0.89604527, 0, -0.89604527, -0.44396278, 0, 9.480016, -4.994448)
 
-[node name="PauseMenu" parent="." unique_id=2083233339 instance=ExtResource("4_cbeu7")]
-
 [node name="PlayerSleep" parent="." unique_id=1172711439 instance=ExtResource("4_57ec7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9402182, 0.005130768, -2.6092248)
 
@@ -84,14 +84,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3103409, 0, 3.2901678)
 current_type = 3
 
 [node name="BaseFlora3" parent="FloraContainer" unique_id=891807418 instance=ExtResource("5_3qnxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.094881, 0, 1.9407449)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.094881, 0, 1.9501915)
 
 [node name="BaseFlora2" parent="FloraContainer" unique_id=1354161361 instance=ExtResource("5_3qnxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7493309, 0, 2.1124861)
 current_type = 1
 
 [node name="BaseFlora" parent="FloraContainer" unique_id=56923005 instance=ExtResource("5_3qnxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.079987, -0.057105064, 3.2329674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.079987, -0.057105064, 3.233696)
 current_type = 2
 
 [node name="EnterHouse" parent="." unique_id=606512115 node_paths=PackedStringArray("interior_spawn") instance=ExtResource("6_4qd86")]

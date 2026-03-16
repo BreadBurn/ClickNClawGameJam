@@ -29,12 +29,12 @@ var held_plant_state: HeldPlantState = HeldPlantState.IN_NONE
 var current_stamina: int = 6
 
 # Planting zone moved here (shared authority for spawn + player planting)
-@export var planting_x_start: float = -20.0
-@export var planting_x_end: float = 20.0
-@export var planting_z_start: float = -20.0
-@export var planting_z_end: float = 20.0
+@export var planting_x_start: float = -28.0
+@export var planting_x_end: float = 26.0
+@export var planting_z_start: float = 4.0
+@export var planting_z_end: float = 28.0
 
-@export var planting_clearance_radius: float = 1.25
+@export var planting_clearance_radius: float = 0.8
 @export var flora_scene: PackedScene
 
 var total_coins: int = 0
@@ -54,7 +54,10 @@ const MIN_RATIO: float = 0.15
 const MAX_RATIO: float = 0.35
 
 # How much each ratio is allowed to drift from the previous balanced day
-const CONSISTENCY_TOLERANCE: float = 0.05
+const CONSISTENCY_TOLERANCE: float = 0.60
+
+# Looser cap for natural self-growth / duplication
+const SELF_SPREAD_MAX_RATIO: float = 0.60
 
 # Stores the last balanced day's ratios (used for consistency checks)
 var last_stable_ratios: Dictionary = {}
@@ -506,6 +509,8 @@ func get_ecology_action_multiplier(type: int) -> float:
 
 	return 1.0
 
+func can_type_self_spread(type: int) -> bool:
+	return get_flora_ratio(type) < SELF_SPREAD_MAX_RATIO
 
 # ------------------------------------------------------------
 # INTERNAL HELPERS
