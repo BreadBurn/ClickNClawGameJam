@@ -38,7 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://domqhmud1ut4w" path="res://world_sprites/cliffside1.png" id="20_pqd0y"]
 [ext_resource type="Texture2D" uid="uid://0v6a56oml4le" path="res://world_sprites/cliffside2.png" id="21_5k0ak"]
 [ext_resource type="Texture2D" uid="uid://kctvac26pxps" path="res://world_sprites/housefloor.png" id="21_bhb1k"]
-[ext_resource type="Material" uid="uid://bfgph1oaf4q64" path="res://scenes/wallforhouse.tres" id="22_tcyu4"]
+[ext_resource type="Material" path="res://scenes/wallforhouse.tres" id="22_tcyu4"]
 [ext_resource type="Texture2D" uid="uid://c4spla7wq4thj" path="res://world_sprites/houseside2_window.png" id="23_vmndo"]
 [ext_resource type="Texture2D" uid="uid://dhvgxtyabhimf" path="res://world_sprites/rug.png" id="24_bo6tc"]
 [ext_resource type="Texture2D" uid="uid://bi64qidsvhs6l" path="res://world_sprites/bigstairs.png" id="24_xy2fk"]
@@ -47,7 +47,7 @@
 [ext_resource type="Material" uid="uid://q6qdtn58ljlj" path="res://scenes/quickstairs.tres" id="25_cmcjb"]
 [ext_resource type="PackedScene" uid="uid://c8g1osdbbvkqx" path="res://scenes/drawer.gltf" id="26_v4d4p"]
 [ext_resource type="PackedScene" uid="uid://bwo0ws2jp7gy5" path="res://scenes/model.gltf" id="27_30hdq"]
-[ext_resource type="PackedScene" uid="uid://dt2mewg27svhe" path="res://scenes/tree_sml.tscn" id="27_lqb7q"]
+[ext_resource type="PackedScene" path="res://scenes/tree_sml.tscn" id="27_lqb7q"]
 [ext_resource type="PackedScene" uid="uid://bqdvdbce5vdlp" path="res://scenes/piano.gltf" id="27_sc620"]
 [ext_resource type="Texture2D" uid="uid://dq4ghsvv5vbjs" path="res://world_sprites/goddess_painting.png" id="28_3fqns"]
 [ext_resource type="Texture2D" uid="uid://b05rtfpd1wumd" path="res://world_sprites/postbox.png" id="28_ok3ci"]
@@ -859,7 +859,7 @@ exterior_spawn = NodePath("../EnterHouse")
 [node name="Talkables" type="Node3D" parent="." unique_id=649817371]
 
 [node name="GoddessStatue" parent="Talkables" unique_id=1463559982 instance=ExtResource("9_ux5qa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.425066, 0.005130291, 32.80551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.22714, 0.005130291, 34.88345)
 dialogue_text = "Goddess Text Here!"
 
 [node name="IntroInfo" parent="Talkables" unique_id=164483212 instance=ExtResource("9_ux5qa")]
@@ -881,25 +881,25 @@ npc_name = "Game Introduction"
 dialogue_text = "The regioned enclosed by the pathway down the hill is your planting ground. For a plant, you maya collect it (LMS) [Consumes stamina]or plant (RMS)[Consumes stamina]. Select what you want to plant by pressing 1, 2, 3 or 4 on the keyboard."
 
 [node name="AbtPlant1" parent="Talkables" unique_id=521872349 instance=ExtResource("9_ux5qa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.500992, 1.8578033, -30.906673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.06103, 1.8578033, -30.906673)
 npc_name = "Plant Info"
 dialogue_text = "Plant 1 species info.
 Collect by pressing (LMS) [Consumes stamina]."
 
 [node name="AbtPlant2" parent="Talkables" unique_id=398553502 instance=ExtResource("9_ux5qa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.760202, 1.8578033, -30.913641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.075129, 1.8578033, -30.913641)
 npc_name = "Plant Info"
 dialogue_text = "Plant 2 species info.
 Collect by pressing (LMS) [Consumes stamina]."
 
 [node name="AbtPlant3" parent="Talkables" unique_id=2006384977 instance=ExtResource("9_ux5qa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.956161, 1.8578033, -30.92656)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.726563, 1.8578033, -30.92656)
 npc_name = "Plant Info"
 dialogue_text = "Plant 3 species info.
 Collect by pressing (LMS) [Consumes stamina]."
 
 [node name="AbtPlant4" parent="Talkables" unique_id=692994156 instance=ExtResource("9_ux5qa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.002037, 1.8578033, -30.931698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.075815, 1.8578033, -30.931698)
 npc_name = "Plant Info"
 dialogue_text = "Plant 4 species info.
 Collect by pressing (LMS) [Consumes stamina]."
@@ -929,7 +929,7 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_oksur")
 
 [node name="info_indicator4" type="StaticBody3D" parent="Talkables" unique_id=626210198]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.881292, 1.831644, 31.039711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.27407, 1.831644, 35.282887)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Talkables/info_indicator4" unique_id=1397502808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.127449, 0.26938295, -0.21344376)
@@ -2466,6 +2466,50 @@ mesh = SubResource("PlaneMesh_421lv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052978516, 0.28085327, 0)
 shape = SubResource("BoxShape3D_556r4")
 
+[node name="sign3" type="StaticBody3D" parent="World/Ground/3D Decor/signs" unique_id=21703325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.140114, 2.2973678, -30.736504)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/3D Decor/signs/sign3" unique_id=1973373515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3994999, 0)
+mesh = SubResource("PlaneMesh_421lv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/signs/sign3" unique_id=1340939125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052978516, 0.28085327, 0)
+shape = SubResource("BoxShape3D_556r4")
+
+[node name="sign4" type="StaticBody3D" parent="World/Ground/3D Decor/signs" unique_id=1906861003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.202765, 2.2973678, -30.736504)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/3D Decor/signs/sign4" unique_id=996172660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3994999, 0)
+mesh = SubResource("PlaneMesh_421lv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/signs/sign4" unique_id=115932200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052978516, 0.28085327, 0)
+shape = SubResource("BoxShape3D_556r4")
+
+[node name="sign5" type="StaticBody3D" parent="World/Ground/3D Decor/signs" unique_id=1741471608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.871311, 2.2973678, -30.736504)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/3D Decor/signs/sign5" unique_id=1379827501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3994999, 0)
+mesh = SubResource("PlaneMesh_421lv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/signs/sign5" unique_id=837500506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052978516, 0.28085327, 0)
+shape = SubResource("BoxShape3D_556r4")
+
+[node name="sign6" type="StaticBody3D" parent="World/Ground/3D Decor/signs" unique_id=1272580383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.871311, 2.2973678, -30.736504)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/3D Decor/signs/sign6" unique_id=766759554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.642086, 0.3994999, 0)
+mesh = SubResource("PlaneMesh_421lv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/3D Decor/signs/sign6" unique_id=1257050221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052978516, 0.28085327, 0)
+shape = SubResource("BoxShape3D_556r4")
+
 [node name="sign2" type="StaticBody3D" parent="World/Ground/3D Decor/signs" unique_id=872955383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.627178, 1.2973678, -27.647953)
 
@@ -3242,10 +3286,23 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7iqcu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Lake" unique_id=1861663401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.74759, 0.05980563, 32.95182)
+visible = false
 cast_shadow = 0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="World/Lake/MeshInstance3D" unique_id=1114137765]
 transform = Transform3D(1.92, 0, 0, 0, 1.92, 0, 0, 0, 1.92, -0.47320366, 0.13408351, 0.23904419)
+cast_shadow = 0
+axis = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_ok3ci")
+autoplay = "default"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Lake" unique_id=142093130]
+transform = Transform3D(2.165, 0, 0, 0, 2.165, 0, 0, 0, 2.165, 29.74759, 0.05980563, 45.967285)
+cast_shadow = 0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="World/Lake/MeshInstance3D2" unique_id=1541944604]
+transform = Transform3D(1.92, 0, 0, 0, 1.92, 0, 0, 0, 1.92, -0.01778698, 0.13408351, -0.70079803)
 cast_shadow = 0
 axis = 1
 texture_filter = 0
