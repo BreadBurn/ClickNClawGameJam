@@ -904,35 +904,35 @@ Work that relates to your ecosystem task consumes stamina (planting [right click
 
 [node name="IntroInfo2" parent="Talkables" unique_id=1719319179 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.534645, 1.8578033, -17.905563)
-npc_name = "Game Introduction"
+npc_name = "About Plants"
 dialogue_text = "The regioned enclosed by the pathway down the hill is your planting ground. For a plant, you maya collect it [left click on bed][Consumes stamina]or plant [right click on field][Consumes stamina]. Select what you want to plant by pressing 1, 2, 3 or 4 on the keyboard."
 
 [node name="IntroInfo3" parent="Talkables" unique_id=1026686394 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.655926, 0.5604527, -27.313879)
-npc_name = "Game Introduction"
+npc_name = "About Plants"
 dialogue_text = "The regioned enclosed by the pathway down the hill is your planting ground. For a plant, you maya collect it [left click on bed][Consumes stamina]or plant [right click on field][Consumes stamina]. Select what you want to plant by pressing 1, 2, 3 or 4 on the keyboard."
 
 [node name="AbtPlant1" parent="Talkables" unique_id=521872349 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.06103, 1.8578033, -30.906673)
-npc_name = "Plant Info"
+npc_name = "Forest Hazel[1]"
 dialogue_text = "Forest Hazel[1] - This plant spreads in the field quick. 
 [left click on field to collect]"
 
 [node name="AbtPlant2" parent="Talkables" unique_id=398553502 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.075129, 1.8578033, -30.913641)
-npc_name = "Plant Info"
+npc_name = "Trillium[2]"
 dialogue_text = "Trillium[2] - This plant takes over Forest Hazel[1] if left too close. If enough are clumped together it turns into a Trillium Bastion.
 [left click on field to collect]"
 
 [node name="AbtPlant3" parent="Talkables" unique_id=2006384977 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.726563, 1.8578033, -30.92656)
-npc_name = "Plant Info"
+npc_name = "Wild Fern[3]"
 dialogue_text = "Wild Fern[3] - This plant takes over Trillium[2] if left too close and undefended by Trillium Bastions. 
 [left click on field to collect]"
 
 [node name="AbtPlant4" parent="Talkables" unique_id=692994156 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.075815, 1.8578033, -30.931698)
-npc_name = "Plant Info"
+npc_name = "Poison Cotton[4]"
 dialogue_text = "Poison Cotton[4] - This plant takes over Wild Fern[3] if left too close and disappear after 7 days.
 [left click on field to collect]"
 
@@ -940,6 +940,14 @@ dialogue_text = "Poison Cotton[4] - This plant takes over Wild Fern[3] if left t
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 4, -31)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Talkables/info_indicator" unique_id=1182394853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99687386, 0.326025, 0.90572166)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_oksur")
+
+[node name="info_indicator5" type="StaticBody3D" parent="Talkables" unique_id=669511604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.287879, 4.4749813, -35.818573)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Talkables/info_indicator5" unique_id=510687688]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99687386, 0.326025, 0.90572166)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_oksur")
