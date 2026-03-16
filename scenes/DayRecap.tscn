@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dp2w20ou34km4" path="res://assets/plant_assets/plant1_form1.png" id="2_jmw0o"]
 [ext_resource type="Texture2D" uid="uid://dkbsuswmai40" path="res://assets/plant_assets/plant2_form1.png" id="3_wmnrq"]
 [ext_resource type="Texture2D" uid="uid://5lrd4kkqxw15" path="res://assets/plant_assets/plant3_form1.png" id="4_5clrj"]
+[ext_resource type="Texture2D" uid="uid://ddyvbs02ocolp" path="res://assets/plant_assets/plant5_form1.png" id="4_sikl3"]
 [ext_resource type="Texture2D" uid="uid://d06bkqea7nxki" path="res://assets/plant_assets/plant4_form1.png" id="5_qnqvq"]
 
 [node name="DayRecap" type="CanvasLayer" unique_id=1488982761]
@@ -81,9 +82,13 @@ text = "Trillium[2] Plant Coverage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT2/HBoxContainer" unique_id=1881191974]
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT2/HBoxContainer" unique_id=2024850860]
 layout_mode = 2
 texture = ExtResource("3_wmnrq")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT2/HBoxContainer" unique_id=1881191974]
+layout_mode = 2
+texture = ExtResource("4_sikl3")
 
 [node name="ProgressBarT3" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=363135008]
 unique_name_in_owner = true
