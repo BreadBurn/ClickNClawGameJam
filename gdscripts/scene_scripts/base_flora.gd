@@ -6,11 +6,11 @@ enum FloraType { TYPE_1, TYPE_2, TYPE_3, TYPE_4 }
 
 # Spawn & Conversion distances
 @export var min_spawn_distance: float = 0.05
-@export var max_spawn_distance: float = 4
+@export var max_spawn_distance: float = 2.5
 @export var conversion_radius: float = 10.0
 
 # True empty-space spawning
-@export var spawn_clearance_radius: float = 0.5
+@export var spawn_clearance_radius: float = 0.7
 @export var spawn_attempts: int = 20
 
 
@@ -20,26 +20,26 @@ enum FloraType { TYPE_1, TYPE_2, TYPE_3, TYPE_4 }
 
 # Growth limiting for TYPE_1 (Pioneer)
 @export var density_check_radius: float = 3.0
-@export var max_local_density: int = 100
-@export var type1_growth_base_chance: float = 0.95
+@export var max_local_density: int = 8
+@export var type1_growth_base_chance: float = 0.45
 
 # Conversion chances
-@export var type2_conversion_chance: float = 0.9
-@export var type3_conversion_chance: float = 0.7
-@export var type4_conversion_chance: float = 0.5
+@export var type2_conversion_chance: float = 1.0
+@export var type3_conversion_chance: float = 0.55
+@export var type4_conversion_chance: float = 0.8
 
 # Bastion (TYPE_2) fusion threshold
 @export var bastion_fuse_threshold: int = 2 # Needs 2 neighbors (3 total) to fuse
 
 # Fused TYPE_2 / Bastion Core bonuses
 @export var fused_type2_resist_chance: float = 0.75
-@export var fused_type2_purify_chance: float = 0.45
+@export var fused_type2_purify_chance: float = 0.6
 @export var fused_type2_purify_radius: float = 5.0
 @export var fused_type2_conversion_bonus: float = 0.2
 @export var fused_type2_bonus_harvest: int = 1
 
 # Cleanser (TYPE_4) lifespan
-@export var type4_max_lifespan: int = 3
+@export var type4_max_lifespan: int = 7
 var current_lifespan: int = 0
 
 var last_day_acted: int = -1
@@ -112,8 +112,11 @@ func _handle_type1_growth() -> void:
 		return
 
 	var nearby_count_1 := _get_nearby_flora_count(FloraType.TYPE_1, density_check_radius)
-	var spread_chance := type1_growth_base_chance * (1.0 - (float(nearby_count_1) / float(max_local_density)))
+	
+	var density_ratio = clamp(float(nearby_count_1) / float(max_local_density), 0.0, 1.0)
+	var spread_chance := type1_growth_base_chance * pow(1.0 - density_ratio, 2.0)
 	spread_chance = clamp(spread_chance, 0.0, 1.0)
+	
 	spread_chance = _get_ecology_adjusted_chance(spread_chance, FloraType.TYPE_1)
 
 	if spread_chance > 0.0 and randf() <= spread_chance:

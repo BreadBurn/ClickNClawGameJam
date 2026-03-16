@@ -8,6 +8,7 @@ signal daily_evaluated(coins_earned: int, types_in_bounds: int, current_streak: 
 signal game_won()
 signal stamina_changed(current_stamina: int, max_stamina: int)
 signal held_plant_changed(new_held_state: HeldPlantState)
+signal reveal_furniture
 
 enum PlayerMode {
 	PLAYER_ACTIVE,
@@ -26,8 +27,8 @@ var player_mode: PlayerMode = PlayerMode.PLAYER_ACTIVE
 var held_plant_state: HeldPlantState = HeldPlantState.IN_NONE
 var is_player_male: bool = true # Add this line
 
-@export var max_stamina: int = 6
-var current_stamina: int = 6
+@export var max_stamina: int = 12
+var current_stamina: int = 12
 
 # Planting zone moved here (shared authority for spawn + player planting)
 @export var planting_x_start: float = -28.0
@@ -51,14 +52,17 @@ var type_4_count: int = 0
 var consecutive_balanced_days: int = 0
 
 # Healthy population band
-const MIN_RATIO: float = 0.15
-const MAX_RATIO: float = 0.35
+const MIN_RATIO: float = 0.10
+const MAX_RATIO: float = 0.40
 
 # How much each ratio is allowed to drift from the previous balanced day
 const CONSISTENCY_TOLERANCE: float = 0.60
 
 # Looser cap for natural self-growth / duplication
-const SELF_SPREAD_MAX_RATIO: float = 0.60
+const SELF_SPREAD_MAX_RATIO: float = 0.45
+
+const RECOVERY_SEEDS_FOR_MISSING_TYPE := 2
+const RECOVERY_SEEDS_FOR_LOW_TYPE := 1
 
 # Stores the last balanced day's ratios (used for consistency checks)
 var last_stable_ratios: Dictionary = {}
@@ -352,7 +356,6 @@ func go_to_sleep() -> void:
 
 	# Daily reset on sleep
 	reset_stamina()
-	reset_inventory()
 
 	# Let all flora react to the new day first
 	player_slept.emit(cur_day)
@@ -386,7 +389,8 @@ func _evaluate_daily_ecosystem() -> void:
 		return
 
 	latest_ratios = _counts_to_ratios(counts, total_flora)
-
+	_grant_recovery_seeds(counts)
+	
 	var types_in_bounds := 0
 	for type in latest_ratios.keys():
 		var ratio: float = latest_ratios[type]
@@ -638,3 +642,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		_set_held_from_input("IN_PLANT3")
 	elif event.is_action_pressed("IN_PLANT4"):
 		_set_held_from_input("IN_PLANT4")
+		
+func _grant_recovery_seeds(counts: Dictionary) -> void:
+	for type in [0, 1, 2, 3]:
+		var count := int(counts.get(type, 0))
+		var ratio := float(latest_ratios.get(type, 0.0))
+
+		if count == 0:
+			add_to_inventory(type, RECOVERY_SEEDS_FOR_MISSING_TYPE)
+		elif ratio < MIN_RATIO:
+			add_to_inventory(type, RECOVERY_SEEDS_FOR_LOW_TYPE)

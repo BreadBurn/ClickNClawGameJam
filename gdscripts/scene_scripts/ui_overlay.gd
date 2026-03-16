@@ -13,6 +13,7 @@ extends CanvasLayer
 @onready var plant4_rect: ColorRect = %Plant4Rect
 @onready var _plant_rects: Array[ColorRect] = [plant1_rect, plant2_rect, plant3_rect, plant4_rect]
 
+@onready var out_of_stamina: Label = %OutOfStaminaWarning
 # --- Slot colors ---
 const UNSELECTED_COLOR := Color(0.25, 0.25, 0.25, 0.5) # darker gray
 const SELECTED_COLOR   := Color(0.85, 0.85, 0.85, 0.5) # lighter gray
@@ -55,10 +56,13 @@ func _on_player_slept(new_day: int) -> void:
 	if day_label:
 		day_label.text = "Day: %d" % new_day
 
-func _on_stamina_changed(current_stamina: int, max_stamina: int) -> void:
-	if stamina_bar:
-		stamina_bar.max_value = max_stamina
-		stamina_bar.value = current_stamina
+func _on_stamina_changed(current_stamina: int, max_stamina: int) -> void: 
+	if stamina_bar: 
+		stamina_bar.max_value = max_stamina 
+		stamina_bar.value = current_stamina 
+		
+	if out_of_stamina:
+		out_of_stamina.visible = (current_stamina <= 0)
 
 func _on_daily_evaluated(_coins_earned: int, _types_in_bounds: int, current_streak: int) -> void:
 	_update_streak_display(current_streak)

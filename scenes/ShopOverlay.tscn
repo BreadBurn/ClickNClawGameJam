@@ -51,7 +51,7 @@ text = "[close]"
 layout_mode = 2
 theme_override_constants/h_separation = 9
 theme_override_constants/v_separation = 84
-columns = 6
+columns = 3
 
 [node name="ShopItem" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=425179875 instance=ExtResource("1_p3tmv")]
 layout_mode = 2
@@ -69,24 +69,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ShopItem6" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=875870968 instance=ExtResource("1_p3tmv")]
-layout_mode = 2
-
-[node name="ShopItem7" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1328274622 instance=ExtResource("1_p3tmv")]
-layout_mode = 2
-
-[node name="ShopItem8" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1383843081 instance=ExtResource("1_p3tmv")]
-layout_mode = 2
-
-[node name="ShopItem9" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=134898477 instance=ExtResource("1_p3tmv")]
-layout_mode = 2
-
-[node name="ShopItem10" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1273215340 instance=ExtResource("1_p3tmv")]
-layout_mode = 2
-
-[node name="ShopItem11" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1994640205 instance=ExtResource("1_p3tmv")]
-layout_mode = 2
-
-[node name="ShopItem12" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1033159746 instance=ExtResource("1_p3tmv")]
 layout_mode = 2
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

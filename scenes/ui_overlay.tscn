@@ -72,6 +72,19 @@ metadata/_edit_use_anchors_ = true
 [node name="HBoxContainer" type="VBoxContainer" parent="Control/BottomMidMargin" unique_id=910214140]
 layout_mode = 2
 
+[node name="OutOfStaminaWarning" type="Label" parent="Control/BottomMidMargin/HBoxContainer" unique_id=935266859]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85926485, 0.52697575, 0.48413163, 1)
+text = "You are out of stamina, go to sleep!"
+horizontal_alignment = 1
+
+[node name="Plant Names" type="Label" parent="Control/BottomMidMargin/HBoxContainer" unique_id=964482077]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Forest hazel | Trillium | Wild Fern | Poison Cotton"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/BottomMidMargin/HBoxContainer" unique_id=626893116]
 layout_mode = 2
 size_flags_vertical = 8

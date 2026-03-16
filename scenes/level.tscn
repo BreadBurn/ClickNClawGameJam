@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dgduvt71d4hxf" path="res://scenes/ShopOverlay.tscn" id="4_q4oe8"]
 [ext_resource type="PackedScene" uid="uid://dnwbtjsmreoue" path="res://scenes/player_sleep.tscn" id="5_64w2a"]
 [ext_resource type="PackedScene" uid="uid://cqfwd3oawqdme" path="res://scenes/base_flora.tscn" id="6_fpun6"]
+[ext_resource type="PackedScene" uid="uid://dpyrdmc1nthfp" path="res://scenes/open_shop.tscn" id="7_nj2gj"]
 [ext_resource type="PackedScene" uid="uid://dly7hhg7b6tf0" path="res://scenes/enter_house.tscn" id="7_wc255"]
 [ext_resource type="PackedScene" uid="uid://bx7l02ipro8bt" path="res://scenes/exit_house.tscn" id="8_arp2o"]
 [ext_resource type="Script" uid="uid://co1xniinm4ppw" path="res://scenes/review_cam.gd" id="8_q4oe8"]
@@ -38,16 +39,17 @@
 [ext_resource type="Texture2D" uid="uid://domqhmud1ut4w" path="res://world_sprites/cliffside1.png" id="20_pqd0y"]
 [ext_resource type="Texture2D" uid="uid://0v6a56oml4le" path="res://world_sprites/cliffside2.png" id="21_5k0ak"]
 [ext_resource type="Texture2D" uid="uid://kctvac26pxps" path="res://world_sprites/housefloor.png" id="21_bhb1k"]
-[ext_resource type="Material" uid="uid://bfgph1oaf4q64" path="res://scenes/wallforhouse.tres" id="22_tcyu4"]
+[ext_resource type="Material" path="res://scenes/wallforhouse.tres" id="22_tcyu4"]
 [ext_resource type="Texture2D" uid="uid://c4spla7wq4thj" path="res://world_sprites/houseside2_window.png" id="23_vmndo"]
 [ext_resource type="Texture2D" uid="uid://dhvgxtyabhimf" path="res://world_sprites/rug.png" id="24_bo6tc"]
 [ext_resource type="Texture2D" uid="uid://bi64qidsvhs6l" path="res://world_sprites/bigstairs.png" id="24_xy2fk"]
 [ext_resource type="Texture2D" uid="uid://c6wbacnxkcd22" path="res://world_sprites/cliffside3.png" id="25_7agi7"]
 [ext_resource type="Texture2D" uid="uid://c505bynkcq6c2" path="res://world_sprites/painting.png" id="25_7iqcu"]
 [ext_resource type="Material" uid="uid://q6qdtn58ljlj" path="res://scenes/quickstairs.tres" id="25_cmcjb"]
+[ext_resource type="Script" uid="uid://ddl65744u3ia1" path="res://scenes/buyables.gd" id="25_msn66"]
 [ext_resource type="PackedScene" uid="uid://c8g1osdbbvkqx" path="res://scenes/drawer.gltf" id="26_v4d4p"]
 [ext_resource type="PackedScene" uid="uid://bwo0ws2jp7gy5" path="res://scenes/model.gltf" id="27_30hdq"]
-[ext_resource type="PackedScene" uid="uid://dt2mewg27svhe" path="res://scenes/tree_sml.tscn" id="27_lqb7q"]
+[ext_resource type="PackedScene" path="res://scenes/tree_sml.tscn" id="27_lqb7q"]
 [ext_resource type="PackedScene" uid="uid://bqdvdbce5vdlp" path="res://scenes/piano.gltf" id="27_sc620"]
 [ext_resource type="Texture2D" uid="uid://dq4ghsvv5vbjs" path="res://world_sprites/goddess_painting.png" id="28_3fqns"]
 [ext_resource type="Texture2D" uid="uid://b05rtfpd1wumd" path="res://world_sprites/postbox.png" id="28_ok3ci"]
@@ -64,6 +66,9 @@
 [ext_resource type="PackedScene" uid="uid://c7n5mgjkqg3e4" path="res://scenes/shop.glb" id="59_421lv"]
 [ext_resource type="PackedScene" uid="uid://cpwda1bpshg4h" path="res://scenes/statue_base.glb" id="63_ql8jr"]
 [ext_resource type="Texture2D" uid="uid://d1c28d2x8esfh" path="res://world_sprites/goddess1.png" id="64_5ga6x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nj2gj"]
+size = Vector3(0.94244385, 0.90515137, 1.6208496)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_421lv"]
 transparency = 1
@@ -655,6 +660,10 @@ material = SubResource("StandardMaterial3D_hv3ux")
 size = Vector2(2.125, 3)
 orientation = 2
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_msn66"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xmwm8"]
+
 [sub_resource type="PrismMesh" id="PrismMesh_2e2fo"]
 left_to_right = 0.0
 size = Vector3(1.4, 0.9, 1.4)
@@ -765,6 +774,17 @@ script = ExtResource("1_2jdvr")
 
 [node name="PauseMenu" parent="." unique_id=2083233339 instance=ExtResource("4_8iemx")]
 
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=900905892]
+transform = Transform3D(1.52, 0, 0, 0, 1.3514396, -0.69570893, 0, 0.69570893, 1.3514396, -31.857391, 1.9984947, -31.629183)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=83510331]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 2.9802322e-08, 0, -2.9802322e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_nj2gj")
+
+[node name="OpenShop" parent="." unique_id=1626837591 node_paths=PackedStringArray("shop_ui") instance=ExtResource("7_nj2gj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.147305, 1.8068743, -34.715664)
+shop_ui = NodePath("../ShopOverlay")
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=201041030 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.92050487, 0.39073113, 0, -0.39073113, 0.92050487, 0, 6.645053, 5.108061)
 doppler_tracking = 2
@@ -795,7 +815,7 @@ directional_shadow_fade_start = 1.0
 directional_shadow_max_distance = 99.3
 
 [node name="PlayerSleep" parent="." unique_id=1172711439 instance=ExtResource("5_64w2a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.768463, -11.570661, -2.0969565)
+transform = Transform3D(0.99937207, 0.025474088, -0.024627762, -0.025507027, 0.9996742, -0.0010241503, 0.024593646, 0.0016516969, 0.99969614, -17.471186, -11.570661, -3.3366003)
 
 [node name="FloraContainer" type="Node3D" parent="." unique_id=1628521364]
 
@@ -865,56 +885,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.062153, 3.7532475, -32.82
 interior_spawn = NodePath("../ExitHouse")
 
 [node name="ExitHouse" parent="." unique_id=887263288 node_paths=PackedStringArray("exterior_spawn") instance=ExtResource("8_arp2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.310683, -12.182063, 4.3137817)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.310683, -12.182063, 4.269991)
 exterior_spawn = NodePath("../EnterHouse")
 
 [node name="Talkables" type="Node3D" parent="." unique_id=649817371]
 
 [node name="GoddessStatue" parent="Talkables" unique_id=1463559982 instance=ExtResource("9_ux5qa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.22714, 0.005130291, 34.88345)
-dialogue_text = "Goddess Text Here!"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.22714, 0.26149273, 32.47264)
+npc_name = "Goddes Statue"
+dialogue_text = "... It doesnt speak."
 
 [node name="IntroInfo" parent="Talkables" unique_id=164483212 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.045444, 1.8578033, -29.740726)
 npc_name = "Game Introduction"
 dialogue_text = "You are in charge of reintroducing 4 native species that have been long gone from this ecosystem, plant everyday and check your progress by sleeping!
-Ensure that each plant reaches a ~25% ratio, if all plants are within this ratio, keep the streak for 3 days to win the game!
-But be sure to not overwork yourself, work that relates to your ecosystem task consumes stamina. Replenish it back to full by sleeping!
-(You can sleep by entering LMB in front of the door)"
+Ensure that each plant reaches a ~25% ratio (10% - 40%). If all plants keep this ratio for 3 days, youve sucessfully managed to introduce the native species back in its ecosystem and won the game!
+Work that relates to your ecosystem task consumes stamina (planting [right click on field] and collecting [left click on field]). Replenish it back to full by sleeping! (You can sleep by entering the house [left click on door] and sleeping [left click on bed])"
 
 [node name="IntroInfo2" parent="Talkables" unique_id=1719319179 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.534645, 1.8578033, -17.905563)
 npc_name = "Game Introduction"
-dialogue_text = "The regioned enclosed by the pathway down the hill is your planting ground. For a plant, you maya collect it (LMS) [Consumes stamina]or plant (RMS)[Consumes stamina]. Select what you want to plant by pressing 1, 2, 3 or 4 on the keyboard."
+dialogue_text = "The regioned enclosed by the pathway down the hill is your planting ground. For a plant, you maya collect it [left click on bed][Consumes stamina]or plant [right click on field][Consumes stamina]. Select what you want to plant by pressing 1, 2, 3 or 4 on the keyboard."
 
 [node name="IntroInfo3" parent="Talkables" unique_id=1026686394 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.655926, 0.5604527, -27.313879)
 npc_name = "Game Introduction"
-dialogue_text = "The regioned enclosed by the pathway down the hill is your planting ground. For a plant, you maya collect it (LMS) [Consumes stamina]or plant (RMS)[Consumes stamina]. Select what you want to plant by pressing 1, 2, 3 or 4 on the keyboard."
+dialogue_text = "The regioned enclosed by the pathway down the hill is your planting ground. For a plant, you maya collect it [left click on bed][Consumes stamina]or plant [right click on field][Consumes stamina]. Select what you want to plant by pressing 1, 2, 3 or 4 on the keyboard."
 
 [node name="AbtPlant1" parent="Talkables" unique_id=521872349 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.06103, 1.8578033, -30.906673)
 npc_name = "Plant Info"
-dialogue_text = "Plant 1 species info.
-Collect by pressing (LMS) [Consumes stamina]."
+dialogue_text = "Forest Hazel[1] - This plant spreads in the field quick. 
+[left click on field to collect]"
 
 [node name="AbtPlant2" parent="Talkables" unique_id=398553502 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.075129, 1.8578033, -30.913641)
 npc_name = "Plant Info"
-dialogue_text = "Plant 2 species info.
-Collect by pressing (LMS) [Consumes stamina]."
+dialogue_text = "Trillium[2] - This plant takes over Forest Hazel[1] if left too close. If enough are clumped together it turns into a Trillium Bastion.
+[left click on field to collect]"
 
 [node name="AbtPlant3" parent="Talkables" unique_id=2006384977 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.726563, 1.8578033, -30.92656)
 npc_name = "Plant Info"
-dialogue_text = "Plant 3 species info.
-Collect by pressing (LMS) [Consumes stamina]."
+dialogue_text = "Wild Fern[3] - This plant takes over Trillium[2] if left too close and undefended by Trillium Bastions. 
+[left click on field to collect]"
 
 [node name="AbtPlant4" parent="Talkables" unique_id=692994156 instance=ExtResource("9_ux5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.075815, 1.8578033, -30.931698)
 npc_name = "Plant Info"
-dialogue_text = "Plant 4 species info.
-Collect by pressing (LMS) [Consumes stamina]."
+dialogue_text = "Poison Cotton[4] - This plant takes over Wild Fern[3] if left too close and disappear after 7 days.
+[left click on field to collect]"
 
 [node name="info_indicator" type="StaticBody3D" parent="Talkables" unique_id=1368415335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 4, -31)
@@ -944,7 +964,7 @@ mesh = SubResource("PlaneMesh_oksur")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.27407, 1.831644, 35.282887)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Talkables/info_indicator4" unique_id=1397502808]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.127449, 0.26938295, -0.21344376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.127449, 1.1400716, -2.5860062)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_oksur")
 
@@ -1496,17 +1516,24 @@ transform = Transform3D(1.079024, 0, 0, 0, 1, 0, 0, 0, 0.4126492, 2.605482, -10.
 mesh = SubResource("PlaneMesh_4h8xp")
 
 [node name="buyables" type="Node" parent="House" unique_id=2047609326]
+script = ExtResource("25_msn66")
 
 [node name="RUG" type="MeshInstance3D" parent="House/buyables" unique_id=568539310]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.811749, -12.532306, -0.81840706)
+visible = false
 mesh = SubResource("PlaneMesh_ql8jr")
 
 [node name="PAINTING" type="MeshInstance3D" parent="House/buyables" unique_id=923621567]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -18.097319, -9.74785, -4.8043084)
+visible = false
 mesh = SubResource("PlaneMesh_5ga6x")
 
 [node name="DRAWER" parent="House/buyables" unique_id=1357883960 instance=ExtResource("26_v4d4p")]
+unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.415113, -12.602845, -3.8737166)
+visible = false
 
 [node name="drawercollisions" type="StaticBody3D" parent="House/buyables/DRAWER" unique_id=1282459349]
 
@@ -1515,14 +1542,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6869199, 0.26849365, 0.9770
 shape = SubResource("ConcavePolygonShape3D_v4d4p")
 
 [node name="FISHCAT" parent="House/buyables" unique_id=1222823571 instance=ExtResource("27_30hdq")]
+unique_name_in_owner = true
 transform = Transform3D(-0.6836558, 0, 0.7298044, 0, 1, 0, -0.7298044, 0, -0.6836558, -10.906754, -12.601531, 0.021446943)
+visible = false
 
 [node name="PAINTING2" type="MeshInstance3D" parent="House/buyables" unique_id=1842225226]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -14.419455, -9.655829, -4.8043084)
+visible = false
 mesh = SubResource("PlaneMesh_nj2gj")
 
 [node name="PIANO" parent="House/buyables" unique_id=1299239047 instance=ExtResource("27_sc620")]
+unique_name_in_owner = true
 transform = Transform3D(-0.06, 0, 5.245367e-09, 0, 0.06, 0, -5.245367e-09, 0, -0.06, -10.939844, -12.131332, -3.9115915)
+visible = false
 
 [node name="pianocollisions" type="StaticBody3D" parent="House/buyables/PIANO" unique_id=146959584]
 
@@ -2718,6 +2751,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.5, 7, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/OutOfBounds/CollisionBoxes/StaticBody3D" unique_id=353302625]
 shape = SubResource("BoxShape3D_7agi7")
 
+[node name="StaticBody3D5" type="StaticBody3D" parent="World/OutOfBounds/CollisionBoxes" unique_id=621936611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.5, 7, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/OutOfBounds/CollisionBoxes/StaticBody3D5" unique_id=2074588235]
+shape = SubResource("BoxShape3D_7agi7")
+
 [node name="StaticBody3D2" type="StaticBody3D" parent="World/OutOfBounds/CollisionBoxes" unique_id=490331097]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 7, 0)
 
@@ -2739,7 +2778,7 @@ shape = SubResource("BoxShape3D_7agi7")
 [node name="Meshes" type="Node" parent="World/OutOfBounds" unique_id=1346008110]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="World/OutOfBounds/Meshes" unique_id=1362620394]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.25, -0.25, -7.75)
+transform = Transform3D(1, -5.5408636e-05, 6.165607e-05, 5.5408636e-05, 1, -0.000112356254, -6.165607e-05, 0.000112356254, 1, -69.25, -0.25, -7.75)
 size = Vector3(50.5, 0.5, 155.5)
 material = SubResource("StandardMaterial3D_cr74b")
 
@@ -3188,6 +3227,15 @@ mesh = SubResource("PlaneMesh_iafhg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.146881, 4.6100125, -71.545395)
 mesh = SubResource("PlaneMesh_uhfbm")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="World/OutOfBounds" unique_id=1980461770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.57371, 8.001237, -34.887608)
+physics_material_override = SubResource("PhysicsMaterial_msn66")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/OutOfBounds/StaticBody3D" unique_id=732339137]
+transform = Transform3D(5.9, 0, 0, 0, 5.9, 0, 0, 0, 5.9, 0.26908684, -4.8977804, -2.605713)
+shape = SubResource("BoxShape3D_xmwm8")
+debug_color = Color(0.6451148, 0, 0.024483487, 0.41960785)
+
 [node name="PlayerHouse" type="Node" parent="World" unique_id=1061670302]
 
 [node name="PlayerHouseMesh" parent="World/PlayerHouse" unique_id=787610036 instance=ExtResource("10_olg7q")]
@@ -3291,7 +3339,22 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.9
 shape = SubResource("ConcavePolygonShape3D_0fmhk")
 
 [node name="DEBUGNODEdirectionView" type="MeshInstance3D" parent="World/PlayerHouse" unique_id=1403607612]
-transform = Transform3D(9.553427e-18, -2.1855694e-08, 0.5, -0.005, -2.1855694e-08, 0, 2.1855694e-10, -0.5, -2.1855694e-08, -32.02312, 3.134777, -32.89883)
+transform = Transform3D(9.553427e-18, -2.1855694e-08, 0.5, -0.005, -2.1855694e-08, 0, 2.1855694e-10, -0.5, -2.1855694e-08, -32.02312, 3.4874225, -32.89883)
+mesh = SubResource("CylinderMesh_0fmhk")
+surface_material_override/0 = SubResource("StandardMaterial3D_7iqcu")
+
+[node name="DEBUGNODEdirectionView3" type="MeshInstance3D" parent="World/PlayerHouse" unique_id=1720064141]
+transform = Transform3D(9.553427e-18, -2.1855694e-08, 0.5, -0.005, -2.1855694e-08, 0, 2.1855694e-10, -0.5, -2.1855694e-08, -17.052916, -12.28068, -1.2988498)
+mesh = SubResource("CylinderMesh_0fmhk")
+surface_material_override/0 = SubResource("StandardMaterial3D_7iqcu")
+
+[node name="DEBUGNODEdirectionView4" type="MeshInstance3D" parent="World/PlayerHouse" unique_id=474938474]
+transform = Transform3D(9.553427e-18, -2.1855694e-08, -0.5, -0.005, -2.1855694e-08, 0, -2.1855694e-10, 0.5, -2.1855694e-08, -12.444103, -12.302925, 3.9455092)
+mesh = SubResource("CylinderMesh_0fmhk")
+surface_material_override/0 = SubResource("StandardMaterial3D_7iqcu")
+
+[node name="DEBUGNODEdirectionView2" type="MeshInstance3D" parent="World/PlayerHouse" unique_id=1975967745]
+transform = Transform3D(9.553427e-18, -2.1855694e-08, 0.5, -0.005, -2.1855694e-08, 0, 2.1855694e-10, -0.5, -2.1855694e-08, 14.372444, 1.5157745, -33.834198)
 mesh = SubResource("CylinderMesh_0fmhk")
 surface_material_override/0 = SubResource("StandardMaterial3D_7iqcu")
 

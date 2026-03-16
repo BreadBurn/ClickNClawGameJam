@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://vdcywcc304ai"]
 
 [ext_resource type="Script" uid="uid://vilunoo3q1ok" path="res://scenes/day_recap.gd" id="1_3y7n3"]
+[ext_resource type="Texture2D" uid="uid://dp2w20ou34km4" path="res://assets/plant_assets/plant1_form1.png" id="2_jmw0o"]
+[ext_resource type="Texture2D" uid="uid://dkbsuswmai40" path="res://assets/plant_assets/plant2_form1.png" id="3_wmnrq"]
+[ext_resource type="Texture2D" uid="uid://5lrd4kkqxw15" path="res://assets/plant_assets/plant3_form1.png" id="4_5clrj"]
+[ext_resource type="Texture2D" uid="uid://d06bkqea7nxki" path="res://assets/plant_assets/plant4_form1.png" id="5_qnqvq"]
 
 [node name="DayRecap" type="CanvasLayer" unique_id=1488982761]
 script = ExtResource("1_3y7n3")
@@ -41,57 +45,89 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="T1CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT1" unique_id=438019161]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT1" unique_id=156294041]
 layout_mode = 0
-scale = Vector2(0.9846947, 1.0049475)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="T1CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT1/HBoxContainer" unique_id=438019161]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
-text = "Type 1 Plant Coverage"
+text = "Forest Hazel[1] Plant Coverage"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT1/HBoxContainer" unique_id=338020708]
+layout_mode = 2
+texture = ExtResource("2_jmw0o")
 
 [node name="ProgressBarT2" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1515841569]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="T2CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT2" unique_id=1613073078]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT2" unique_id=2141378251]
 layout_mode = 0
-scale = Vector2(0.9846947, 1.0049475)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="T2CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT2/HBoxContainer" unique_id=1613073078]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
-text = "Type 2 Plant Coverage"
+text = "Trillium[2] Plant Coverage"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT2/HBoxContainer" unique_id=1881191974]
+layout_mode = 2
+texture = ExtResource("3_wmnrq")
 
 [node name="ProgressBarT3" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=363135008]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="T3CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT3" unique_id=1572042847]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT3" unique_id=940707025]
 layout_mode = 0
-scale = Vector2(1.0035204, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="T3CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT3/HBoxContainer" unique_id=1572042847]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
-text = "Type 3 Plant Coverage"
+text = "Wild Fern[3] Plant Coverage"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT3/HBoxContainer" unique_id=754678601]
+layout_mode = 2
+texture = ExtResource("4_5clrj")
 
 [node name="ProgressBarT4" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=12642500]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="T4CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT4" unique_id=1678891301]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT4" unique_id=693376034]
 layout_mode = 0
-scale = Vector2(1.0035204, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="T4CovLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT4/HBoxContainer" unique_id=1678891301]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
-text = "Type 4 Plant Coverage"
+text = "Poison Cotton[4] Plant Coverage"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/ProgressBarT4/HBoxContainer" unique_id=695968201]
+layout_mode = 2
+texture = ExtResource("5_qnqvq")
 
 [node name="GoldEarned" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1093279172]
 layout_mode = 2
@@ -119,5 +155,5 @@ render_target_update_mode = 4
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer2/VBoxContainer" unique_id=483542079]
 layout_mode = 2
-text = "Continue [RMS]"
+text = "Continue [left click ]"
 horizontal_alignment = 1

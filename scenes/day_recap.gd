@@ -68,7 +68,8 @@ func _process(_delta: float) -> void:
 		preview_cam.size = main_cam.size
 
 func _on_daily_evaluated(coins_earned: int, _types_in_bounds: int, current_streak: int) -> void:
-	_populate_from_state(coins_earned)
+	# Pass the streak into the populate function
+	_populate_from_state(coins_earned, current_streak)
 
 	var new_day := GameState.cur_day
 	var old_day: int = max(new_day - 1, 0)
@@ -79,11 +80,10 @@ func _on_daily_evaluated(coins_earned: int, _types_in_bounds: int, current_strea
 	_should_load_win_scene = current_streak >= 3
 
 	activate_scene()
-
 func _on_game_won() -> void:
 	_should_load_win_scene = true
 
-func _populate_from_state(coins_earned: int) -> void:
+func _populate_from_state(coins_earned: int, current_streak: int) -> void:
 	var ratios: Dictionary = {}
 	if GameState != null and "latest_ratios" in GameState:
 		ratios = GameState.latest_ratios
@@ -98,8 +98,9 @@ func _populate_from_state(coins_earned: int) -> void:
 			bars[i].max_value = 100.0
 			bars[i].value = pct
 
+	# Update the label to show both gold and the streak
 	if gold_label:
-		gold_label.text = "+$%d" % coins_earned
+		gold_label.text = "+$%d | Eco Streak: %d/3" % [coins_earned, current_streak]
 
 func activate_scene() -> void:
 	if _is_active or _is_transitioning:

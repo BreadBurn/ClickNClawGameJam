@@ -19,17 +19,13 @@ func _ready() -> void:
 	buy_button.pressed.connect(_on_buy_button_pressed)
 
 func _on_buy_button_pressed() -> void:
-	# 1. Check if the player can afford it
 	if GameState.total_coins >= price:
-		
-		# 2. Deduct the coins (using your existing add_coins with a negative value)
 		GameState.add_coins(-price)
-		
-		# 3. Add the item to the player's inventory
 		GameState.add_to_inventory(item_type, 1)
 		
-		# 4. Make the item disappear from the shop!
+		# --- NEW WAY: Tell GameState to emit the signal ---
+		GameState.reveal_furniture.emit()
+		
 		queue_free() 
 	else:
-		# Optional: Play a "buzzer" sound or flash the price red to show they are broke
 		print("Not enough coins!")
