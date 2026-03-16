@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b64fsg1yoeyd2"
-path.s3tc="res://.godot/imported/model_0.png-3dce83bfa6227075ab51c16002599e11.s3tc.ctex"
+uid="uid://c6fnof2dwl27e"
+path.s3tc="res://.godot/imported/fireplaceopening.png-d3b8343aa429b6340695e80fdb80e134.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "48913facc48dd58fbb0da789bf09a2a7"
-}
 
 [deps]
 
-source_file="res://scenes/model_0.png"
-dest_files=["res://.godot/imported/model_0.png-3dce83bfa6227075ab51c16002599e11.s3tc.ctex"]
+source_file="res://world_sprites/fireplaceopening.png"
+dest_files=["res://.godot/imported/fireplaceopening.png-d3b8343aa429b6340695e80fdb80e134.s3tc.ctex"]
 
 [params]
 

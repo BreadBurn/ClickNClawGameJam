@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b64fsg1yoeyd2"
-path.s3tc="res://.godot/imported/model_0.png-3dce83bfa6227075ab51c16002599e11.s3tc.ctex"
+uid="uid://v0i7e0bdaxa8"
+path.s3tc="res://.godot/imported/fireplacebricks.png-9ffb36d9e9cbc1571e69473de6ff4474.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "48913facc48dd58fbb0da789bf09a2a7"
-}
 
 [deps]
 
-source_file="res://scenes/model_0.png"
-dest_files=["res://.godot/imported/model_0.png-3dce83bfa6227075ab51c16002599e11.s3tc.ctex"]
+source_file="res://world_sprites/fireplacebricks.png"
+dest_files=["res://.godot/imported/fireplacebricks.png-9ffb36d9e9cbc1571e69473de6ff4474.s3tc.ctex"]
 
 [params]
 
