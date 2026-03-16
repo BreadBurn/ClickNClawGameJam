@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bfgph1oaf4q64"]
+
+[ext_resource type="Texture2D" uid="uid://imgmylts8ej1" path="res://world_sprites/houseside1.png" id="1_r44tx"]
+
+[resource]
+albedo_texture = ExtResource("1_r44tx")
+uv1_scale = Vector3(0.17, 0.17, 0.17)
+uv1_offset = Vector3(0, 0.502, 0)
+uv1_triplanar = true
+texture_filter = 0
