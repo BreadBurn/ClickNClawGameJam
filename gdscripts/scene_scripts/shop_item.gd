@@ -2,7 +2,7 @@ extends VBoxContainer
 
 # Set these in the Inspector for each specific item you put in the shop
 @export var item_type: int = 0  # 0, 1, 2, or 3 based on your GameState inventory
-@export var price: int = 25
+@export var price: int = 200
 @export var item_icon: Texture2D
 
 @onready var icon_rect: TextureRect = $TextureRect
